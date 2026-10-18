@@ -1,0 +1,222 @@
+{
+    "document": {
+        "name": "Hebrew Alphabet Chart",
+        "types" : {
+            "1" : {
+                "name": "Proto-Sinaitic",
+                "period": "c. 1850-1500 BCE",
+                "description": "The earliest \"pictographic\" alphabet where Alef looks like a literal ox head and Bet looks like a house floor plan."
+            },
+            "2":{
+                "name": "Paleo-Hebrew / Phoenician",
+                "period": "c. 1000 BCE",
+                "description": "The pictograms became abstracted into a sharp, linear script."
+            },
+            "3":{
+                "name": "Square Hebrew",
+                "period": "c. 500 BCE-Present",
+                "description": "Adopted from the Aramaic script, which eventually became modern Hebrew."
+            }
+        },
+        "entries": [
+            {
+                "letter_name": "Alef",
+                "meaning": "Ox",
+                "pictograph": "",
+                "paleo_unicode": "U+10900",
+                "paleo_symbol": "𐤀",
+                "square_unicode": ["U+05D0"],
+                "square_symbol": ["א"]
+            },
+            {
+                "letter_name": "Bet",
+                "meaning": "House",
+                "pictograph": "",
+                "paleo_unicode": "U+10901",
+                "paleo_symbol": "𐤁",
+                "square_unicode": ["U+05D1"],
+                "square_symbol": ["ב"]
+            },
+            {
+                "letter_name": "Gimel",
+                "meaning": "Camel",
+                "pictograph": "",
+                "paleo_unicode": "U+10902",
+                "paleo_symbol": "𐤂",
+                "square_unicode": ["U+05D2"],
+                "square_symbol": ["ג"]
+            },
+            {
+                "letter_name": "Dalet",
+                "meaning": "Door",
+                "pictograph": "",
+                "paleo_unicode": "U+10903",
+                "paleo_symbol": "𐤃",
+                "square_unicode": ["U+05D3"],
+                "square_symbol": ["ד"]
+            },
+            {
+                "letter_name": "He",
+                "meaning": "Window/Look",
+                "pictograph": "",
+                "paleo_unicode": "U+10904",
+                "paleo_symbol": "𐤄",
+                "square_unicode": ["U+05D4"],
+                "square_symbol": ["ה"]
+            },
+            {
+                "letter_name": "Vav",
+                "meaning": "Hook/Peg",
+                "pictograph": "",
+                "paleo_unicode": "U+10905",
+                "paleo_symbol": "𐤅",
+                "square_unicode": ["U+05D5"],
+                "square_symbol": ["ו"]
+            },
+            {
+                "letter_name": "Zayin",
+                "meaning": "Weapon",
+                "pictograph": "",
+                "paleo_unicode": "U+10906",
+                "paleo_symbol": "𐤆",
+                "square_unicode": ["U+05D6"],
+                "square_symbol": ["ז"]
+            },
+            {
+                "letter_name": "Het",
+                "meaning": "Wall/Courtyard",
+                "pictograph": "",
+                "paleo_unicode": "U+10907",
+                "paleo_symbol": "𐤇",
+                "square_unicode": ["U+05D7"],
+                "square_symbol": ["ח"]
+            },
+            {
+                "letter_name": "Tet",
+                "meaning": "Basket/Wheel",
+                "pictograph": "",
+                "paleo_unicode": "U+10908",
+                "paleo_symbol": "𐤈",
+                "square_unicode": ["U+05D8"],
+                "square_symbol": ["ט"]
+            },
+            {
+                "letter_name": "Yod",
+                "meaning": "Hand",
+                "pictograph": "",
+                "paleo_unicode": "U+10909",
+                "paleo_symbol": "𐤉",
+                "square_unicode": ["U+05D9"],
+                "square_symbol": ["י"]
+            },
+            {
+                "letter_name": "Kaf",
+                "meaning": "Palm of Hand",
+                "pictograph": "",
+                "paleo_unicode": "U+1090A",
+                "paleo_symbol": "𐤊",
+                "square_unicode": ["U+05DA","U+05DB"],
+                "square_symbol": ["כ", "ך"]
+            },
+            {
+                "letter_name": "Lamed",
+                "meaning": "Goad/Staff",
+                "pictograph": "",
+                "paleo_unicode": "U+1090B",
+                "paleo_symbol": "𐤋",
+                "square_unicode": "U+05DC",
+                "square_symbol": ["ל"]
+            },
+            {
+                "letter_name": "Mem",
+                "meaning": "Water",
+                "pictograph": "",
+                "paleo_unicode": "U+1090C",
+                "paleo_symbol": "𐤌",
+                "square_unicode": ["U+05DD","U+05DE"],
+                "square_symbol": ["מ","ם"]
+            },
+            {
+                "letter_name": "Nun",
+                "meaning": "Fish",
+                "pictograph": "",
+                "paleo_unicode": "U+1090D",
+                "paleo_symbol": "𐤍",
+                "square_unicode": ["U+05DF","U+05E0"],
+                "square_symbol": ["נ", "ן"]
+            },
+            {
+                "letter_name": "Samekh",
+                "meaning": "Support/Prop",
+                "pictograph": "",
+                "paleo_unicode": "U+1090E",
+                "paleo_symbol": "𐤎",
+                "square_unicode": "U+05E1",
+                "square_symbol": ["ס"]
+            },
+            {
+                "letter_name": "Ayin",
+                "meaning": "Eye",
+                "pictograph": "",
+                "paleo_unicode": "U+1090F",
+                "paleo_symbol": "𐤏",
+                "square_unicode": "U+05E2",
+                "square_symbol": ["ע"]
+            },
+            {
+                "letter_name": "Pe",
+                "meaning": "Mouth",
+                "pictograph": "",
+                "paleo_unicode": "U+10910",
+                "paleo_symbol": "𐤐",
+                "square_unicode": ["U+05E3","U+05E4"],
+                "square_symbol": ["פ", "ף"]
+            },
+            {
+                "letter_name": "Tsadi",
+                "meaning": "Papyrus/Hook",
+                "pictograph": "",
+                "paleo_unicode": "U+10911",
+                "paleo_symbol": "𐤑",
+                "square_unicode": ["U+05E5","U+05E6"],
+                "square_symbol": ["צ","ץ"]
+            },
+            {
+                "letter_name": "Qof",
+                "meaning": "Monkey/Back of head",
+                "pictograph": "",
+                "paleo_unicode": "U+10912",
+                "paleo_symbol": "𐤒",
+                "square_unicode": ["U+05E7"],
+                "square_symbol": ["ק"]
+            },
+            {
+                "letter_name": "Resh",
+                "meaning": "Head",
+                "pictograph": "",
+                "paleo_unicode": "U+10913",
+                "paleo_symbol": "𐤓",
+                "square_unicode": ["U+05E8"],
+                "square_symbol": ["ר"]
+            },
+            {
+                "letter_name": "Shin",
+                "meaning": "Tooth",
+                "pictograph": "",
+                "paleo_unicode": "U+10914",
+                "paleo_symbol": "𐤔",
+                "square_unicode": ["U+05E9"],
+                "square_symbol": ["ש"]
+            },
+            {
+                "letter_name": "Tav",
+                "meaning": "Mark/Sign",
+                "pictograph": "",
+                "paleo_unicode": "U+10915",
+                "paleo_symbol": "𐤕",
+                "square_unicode": ["U+05EA"],
+                "square_symbol": ["ת"]
+            }
+        ]
+    }
+}
