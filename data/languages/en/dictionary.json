@@ -1,0 +1,26 @@
+
+[
+    {
+      "word": "hello",
+      "partOfSpeech": "interjection",
+      "definitions": [
+        "Used as a greeting when meeting someone."
+      ]
+    },
+    {
+      "word": "book",
+      "partOfSpeech": "noun",
+      "definitions": [
+        "A written or printed work consisting of pages bound together."
+      ]
+    },
+    {
+      "word": "run",
+      "partOfSpeech": "verb",
+      "definitions": [
+        "To move quickly on foot.",
+        "To operate or function."
+      ]
+    }
+  ]
+  
