@@ -1,0 +1,260 @@
+{
+    "language": {
+        "name": "Hebrew Letter Concordance",
+        "description": "Hebrew Letter Concordance"
+    },
+    "entries": {
+        "HL1": {
+            "letter_name": "Alef",
+            "meaning": [
+                "Ox",
+                "Strong",
+                "Strength",
+                "First",
+                "God",
+                "Silent power",
+                "Unity",
+                "Chief",
+                "Leader"
+            ],
+            "preferred_meaning": "First",
+            "gematria": [
+                1
+            ]
+        },
+        "HL2": {
+            "letter_name": "Bet",
+            "meaning": [
+                "House",
+                "Family",
+                "In",
+                "Inside",
+                "With",
+                "Within",
+                "Container",
+                "Dwelling place",
+                "Father’s house",
+                "Temple"
+            ],
+            "preferred_meaning": "House",
+            "gematria": [
+                2
+            ]
+        },
+        "HL3": {
+            "letter_name": "Gimel",
+            "meaning": [
+                "Camel",
+                "Lift",
+                "Walk",
+                "Strength",
+                "Ability"
+            ],
+            "preferred_meaning": "House",
+            "gematria": [
+                3
+            ]
+        },
+        "HL4": {
+            "letter_name": "Dalet",
+            "meaning": [
+                "Door"
+            ],
+            "preferred_meaning": "",
+            "gematria": [
+                4
+            ]
+        },
+        "HL5": {
+            "letter_name": "He",
+            "meaning": [
+                "Window/Look"
+            ],
+            "preferred_meaning": "",
+            "gematria": [
+                5
+            ]
+        },
+        "HL6": {
+            "letter_name": "Vav",
+            "meaning": [
+                "Hook/Peg"
+            ],
+            "preferred_meaning": "",
+            "gematria": [
+                6
+            ]
+        },
+        "HL7": {
+            "letter_name": "Zayin",
+            "meaning": [
+                "Weapon"
+            ],
+            "preferred_meaning": "",
+            "gematria": [
+                7
+            ]
+        },
+        "HL8": {
+            "letter_name": "Het",
+            "meaning": [
+                "Wall/Courtyard"
+            ],
+            "preferred_meaning": "",
+            "gematria": [
+                8
+            ]
+        },
+        "HL9": {
+            "letter_name": "Tet",
+            "meaning": [
+                "Basket",
+                "Wheel"
+            ],
+            "preferred_meaning": "",
+            "gematria": [
+                9
+            ]
+        },
+        "HL10": {
+            "letter_name": "Yod",
+            "meaning": [
+                "Hand"
+            ],
+            "preferred_meaning": "",
+            "gematria": [
+                10
+            ]
+        },
+        "HL11": {
+            "letter_name": "Kaf",
+            "meaning": [
+                "Palm of Hand"
+            ],
+            "preferred_meaning": "",
+            "gematria": [
+                20,
+                500
+            ]
+        },
+        "HL12": {
+            "letter_name": "Lamed",
+            "meaning": [
+                "Goad",
+                "Staff"
+            ],
+            "preferred_meaning": "",
+            "gematria": [
+                30
+            ]
+        },
+        "HL13": {
+            "letter_name": "Mem",
+            "meaning": [
+                "Water"
+            ],
+            "preferred_meaning": "",
+            "gematria": [
+                40,
+                600
+            ]
+        },
+        "HL14": {
+            "letter_name": "Nun",
+            "meaning": [
+                "Fish"
+            ],
+            "preferred_meaning": "",
+            "gematria": [
+                50,
+                700
+            ]
+        },
+        "HL15": {
+            "letter_name": "Samekh",
+            "meaning": [
+                "Support",
+                "Prop"
+            ],
+            "preferred_meaning": "",
+            "gematria": [
+                60
+            ]
+        },
+        "HL16": {
+            "letter_name": "Ayin",
+            "meaning": [
+                "Eye"
+            ],
+            "preferred_meaning": "",
+            "gematria": [
+                70
+            ]
+        },
+        "HL17": {
+            "letter_name": "Pe",
+            "meaning": [
+                "Mouth"
+            ],
+            "preferred_meaning": "",
+            "gematria": [
+                80,
+                800
+            ]
+        },
+        "HL18": {
+            "letter_name": "Tsadi",
+            "meaning": [
+                "Papyrus",
+                "Hook"
+            ],
+            "preferred_meaning": "",
+            "gematria": [
+                90,
+                900
+            ]
+        },
+        "HL19": {
+            "letter_name": "Qof",
+            "meaning": [
+                "Monkey",
+                "Back of head"
+            ],
+            "preferred_meaning": "",
+            "gematria": [
+                100
+            ]
+        },
+        "HL20": {
+            "letter_name": "Resh",
+            "meaning": [
+                "Head"
+            ],
+            "preferred_meaning": "",
+            "gematria": [
+                200
+            ]
+        },
+        "HL21": {
+            "letter_name": "Shin",
+            "meaning": [
+                "Tooth"
+            ],
+            "preferred_meaning": "",
+            "gematria": [
+                300
+            ]
+        },
+        "HL22": {
+            "letter_name": "Tav",
+            "meaning": [
+                "Mark",
+                "Sign"
+            ],
+            "preferred_meaning": "",
+            "gematria": [
+                400
+            ]
+        }
+    }
+}

@@ -1,12 +1,23 @@
-FROM golang:1.24-alpine
+
+FROM golang:1.26-alpine
 
 WORKDIR /app
 
+# Install Air for automatic rebuilds and restarts.
+RUN go install github.com/air-verse/air@latest
+
+# Copy dependency files and download dependencies.
+
 COPY go.mod ./
+
+# Copy go.sum only if it exists.
+COPY . .
+
 RUN go mod download
 
+# Copy application source.
 COPY . .
 
 EXPOSE 8080
 
-CMD ["go", "run", "./cmd/api"]
+CMD ["air", "-c", ".air.toml"]

@@ -1,13 +1,14 @@
+
 services:
-  api:
+  backend:
     build:
       context: ./backend
       dockerfile: Dockerfile.dev
     ports:
       - "8081:8080"
-    volumes:
-      - ./backend:/app
-      - ./data:/data:ro
     environment:
       PORT: "8080"
-      DATA_DIR: /data
+      DATA_DIR: "/data"
+    volumes:
+      - ./backend:/app
+      - ./data:/data

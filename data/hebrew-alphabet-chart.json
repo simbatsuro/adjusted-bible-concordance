@@ -124,7 +124,7 @@
                 "pictograph": "",
                 "paleo_unicode": "U+1090B",
                 "paleo_symbol": "𐤋",
-                "square_unicode": "U+05DC",
+                "square_unicode": ["U+05DC"],
                 "square_symbol": ["ל"]
             },
             {
@@ -151,7 +151,7 @@
                 "pictograph": "",
                 "paleo_unicode": "U+1090E",
                 "paleo_symbol": "𐤎",
-                "square_unicode": "U+05E1",
+                "square_unicode": ["U+05E1"],
                 "square_symbol": ["ס"]
             },
             {
@@ -160,7 +160,7 @@
                 "pictograph": "",
                 "paleo_unicode": "U+1090F",
                 "paleo_symbol": "𐤏",
-                "square_unicode": "U+05E2",
+                "square_unicode": ["U+05E2"],
                 "square_symbol": ["ע"]
             },
             {
