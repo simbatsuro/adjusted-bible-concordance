@@ -11,13 +11,8 @@ import (
 
 	"dictionary-translator/backend/internal/alphabet"
 	"dictionary-translator/backend/internal/concordance"
+	"dictionary-translator/backend/internal/fileprocessor"
 )
-
-type LookupResponse struct {
-	Letter      string                    `json:"letter"`
-	Alphabet    alphabet.Entry             `json:"alphabet"`
-	Concordance concordance.LetterEntry    `json:"concordance"`
-}
 
 func writeJSON(w http.ResponseWriter, status int, value any) {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
@@ -29,12 +24,15 @@ func writeJSON(w http.ResponseWriter, status int, value any) {
 }
 
 func main() {
+	// --------------------------------------------------
+	// 1. Load the Hebrew letter concordance
+	// --------------------------------------------------
+
 	dataDir := os.Getenv("DATA_DIR")
 	if dataDir == "" {
 		dataDir = "../data"
 	}
 
-	// Load the Hebrew letter concordance.
 	concordancePath := filepath.Join(
 		dataDir,
 		"hebrew-letter-concordance.json",
@@ -46,13 +44,17 @@ func main() {
 	}
 
 	var concordanceData concordance.Concordance
+
 	if err := json.Unmarshal(concordanceJSON, &concordanceData); err != nil {
 		log.Fatalf("Parse concordance JSON: %v", err)
 	}
 
 	letterIndex := concordance.BuildLetterIndex(concordanceData)
 
-	// Load the Hebrew alphabet chart.
+	// --------------------------------------------------
+	// 2. Load the Hebrew alphabet chart
+	// --------------------------------------------------
+
 	chartPath := filepath.Join(
 		dataDir,
 		"hebrew-alphabet-chart.json",
@@ -64,6 +66,7 @@ func main() {
 	}
 
 	var chart alphabet.Chart
+
 	if err := json.Unmarshal(chartJSON, &chart); err != nil {
 		log.Fatalf("Parse alphabet chart JSON: %v", err)
 	}
@@ -72,11 +75,88 @@ func main() {
 		log.Fatalf("Validate alphabet chart: %v", err)
 	}
 
-	// Map all character representations to their letter names.
+	// Map character representations to their letter names.
 	characterIndex := alphabet.BuildIndex(chart)
+
+	// --------------------------------------------------
+	// 3. Define the translation function
+	// --------------------------------------------------
+
+	translateText := func(input string) (string, error) {
+		letterNames, err := alphabet.ResolveSequence(
+			characterIndex,
+			input,
+		)
+		if err != nil {
+			return "", err
+		}
+
+		meanings := make([]string, 0, len(letterNames))
+
+		for _, letterName := range letterNames {
+			if letterName == alphabet.UnknownCharacter {
+				meanings = append(
+					meanings,
+					alphabet.UnknownCharacter,
+				)
+				continue
+			}
+
+			entry, found := concordance.LookupLetter(
+				letterIndex,
+				letterName,
+			)
+
+			if !found || strings.TrimSpace(entry.PreferredMeaning) == "" {
+				meanings = append(
+					meanings,
+					alphabet.UnknownCharacter,
+				)
+				continue
+			}
+
+			meanings = append(meanings, entry.PreferredMeaning)
+		}
+
+		return strings.Join(meanings, " "), nil
+	}
+
+	// --------------------------------------------------
+	// 4. Process the input text file on application startup
+	// --------------------------------------------------
+
+	inputDir := os.Getenv("FILES_INPUT_DIR")
+	if inputDir == "" {
+		inputDir = "../files/input"
+	}
+
+	outputDir := os.Getenv("FILES_OUTPUT_DIR")
+	if outputDir == "" {
+		outputDir = "../files/output"
+	}
+
+	inputPath := filepath.Join(inputDir, "example.txt")
+
+	outputPath, err := fileprocessor.ProcessFile(
+		inputPath,
+		outputDir,
+		translateText,
+	)
+
+	if err != nil {
+		// Keep the API running even if the input file is missing.
+		log.Printf("File processing skipped or failed: %v", err)
+	} else {
+		log.Printf("Output saved to: %s", outputPath)
+	}
+
+	// --------------------------------------------------
+	// 5. Register API routes
+	// --------------------------------------------------
 
 	mux := http.NewServeMux()
 
+	// Health check.
 	mux.HandleFunc("GET /api/v1/health", func(
 		w http.ResponseWriter,
 		r *http.Request,
@@ -86,43 +166,58 @@ func main() {
 		})
 	})
 
-
+	// Translate a sequence through the concordance.
 	mux.HandleFunc("GET /api/v1/concordance/{input}", func(
 		w http.ResponseWriter,
 		r *http.Request,
 	) {
 		input := strings.TrimSpace(r.PathValue("input"))
-	
+
 		if input == "" {
 			writeJSON(w, http.StatusBadRequest, map[string]string{
 				"error": "letter name or character sequence is required",
 			})
 			return
 		}
-	
-		// Resolve the input into individual letter names.
-		letterNames, err := alphabet.ResolveSequence(characterIndex, input)
+
+		letterNames, err := alphabet.ResolveSequence(
+			characterIndex,
+			input,
+		)
 		if err != nil {
 			writeJSON(w, http.StatusBadRequest, map[string]string{
 				"error": err.Error(),
 			})
 			return
 		}
-	
-		var meanings []string
-		var letters []string
+
+		letters := make([]string, 0, len(letterNames))
+		meanings := make([]string, 0, len(letterNames))
 
 		for _, letterName := range letterNames {
 			if letterName == alphabet.UnknownCharacter {
-				letters = append(letters, alphabet.UnknownCharacter)
-				meanings = append(meanings, alphabet.UnknownCharacter)
+				letters = append(
+					letters,
+					alphabet.UnknownCharacter,
+				)
+				meanings = append(
+					meanings,
+					alphabet.UnknownCharacter,
+				)
 				continue
 			}
 
-			entry, found := concordance.LookupLetter(letterIndex, letterName)
+			entry, found := concordance.LookupLetter(
+				letterIndex,
+				letterName,
+			)
+
 			if !found || strings.TrimSpace(entry.PreferredMeaning) == "" {
 				letters = append(letters, letterName)
-				meanings = append(meanings, alphabet.UnknownCharacter)
+				meanings = append(
+					meanings,
+					alphabet.UnknownCharacter,
+				)
 				continue
 			}
 
@@ -130,27 +225,6 @@ func main() {
 			meanings = append(meanings, entry.PreferredMeaning)
 		}
 
-	
-		// for _, letterName := range letterNames {
-		// 	entry, found := concordance.LookupLetter(letterIndex, letterName)
-		// 	if !found {
-		// 		writeJSON(w, http.StatusNotFound, map[string]string{
-		// 			"error": "concordance entry not found for " + letterName,
-		// 		})
-		// 		return
-		// 	}
-	
-		// 	if strings.TrimSpace(entry.PreferredMeaning) == "" {
-		// 		writeJSON(w, http.StatusInternalServerError, map[string]string{
-		// 			"error": "preferred meaning is missing for " + letterName,
-		// 		})
-		// 		return
-		// 	}
-	
-		// 	letters = append(letters, letterName)
-		// 	meanings = append(meanings, entry.PreferredMeaning)
-		// }
-	
 		writeJSON(w, http.StatusOK, map[string]any{
 			"input":    input,
 			"letters":  letters,
@@ -158,7 +232,10 @@ func main() {
 			"result":   strings.Join(meanings, " "),
 		})
 	})
-	
+
+	// --------------------------------------------------
+	// 6. Start the API server
+	// --------------------------------------------------
 
 	port := os.Getenv("PORT")
 	if port == "" {

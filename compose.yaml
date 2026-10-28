@@ -9,6 +9,9 @@ services:
     environment:
       PORT: "8080"
       DATA_DIR: "/data"
+      FILES_INPUT_DIR: "/files/input"
+      FILES_OUTPUT_DIR: "/files/output"
     volumes:
       - ./backend:/app
-      - ./data:/data
+      - ./data:/data:ro
+      - ./files:/files
