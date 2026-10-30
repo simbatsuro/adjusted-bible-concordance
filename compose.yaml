@@ -15,3 +15,18 @@ services:
       - ./backend:/app
       - ./data:/data:ro
       - ./files:/files
+  
+  frontend:
+    build:
+      context: ./frontend/apps/web
+      dockerfile: Dockerfile.dev
+    container_name: dictionary-translator-frontend
+    ports:
+      - "3000:3000"
+    environment:
+      NODE_ENV: production
+      BACKEND_API_URL: http://backend:8081
+    depends_on:
+      - backend
+    restart: unless-stopped
+
