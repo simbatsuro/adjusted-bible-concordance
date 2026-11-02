@@ -138,7 +138,7 @@
             },
             {
                 "letter_name": "Nun",
-                "meaning": "Fish",
+                "meaning": "Seed/Fish",
                 "pictograph": "",
                 "paleo_unicode": "U+1090D",
                 "paleo_symbol": "𐤍",
@@ -147,7 +147,7 @@
             },
             {
                 "letter_name": "Samekh",
-                "meaning": "Support/Prop",
+                "meaning": "Thorn/Support/Prop",
                 "pictograph": "",
                 "paleo_unicode": "U+1090E",
                 "paleo_symbol": "𐤎",
@@ -201,7 +201,7 @@
             },
             {
                 "letter_name": "Shin",
-                "meaning": "Tooth",
+                "meaning": "Teeth/Tooth",
                 "pictograph": "",
                 "paleo_unicode": "U+10914",
                 "paleo_symbol": "𐤔",
@@ -210,7 +210,7 @@
             },
             {
                 "letter_name": "Tav",
-                "meaning": "Mark/Sign",
+                "meaning": "Mark/Cross/Sign/Signature",
                 "pictograph": "",
                 "paleo_unicode": "U+10915",
                 "paleo_symbol": "𐤕",

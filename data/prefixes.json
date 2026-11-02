@@ -20,7 +20,7 @@
             "Vocative marker (e.g., 'O king!')",
             "Relative particle (rarely, 'who/which')"
         ],
-        "preferred_meaning": "The"
+        "preferred_meaning": "the"
         },
         {
         "name": "Vav",
@@ -37,7 +37,7 @@
             "Or",
             "Consecutive/Inversive marker (flipping verbal aspect from past to future or vice versa)"
         ],
-        "preferred_meaning": "And"
+        "preferred_meaning": "and"
         },
         {
         "name": "Bet",
@@ -54,7 +54,7 @@
             "By",
             "Against"
         ],
-        "preferred_meaning": "In"
+        "preferred_meaning": "in"
         },
         {
         "name": "Lamed",
@@ -69,9 +69,10 @@
             "For",
             "Concerning",
             "Belonging to (possessive marker)",
-            "In regards to"
+            "In regards to",
+            "Onto"
         ],
-        "preferred_meaning": "To / For"
+        "preferred_meaning": "onto"
         },
         {
         "name": "Kaf",

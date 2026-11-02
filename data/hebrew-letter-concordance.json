@@ -17,7 +17,7 @@
                 "Chief",
                 "Leader"
             ],
-            "preferred_meaning": "First",
+            "preferred_meaning": "strong",
             "gematria": [
                 1
             ]
@@ -36,7 +36,7 @@
                 "Father’s house",
                 "Temple"
             ],
-            "preferred_meaning": "House",
+            "preferred_meaning": "inside",
             "gematria": [
                 2
             ]
@@ -46,11 +46,17 @@
             "meaning": [
                 "Camel",
                 "Lift",
+                "To lift up",
                 "Walk",
                 "Strength",
-                "Ability"
+                "Ability",
+                "Benefit",
+                "Movement",
+                "Giving",
+                "Reward",
+                "Punishment"
             ],
-            "preferred_meaning": "House",
+            "preferred_meaning": "lift",
             "gematria": [
                 3
             ]
@@ -58,9 +64,14 @@
         "HL4": {
             "letter_name": "Dalet",
             "meaning": [
-                "Door"
+                "Door",
+                "Pathway",
+                "Enter",
+                "Access",
+                "Poverty",
+                "Selflessness"
             ],
-            "preferred_meaning": "",
+            "preferred_meaning": "access",
             "gematria": [
                 4
             ]
@@ -68,9 +79,16 @@
         "HL5": {
             "letter_name": "He",
             "meaning": [
-                "Window/Look"
+                "Window",
+                "Look",
+                "Behold",
+                "Reveal",
+                "Revelation",
+                "Breath",
+                "To show grace",
+                "The"
             ],
-            "preferred_meaning": "",
+            "preferred_meaning": "behold",
             "gematria": [
                 5
             ]
@@ -78,9 +96,17 @@
         "HL6": {
             "letter_name": "Vav",
             "meaning": [
-                "Hook/Peg"
+                "Hook",
+                "Peg",
+                "Nail",
+                "And",
+                "Connect",
+                "Man",
+                "Straight up man",
+                "To join",
+                "Secure"
             ],
-            "preferred_meaning": "",
+            "preferred_meaning": "and",
             "gematria": [
                 6
             ]
@@ -88,9 +114,15 @@
         "HL7": {
             "letter_name": "Zayin",
             "meaning": [
-                "Weapon"
+                "Weapon",
+                "Sword",
+                "Cut",
+                "Plough",
+                "To nourish",
+                "Sustenance",
+                "Time"
             ],
-            "preferred_meaning": "",
+            "preferred_meaning": "sustenance",
             "gematria": [
                 7
             ]
@@ -98,9 +130,15 @@
         "HL8": {
             "letter_name": "Het",
             "meaning": [
-                "Wall/Courtyard"
+                "Wall",
+                "Courtyard",
+                "Fence",
+                "Protect",
+                "Life",
+                "To separate",
+                "New beginning"
             ],
-            "preferred_meaning": "",
+            "preferred_meaning": "protect",
             "gematria": [
                 8
             ]
@@ -109,9 +147,16 @@
             "letter_name": "Tet",
             "meaning": [
                 "Basket",
-                "Wheel"
+                "Wheel",
+                "Snake",
+                "Surround",
+                "Good",
+                "Womb",
+                "To twist",
+                "Contain",
+                "Clay​"
             ],
-            "preferred_meaning": "",
+            "preferred_meaning": "surround",
             "gematria": [
                 9
             ]
@@ -119,9 +164,15 @@
         "HL10": {
             "letter_name": "Yod",
             "meaning": [
-                "Hand"
+                "Hand",
+                "Work",
+                "Deed",
+                "Smallest letter",
+                "Creation",
+                "God's hand",
+                "Mighty hand"
             ],
-            "preferred_meaning": "",
+            "preferred_meaning": "God's hand",
             "gematria": [
                 10
             ]
@@ -129,9 +180,15 @@
         "HL11": {
             "letter_name": "Kaf",
             "meaning": [
-                "Palm of Hand"
+                "Palm of Hand",
+                "Palm",
+                "Cover",
+                "Allow",
+                "To bend",
+                "Submit",
+                "Vessel"
             ],
-            "preferred_meaning": "",
+            "preferred_meaning": "cover",
             "gematria": [
                 20,
                 500
@@ -141,9 +198,15 @@
             "letter_name": "Lamed",
             "meaning": [
                 "Goad",
-                "Staff"
+                "Staff",
+                "Teach",
+                "Guide",
+                "Tongue",
+                "Heart",
+                "To learn",
+                "Toward"
             ],
-            "preferred_meaning": "",
+            "preferred_meaning": "guide",
             "gematria": [
                 30
             ]
@@ -151,9 +214,15 @@
         "HL13": {
             "letter_name": "Mem",
             "meaning": [
-                "Water"
+                "Water",
+                "Nation",
+                "Chaos",
+                "Hidden",
+                "Mighty",
+                "Mother",
+                "Bear"
             ],
-            "preferred_meaning": "",
+            "preferred_meaning": "bear",
             "gematria": [
                 40,
                 600
@@ -162,9 +231,16 @@
         "HL14": {
             "letter_name": "Nun",
             "meaning": [
-                "Fish"
+                "Fish",
+                "Seed",
+                "Life",
+                "Faith",
+                "Soul",
+                "To continue",
+                "Heir",
+                "Activity"
             ],
-            "preferred_meaning": "",
+            "preferred_meaning": "life",
             "gematria": [
                 50,
                 700
@@ -174,9 +250,13 @@
             "letter_name": "Samekh",
             "meaning": [
                 "Support",
-                "Prop"
+                "Prop",
+                "Thorn",
+                "Circle",
+                "To lean on",
+                "Protection"
             ],
-            "preferred_meaning": "",
+            "preferred_meaning": "support",
             "gematria": [
                 60
             ]
@@ -184,9 +264,15 @@
         "HL16": {
             "letter_name": "Ayin",
             "meaning": [
-                "Eye"
+                "Eye",
+                "See",
+                "Know",
+                "Experience",
+                "Fountain",
+                "Watch",
+                "Time"
             ],
-            "preferred_meaning": "",
+            "preferred_meaning": "know",
             "gematria": [
                 70
             ]
@@ -194,9 +280,13 @@
         "HL17": {
             "letter_name": "Pe",
             "meaning": [
-                "Mouth"
+                "Mouth",
+                "Speak",
+                "To blow",
+                "Edge",
+                "Communication"
             ],
-            "preferred_meaning": "",
+            "preferred_meaning": "speak",
             "gematria": [
                 80,
                 800
@@ -206,9 +296,15 @@
             "letter_name": "Tsadi",
             "meaning": [
                 "Papyrus",
-                "Hook"
+                "Hook",
+                "Righteous",
+                "Pursue",
+                "Harvest",
+                "To hunt",
+                "Side",
+                "Need"
             ],
-            "preferred_meaning": "",
+            "preferred_meaning": "righteous",
             "gematria": [
                 90,
                 900
@@ -218,9 +314,15 @@
             "letter_name": "Qof",
             "meaning": [
                 "Monkey",
-                "Back of head"
+                "Back of head",
+                "Behind",
+                "Last",
+                "Holiness",
+                "To encircle",
+                "Gather",
+                "Sun on horizon"
             ],
-            "preferred_meaning": "",
+            "preferred_meaning": "holiness",
             "gematria": [
                 100
             ]
@@ -228,9 +330,16 @@
         "HL20": {
             "letter_name": "Resh",
             "meaning": [
-                "Head"
+                "Head of Man",
+                "Head",
+                "Person",
+                "Beginning",
+                "Prince",
+                "Chief",
+                "Poor",
+                "Top"
             ],
-            "preferred_meaning": "",
+            "preferred_meaning": "person",
             "gematria": [
                 200
             ]
@@ -238,9 +347,16 @@
         "HL21": {
             "letter_name": "Shin",
             "meaning": [
-                "Tooth"
+                "Teeth",
+                "Tooth",
+                "Fire",
+                "Consume",
+                "Destroy",
+                "Divine presence",
+                "Sharp",
+                "Change"
             ],
-            "preferred_meaning": "",
+            "preferred_meaning": "divine presence",
             "gematria": [
                 300
             ]
@@ -249,9 +365,15 @@
             "letter_name": "Tav",
             "meaning": [
                 "Mark",
-                "Sign"
+                "Sign",
+                "Signature",
+                "Covenant",
+                "Truth",
+                "To seal",
+                "Complete",
+                "Cross"
             ],
-            "preferred_meaning": "",
+            "preferred_meaning": "covenant",
             "gematria": [
                 400
             ]
