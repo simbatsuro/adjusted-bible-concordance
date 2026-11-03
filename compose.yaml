@@ -15,7 +15,8 @@ services:
       - ./backend:/app
       - ./data:/data:ro
       - ./files:/files
-  
+    restart: unless-stopped
+
   frontend:
     build:
       context: ./frontend/apps/web
@@ -24,9 +25,13 @@ services:
     ports:
       - "3000:3000"
     environment:
-      NODE_ENV: production
-      BACKEND_API_URL: http://backend:8081
+      NODE_ENV: development
+      BACKEND_API_URL: http://backend:8080
+      WATCHPACK_POLLING: "true"
+    volumes:
+      - ./frontend/apps/web:/app
+      - /app/node_modules
+      - /app/.next
     depends_on:
       - backend
     restart: unless-stopped
-

@@ -1,1 +1,10 @@
-frontend/apps/web/node_modules
+# Frontend dependencies
+frontend/apps/web/node_modules/
+
+# Next.js build output
+frontend/apps/web/.next/
+
+# Environment files
+.env
+.env.*
+!.env.example
