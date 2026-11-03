@@ -1,167 +1,110 @@
 {
-    "language": "Hebrew",
-    "script_info": {
-      "modern_block": "U+0590–U+05FF",
-      "paleo_block": "U+10900–U+1091F (Unified with Phoenician in Unicode)"
+  "language": "Hebrew",
+  "script_info": {
+    "square_block": "U+0590–U+05FF",
+    "paleo_block": "U+10900–U+1091F (Unified with Phoenician in Unicode)"
+  },
+  "suffixes": [
+    {
+      "name": "Yod (1st Person Singular Suffix)",
+      "part_of_speech": "Pronominal Suffix / Possessive Pronoun",
+      "square_symbol": "י",
+      "square_unicode": "U+05D9",
+      "paleo_symbol": "𐤉",
+      "paleo_unicode": "U+10909",
+      "transliteration": "-i / -ai",
+      "meanings": [
+        "My (possessive modifier attached to a singular or plural noun)",
+        "Me (direct object marker when attached to an accusative particle or verb)",
+        "Of (changes a plural masculine noun to the construct form"
+      ],
+      "preferred_meaning": "my"
     },
-    "suffixes": [
-      {
-        "name": "Yod (1st Person Singular Suffix)",
-        "part_of_speech": "Pronominal Suffix / Possessive Pronoun",
-        "modern_letter": "י",
-        "modern_utf_code": "U+05D9",
-        "paleo_letter": "𐤉",
-        "paleo_utf_code": "U+10909",
-        "transliteration": "-i / -ai",
-        "meanings": [
-          "My (possessive modifier attached to a singular or plural noun)",
-          "Me (direct object marker when attached to an accusative particle or verb)"
-        ],
-        "preferred_meaning": "My"
-      },
-      {
-        "name": "Vav (3rd Person Masculine Singular Suffix)",
-        "part_of_speech": "Pronominal Suffix / Possessive Pronoun",
-        "modern_letter": "ו",
-        "modern_utf_code": "U+05D5",
-        "paleo_letter": "𐤅",
-        "paleo_utf_code": "U+10905",
-        "transliteration": "-o / -av",
-        "meanings": [
-          "His (possessive modifier attached to a noun)",
-          "Him (objective modifier attached to a preposition or verb)"
-        ],
-        "preferred_meaning": "His / Him"
-      },
-      {
-        "name": "Heh (3rd Person Feminine Singular Suffix)",
-        "part_of_speech": "Pronominal Suffix / Possessive Pronoun",
-        "modern_letter": "ה",
-        "modern_utf_code": "U+05D4",
-        "paleo_letter": "𐤄",
-        "paleo_utf_code": "U+10904",
-        "transliteration": "-ah / -eha",
-        "meanings": [
-          "Her (possessive modifier attached to a noun)",
-          "It / Her (objective modifier attached to a preposition or verb)"
-        ],
-        "preferred_meaning": "Her"
-      },
-      {
-        "name": "Kaf (2nd Person Masculine Singular Suffix)",
-        "part_of_speech": "Pronominal Suffix / Possessive Pronoun",
-        "modern_letter": "ךָ",
-        "modern_utf_code": "U+05DA",
-        "paleo_letter": "𐤊",
-        "paleo_utf_code": "U+1090A",
-        "transliteration": "-cha / -ekha",
-        "meanings": [
-          "Your (singular masculine possessive)",
-          "You (singular masculine object)"
-        ],
-        "preferred_meaning": "Your (m.sg.)"
-      },
-      {
-        "name": "Mem (Pluralization Suffix)",
-        "part_of_speech": "Inflectional Suffix",
-        "modern_letter": "ים",
-        "modern_utf_code": "U+05D9 U+05DD",
-        "paleo_letter": "𐤉𐤌",
-        "paleo_utf_code": "U+10909 U+1090C",
-        "transliteration": "-im",
-        "meanings": [
-          "Masculine plural indicator for nouns and adjectives",
-          "Dual number indicator (occasionally used for pairs, e.g., eyes, hands)"
-        ],
-        "preferred_meaning": "[Masculine Plural Marker]"
-      },
-      {
-        "name": "Tav (Feminine Pluralization Suffix)",
-        "part_of_speech": "Inflectional Suffix",
-        "modern_letter": "ות",
-        "modern_utf_code": "U+05D5 U+05EA",
-        "paleo_letter": "𐤅𐤕",
-        "paleo_utf_code": "U+10905 U+10915",
-        "transliteration": "-ot",
-        "meanings": [
-          "Feminine plural indicator for nouns and adjectives"
-        ],
-        "preferred_meaning": "[Feminine Plural Marker]"
-      }
-    ],
-    "common_combinations": [
-      {
-        "combination_name": "Vav + Bet (Prepositional Conjunction)",
-        "part_of_speech": "Compound Prefix",
-        "modern_letters": "וב־",
-        "modern_utf_code": "U+05D5 U+05D1",
-        "paleo_letters": "𐤅𐤁",
-        "paleo_utf_code": "U+10905 U+10901",
-        "transliteration": "uv- / uva-",
-        "meanings": [
-          "And in",
-          "And with",
-          "And by"
-        ],
-        "preferred_meaning": "And in"
-      },
-      {
-        "combination_name": "Vav + Heh (Definite Conjunction)",
-        "part_of_speech": "Compound Prefix",
-        "modern_letters": "וה־",
-        "modern_utf_code": "U+05D5 U+05D4",
-        "paleo_letters": "𐤅𐤄",
-        "paleo_utf_code": "U+10905 U+10904",
-        "transliteration": "veha-",
-        "meanings": [
-          "And the"
-        ],
-        "preferred_meaning": "And the"
-      },
-      {
-        "combination_name": "Bet + Vav (Suffix Fusion)",
-        "part_of_speech": "Preposition with Pronominal Suffix",
-        "modern_letters": "בּוֹ",
-        "modern_utf_code": "U+05D1 U+05D5",
-        "paleo_letters": "𐤁𐤅",
-        "paleo_utf_code": "U+10901 U+10905",
-        "transliteration": "bo",
-        "meanings": [
-          "In him",
-          "In it (masculine)",
-          "With it"
-        ],
-        "preferred_meaning": "In him / In it"
-      },
-      {
-        "combination_name": "Lamed + Yod (Suffix Fusion)",
-        "part_of_speech": "Preposition with Pronominal Suffix",
-        "modern_letters": "לִי",
-        "modern_utf_code": "U+05DC U+05D9",
-        "paleo_letters": "𐤋𐤉",
-        "paleo_utf_code": "U+1090B U+10909",
-        "transliteration": "li",
-        "meanings": [
-          "To me",
-          "For me",
-          "Mine (belonging to me)"
-        ],
-        "preferred_meaning": "To me / For me"
-      },
-      {
-        "combination_name": "Vav + Lamed + Kaf (Prefix-Suffix Wrap)",
-        "part_of_speech": "Conjunction + Preposition with Suffix",
-        "modern_letters": "וּלְךָ",
-        "modern_utf_code": "U+05D5 U+05DC U+05DA",
-        "paleo_letters": "𐤅𐤋𐤊",
-        "paleo_utf_code": "U+10905 U+1090B U+1090A",
-        "transliteration": "ulecha",
-        "meanings": [
-          "And to you (masculine singular)",
-          "And for you"
-        ],
-        "preferred_meaning": "And to you"
-      }
-    ]
-  }
-  
+    {
+      "name": "Vav (3rd Person Masculine Singular Suffix)",
+      "part_of_speech": "Pronominal Suffix / Possessive Pronoun",
+      "square_symbol": "ו",
+      "square_unicode": "U+05D5",
+      "paleo_symbol": "𐤅",
+      "paleo_unicode": "U+10905",
+      "transliteration": "-o / -av",
+      "meanings": [
+        "His (possessive modifier attached to a noun)",
+        "Him (objective modifier attached to a preposition or verb)"
+      ],
+      "preferred_meaning": "him"
+    },
+    {
+      "name": "Heh (3rd Person Feminine Singular Suffix)",
+      "part_of_speech": "Pronominal Suffix / Possessive Pronoun",
+      "square_symbol": "ה",
+      "square_unicode": "U+05D4",
+      "paleo_symbol": "𐤄",
+      "paleo_unicode": "U+10904",
+      "transliteration": "-ah / -eha",
+      "meanings": [
+        "Her (possessive modifier attached to a noun)",
+        "It / Her (objective modifier attached to a preposition or verb)",
+        "Revealed"
+      ],
+      "preferred_meaning": "her"
+    },
+    {
+      "name": "Kaf (2nd Person Masculine Singular Suffix)",
+      "part_of_speech": "Pronominal Suffix / Possessive Pronoun",
+      "square_symbol": "ך",
+      "square_unicode": "U+05DA",
+      "paleo_symbol": "𐤊",
+      "paleo_unicode": "U+1090A",
+      "transliteration": "-cha / -ekha",
+      "meanings": [
+        "Your (singular masculine possessive)",
+        "You (singular masculine object)"
+      ],
+      "preferred_meaning": "your"
+    },
+    {
+      "name": "Nun",
+      "part_of_speech": "Possessive Pronoun",
+      "square_symbol": "ן",
+      "square_unicode": "U+05E0",
+      "paleo_symbol": "𐤍",
+      "paleo_unicode": "U+1090D",
+      "transliteration": "-cha / -ekha",
+      "meanings": [
+        "Their (Third person, plural, feminine possessive.)"
+      ],
+      "preferred_meaning": "their"
+    }
+  ],
+  "common_combinations": [
+    {
+      "combination_name": "Vav + Bet (Prepositional Conjunction)",
+      "part_of_speech": "Compound Prefix",
+      "square_symbols": "וב־",
+      "square_unicode": "U+05D5 U+05D1",
+      "paleo_symbols": "𐤅𐤁",
+      "paleo_unicode": "U+10905 U+10901",
+      "transliteration": "uv- / uva-",
+      "meanings": [
+        "And in",
+        "And with",
+        "And by"
+      ],
+      "preferred_meaning": "and in"
+    },
+    {
+      "combination_name": "Vav + Heh (Definite Conjunction)",
+      "part_of_speech": "Compound Prefix",
+      "square_symbols": "וה־",
+      "square_unicode": "U+05D5 U+05D4",
+      "paleo_symbols": "𐤅𐤄",
+      "paleo_unicode": "U+10905 U+10904",
+      "transliteration": "veha-",
+      "meanings": [
+        "And the"
+      ],
+      "preferred_meaning": "and the"
+    }
+  ]
+}

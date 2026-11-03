@@ -1,129 +1,190 @@
-
 {
     "language": "Hebrew",
-    "desription":"list of prefixes",
+    "desription": "list of prefixes",
     "script_info": {
-        "modern_block": "U+0590–U+05FF",
+        "square_block": "U+0590–U+05FF",
         "paleo_block": "U+10900–U+1091F (Unified with Phoenician in Unicode)"
     },
     "prefixes": [
         {
-        "name": "Heh",
-        "part_of_speech": "Definite Article",
-        "modern_letter": "ה",
-        "modern_utf_code": "U+05D4",
-        "paleo_letter": "𐤄",
-        "paleo_utf_code": "U+10904",
-        "transliteration": "ha- / he-",
-        "meanings": [
-            "The (definite article indicating a specific or known noun)",
-            "Vocative marker (e.g., 'O king!')",
-            "Relative particle (rarely, 'who/which')"
-        ],
-        "preferred_meaning": "the"
+            "name": "Alef",
+            "part_of_speech": "Verb",
+            "square_symbol": "א",
+            "square_unicode": "U+05D0",
+            "paleo_symbol": "𐤀",
+            "paleo_unicode": "U+10900",
+            "transliteration": "",
+            "meanings": [
+                "First person, singular, future tense",
+                "I will"
+            ],
+            "preferred_meaning": "I will"
         },
         {
-        "name": "Vav",
-        "part_of_speech": "Conjunction",
-        "modern_letter": "ו",
-        "modern_utf_code": "U+05D5",
-        "paleo_letter": "𐤅",
-        "paleo_utf_code": "U+10905",
-        "transliteration": "v- / u-",
-        "meanings": [
-            "And",
-            "But",
-            "Then",
-            "Or",
-            "Consecutive/Inversive marker (flipping verbal aspect from past to future or vice versa)"
-        ],
-        "preferred_meaning": "and"
+            "name": "Bet",
+            "part_of_speech": "Preposition",
+            "square_symbol": "ב",
+            "square_unicode": "U+05D1",
+            "paleo_symbol": "𐤁",
+            "paleo_unicode": "U+10901",
+            "transliteration": "b-",
+            "meanings": [
+                "In",
+                "At",
+                "With (instrumental or accompaniment)",
+                "By",
+                "Against",
+                "Within"
+            ],
+            "preferred_meaning": "within"
         },
         {
-        "name": "Bet",
-        "part_of_speech": "Preposition",
-        "modern_letter": "ב",
-        "modern_utf_code": "U+05D1",
-        "paleo_letter": "𐤁",
-        "paleo_utf_code": "U+10901",
-        "transliteration": "b-",
-        "meanings": [
-            "In",
-            "At",
-            "With (instrumental or accompaniment)",
-            "By",
-            "Against"
-        ],
-        "preferred_meaning": "in"
+            "name": "Heh",
+            "part_of_speech": "Definite Article",
+            "square_symbol": "ה",
+            "square_unicode": "U+05D4",
+            "paleo_symbol": "𐤄",
+            "paleo_unicode": "U+10904",
+            "transliteration": "ha- / he-",
+            "meanings": [
+                "The (definite article indicating a specific or known noun)",
+                "Vocative marker (e.g., 'O king!')",
+                "Relative particle (rarely, 'who/which')",
+                "Behold"
+            ],
+            "preferred_meaning": "behold"
         },
         {
-        "name": "Lamed",
-        "part_of_speech": "Preposition",
-        "modern_letter": "ל",
-        "modern_utf_code": "U+05DC",
-        "paleo_letter": "𐤋",
-        "paleo_utf_code": "U+1090B",
-        "transliteration": "l-",
-        "meanings": [
-            "To",
-            "For",
-            "Concerning",
-            "Belonging to (possessive marker)",
-            "In regards to",
-            "Onto"
-        ],
-        "preferred_meaning": "onto"
+            "name": "Vav",
+            "part_of_speech": "Conjunction",
+            "square_symbol": "ו",
+            "square_unicode": "U+05D5",
+            "paleo_symbol": "𐤅",
+            "paleo_unicode": "U+10905",
+            "transliteration": "v- / u-",
+            "meanings": [
+                "And",
+                "But",
+                "Then",
+                "Or",
+                "Consecutive/Inversive marker (flipping verbal aspect from past to future or vice versa)"
+            ],
+            "preferred_meaning": "and"
         },
         {
-        "name": "Kaf",
-        "part_of_speech": "Preposition",
-        "modern_letter": "כ",
-        "modern_utf_code": "U+05DB",
-        "paleo_letter": "𐤊",
-        "paleo_utf_code": "U+1090A",
-        "transliteration": "k-",
-        "meanings": [
-            "Like",
-            "As",
-            "According to",
-            "Approximately / About (when preceding numbers or time)"
-        ],
-        "preferred_meaning": "Like / As"
+            "name": "Yod",
+            "part_of_speech": "Verb",
+            "square_symbol": "י",
+            "square_unicode": "U+05D9",
+            "paleo_symbol": "𐤉",
+            "paleo_unicode": "U+05D9",
+            "transliteration": "y-",
+            "meanings": [
+                "Third person, future tense. (Number and gender depend on suffixes.)",
+                "He will",
+                "They will"
+            ],
+            "preferred_meaning": "they will"
         },
         {
-        "name": "Mem",
-        "part_of_speech": "Preposition",
-        "modern_letter": "מ",
-        "modern_utf_code": "U+05DE",
-        "paleo_letter": "𐤌",
-        "paleo_utf_code": "U+1090C",
-        "transliteration": "m- / mi-",
-        "meanings": [
-            "From",
-            "Out of",
-            "Than (used to form comparative adjectives)",
-            "Some of (partitive expression)",
-            "Since (temporal marker)"
-        ],
-        "preferred_meaning": "From"
+            "name": "Kaf",
+            "part_of_speech": "Preposition",
+            "square_symbol": "כ",
+            "square_unicode": "U+05DB",
+            "paleo_symbol": "𐤊",
+            "paleo_unicode": "U+1090A",
+            "transliteration": "k-",
+            "meanings": [
+                "Like",
+                "As",
+                "According to",
+                "Approximately / About (when preceding numbers or time)"
+            ],
+            "preferred_meaning": "as"
         },
         {
-        "name": "Shin",
-        "part_of_speech": "Relative Pronoun / Subordinator",
-        "modern_letter": "ש",
-        "modern_utf_code": "U+05E9",
-        "paleo_letter": "𐤔",
-        "paleo_utf_code": "U+10914",
-        "transliteration": "sh-",
-        "meanings": [
-            "That",
-            "Which",
-            "Who",
-            "Whom",
-            "Because / Since"
-        ],
-        "preferred_meaning": "That / Which / Who"
+            "name": "Lamed",
+            "part_of_speech": "Preposition",
+            "square_symbol": "ל",
+            "square_unicode": "U+05DC",
+            "paleo_symbol": "𐤋",
+            "paleo_unicode": "U+1090B",
+            "transliteration": "l-",
+            "meanings": [
+                "To",
+                "For",
+                "Concerning",
+                "Belonging to (possessive marker)",
+                "In regards to",
+                "Onto"
+            ],
+            "preferred_meaning": "onto"
+        },
+        {
+            "name": "Mem",
+            "part_of_speech": "Preposition",
+            "square_symbol": "מ",
+            "square_unicode": "U+05DE",
+            "paleo_symbol": "𐤌",
+            "paleo_unicode": "U+1090C",
+            "transliteration": "m- / mi-",
+            "meanings": [
+                "From",
+                "Out of",
+                "Than (used to form comparative adjectives)",
+                "Some of (partitive expression)",
+                "Since (temporal marker)"
+            ],
+            "preferred_meaning": "from"
+        },
+        {
+            "name": "Nun",
+            "part_of_speech": "Verb",
+            "square_symbol": "נ",
+            "square_unicode": "U+05DF",
+            "paleo_symbol": "𐤍",
+            "paleo_unicode": "U+1090D",
+            "transliteration": "n-",
+            "meanings": [
+                "First person, plural, future tense.",
+                "We will"
+            ],
+            "preferred_meaning": "we will"
+        },
+        {
+            "name": "Shin",
+            "part_of_speech": "Relative Pronoun / Subordinator",
+            "square_symbol": "ש",
+            "square_unicode": "U+05E9",
+            "paleo_symbol": "𐤔",
+            "paleo_unicode": "U+10914",
+            "transliteration": "sh-",
+            "meanings": [
+                "That",
+                "Which",
+                "Who",
+                "Whom",
+                "Because / Since"
+            ],
+            "preferred_meaning": "that"
+        },
+        {
+            "name": "Tav",
+            "part_of_speech": "Verb",
+            "square_symbol": "נ",
+            "square_unicode": "U+05DF",
+            "paleo_symbol": "𐤍",
+            "paleo_unicode": "U+1090D",
+            "transliteration": "n-",
+            "meanings": [
+                "Third person, singular, feminine, future tense.",
+                "She will",
+                "Second person, future tense. (Number and gender depend on suffixes.)",
+                "You will",
+                "In biblical Hebrew, third person, plural, feminine, future tense.",
+                "They will"
+            ],
+            "preferred_meaning": "she will"
         }
     ]
-    }
-    
+}

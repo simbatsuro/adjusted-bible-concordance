@@ -84,10 +84,10 @@ type AffixFile struct {
 type Affix struct {
 	Name            string   `json:"name"`
 	PartOfSpeech    string   `json:"part_of_speech"`
-	ModernLetter    string   `json:"modern_letter"`
-	ModernUTFCode   string   `json:"modern_utf_code"`
-	PaleoLetter     string   `json:"paleo_letter"`
-	PaleoUTFCode    string   `json:"paleo_utf_code"`
+	SquareSymbol    string   `json:"square_symbol"`
+	SquareUnicode   string   `json:"square_unicode"`
+	PaleoSymbol     string   `json:"paleo_symbol"`
+	PaleoUnicode    string   `json:"paleo_unicode"`
 	Transliteration string   `json:"transliteration"`
 	Meanings        []string `json:"meanings"`
 	PreferredMeaning string  `json:"preferred_meaning"`
@@ -262,10 +262,10 @@ func BuildAffixIndex(file AffixFile) map[string]indexedAffix {
 		}
 
 		for _, sequence := range []string{
-			affix.ModernLetter,
-			affix.PaleoLetter,
-			affix.ModernUTFCode,
-			affix.PaleoUTFCode,
+			affix.SquareSymbol,
+			affix.PaleoSymbol,
+			affix.SquareUnicode,
+			affix.PaleoUnicode,
 		} {
 			key := Normalize(sequence)
 			if key == "" {
