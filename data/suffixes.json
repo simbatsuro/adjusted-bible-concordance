@@ -64,6 +64,19 @@
       "preferred_meaning": "your"
     },
     {
+      "name": "Mem",
+      "part_of_speech": "Possessive Pronoun",
+      "square_symbol": "ם",
+      "square_unicode": "U+05DE",
+      "paleo_symbol": "𐤌",
+      "paleo_unicode": "U+1090C",
+      "transliteration": "-m",
+      "meanings": [
+          "Their (Third person, plural, masculine possessive.)"
+      ],
+      "preferred_meaning": "their"
+    },
+    {
       "name": "Nun",
       "part_of_speech": "Possessive Pronoun",
       "square_symbol": "ן",

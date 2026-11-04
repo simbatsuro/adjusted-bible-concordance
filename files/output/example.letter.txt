@@ -1,6 +1,6 @@
-xxxx    Unicode/XML Leningrad Codex [UXLC 2.6]
-xxxx    Build: 27.7    -    18 Oct 2026  06:43
-xxxx    Layout: Text-only; Content: Consonants.
+xxxx    Unicode/XML Leningrad Codex [UXLC 2.6]‬
+xxxx    Build: 27.7    -    18 Oct 2026  06:43‬
+xxxx    Layout: Text-only; Content: Consonants.‬
 xxxx
 xxxx    Obadiah 1:1-1:21
 xxxx
