@@ -363,3 +363,19 @@ docker compose down
 # Test backend health
 curl -i http://localhost:8081/api/v1/health
 ```
+
+## Hebrew phrase lookup: HK concordance and morphology
+
+The phrase translator loads `data/hebrew-phrase-concordance-HK-mapped.json`.
+HK groups are the primary lexical lookup records; their associated H Strong's
+entries are retained as supporting references. Output identifies each lexical
+match as `HKxxxx [Hxxxx,...]`.
+
+Lookup normalises the five Hebrew final forms (ךםןףץ) to their medial
+consonants for matching only. The source text is not changed. When a whole-word
+HK match is unavailable, the analyser checks prefix and suffix combinations
+against the HK index and keeps multiple valid readings in square brackets,
+separated by ` | `. It also checks the masculine plural ending `ים` separately
+from a final Mem possessive suffix, so forms such as `בגוים` can retain both
+analyses. Unmatched words are returned unchanged rather than being split into
+unverified letter meanings.

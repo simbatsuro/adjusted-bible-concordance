@@ -1,4 +1,3 @@
-
 package phraseconcordance
 
 import (
@@ -25,6 +24,7 @@ type Language struct {
 }
 
 type PhraseEntry struct {
+	HKID           string                    `json:"-"`
 	Lemma          string                    `json:"lemma"`
 	Xlit           string                    `json:"xlit"`
 	Pron           string                    `json:"pron"`
@@ -72,50 +72,50 @@ func (u *Usage) UnmarshalJSON(data []byte) error {
 // AffixFile supports individual prefixes or suffixes, top-level common
 // combinations and the nested examples format.
 type AffixFile struct {
-	Language          json.RawMessage `json:"language"`
-	Affixes           []Affix         `json:"-"`
-	Prefixes          []Affix         `json:"prefixes"`
-	Suffixes          []Affix         `json:"suffixes"`
-	CommonCombinations []Combination  `json:"common_combinations"`
-	Examples          AffixExamples   `json:"examples"`
+	Language           json.RawMessage `json:"language"`
+	Affixes            []Affix         `json:"-"`
+	Prefixes           []Affix         `json:"prefixes"`
+	Suffixes           []Affix         `json:"suffixes"`
+	CommonCombinations []Combination   `json:"common_combinations"`
+	Examples           AffixExamples   `json:"examples"`
 }
 
 // Affix represents an individual prefix or suffix.
 type Affix struct {
-	Name            string   `json:"name"`
-	PartOfSpeech    string   `json:"part_of_speech"`
-	SquareSymbol    string   `json:"square_symbol"`
-	SquareUnicode   string   `json:"square_unicode"`
-	PaleoSymbol     string   `json:"paleo_symbol"`
-	PaleoUnicode    string   `json:"paleo_unicode"`
-	Transliteration string   `json:"transliteration"`
-	Meanings        []string `json:"meanings"`
-	PreferredMeaning string  `json:"preferred_meaning"`
+	Name             string   `json:"name"`
+	PartOfSpeech     string   `json:"part_of_speech"`
+	SquareSymbol     string   `json:"square_symbol"`
+	SquareUnicode    string   `json:"square_unicode"`
+	PaleoSymbol      string   `json:"paleo_symbol"`
+	PaleoUnicode     string   `json:"paleo_unicode"`
+	Transliteration  string   `json:"transliteration"`
+	Meanings         []string `json:"meanings"`
+	PreferredMeaning string   `json:"preferred_meaning"`
 }
 
 // Combination supports entries in common_combinations and examples.
 type Combination struct {
-	CombinationName       string `json:"combination_name"`
-	Transliteration       string `json:"transliteration"`
-	PreferredMeaning      string `json:"preferred_meaning"`
-	ExampleWordModern     string `json:"example_word_modern"`
-	ExampleWordPaleo      string `json:"example_word_paleo"`
+	CombinationName        string `json:"combination_name"`
+	Transliteration        string `json:"transliteration"`
+	PreferredMeaning       string `json:"preferred_meaning"`
+	ExampleWordModern      string `json:"example_word_modern"`
+	ExampleWordPaleo       string `json:"example_word_paleo"`
 	ExampleTransliteration string `json:"example_transliteration"`
-	ExampleTranslation    string `json:"example_translation"`
+	ExampleTranslation     string `json:"example_translation"`
 }
 
 type AffixExamples struct {
-	CompoundPrefixes             []Combination `json:"compound_prefixes"`
-	CompoundSuffixesAndFusions   []Combination `json:"compound_suffixes_and_fusions"`
+	CompoundPrefixes           []Combination `json:"compound_prefixes"`
+	CompoundSuffixesAndFusions []Combination `json:"compound_suffixes_and_fusions"`
 }
 
 // indexedAffix stores a matchable sequence and its translation.
 type indexedAffix struct {
-	Sequence        string
+	Sequence         string
 	PreferredMeaning string
-	Name            string
-	Kind            string
-	Components      []string
+	Name             string
+	Kind             string
+	Components       []string
 }
 
 func Load(path string) (Concordance, error) {
@@ -137,31 +137,46 @@ func Load(path string) (Concordance, error) {
 
 func Normalize(input string) string {
 	var result strings.Builder
-
 	for _, r := range strings.TrimSpace(input) {
 		// Remove Hebrew vowel points and cantillation marks for matching.
 		if unicode.In(r, unicode.Mn) && r >= '\u0591' && r <= '\u05C7' {
 			continue
 		}
+		// Final forms are equivalent to their medial consonants for lookup.
+		switch r {
+		case 'ך':
+			r = 'כ'
+		case 'ם':
+			r = 'מ'
+		case 'ן':
+			r = 'נ'
+		case 'ף':
+			r = 'פ'
+		case 'ץ':
+			r = 'צ'
+		}
 		result.WriteRune(r)
 	}
-
 	return strings.Join(strings.Fields(result.String()), " ")
 }
 
 func BuildIndex(c Concordance) map[string]PhraseEntry {
 	index := make(map[string]PhraseEntry, len(c.Entries))
-
-	for _, entry := range c.Entries {
+	for hkID, entry := range c.Entries {
 		key := Normalize(entry.Lemma)
 		if key == "" {
 			continue
 		}
-		if _, exists := index[key]; !exists {
-			index[key] = entry
+		entry.HKID = hkID
+		// Prefer a direct consonantal lemma match; do not let map iteration
+		// order determine which HK group wins when duplicate lemmas exist.
+		if previous, exists := index[key]; exists {
+			if hkID < previous.HKID {
+				continue
+			}
 		}
+		index[key] = entry
 	}
-
 	return index
 }
 
@@ -170,46 +185,63 @@ func Lookup(index map[string]PhraseEntry, input string) (string, bool) {
 	if !found {
 		return UnknownTranslation, false
 	}
-
-	if preferred := strings.TrimSpace(entry.PreferredTrans); preferred != "" {
-		return preferred, true
-	}
-
-	totals := make(map[string]int)
-	for _, child := range entry.Masoretic {
-		for _, usage := range child.KJVUsage {
-			translation := strings.TrimSpace(usage.Translation)
-			if translation == "" {
-				continue
+	translation := strings.TrimSpace(entry.PreferredTrans)
+	if translation == "" {
+		totals := make(map[string]int)
+		for _, child := range entry.Masoretic {
+			for _, usage := range child.KJVUsage {
+				name := strings.TrimSpace(usage.Translation)
+				if name != "" {
+					totals[name] += usage.Count
+				}
 			}
-			totals[translation] += usage.Count
+		}
+		if len(totals) == 0 {
+			// HK-mapped groups often have no precomputed KJV usage totals.
+			// Use their grouped Strong's definitions rather than an unknown marker.
+			defs := make([]string, 0, len(entry.Masoretic))
+			seenDefs := map[string]bool{}
+			for _, child := range entry.Masoretic {
+				def := strings.Trim(strings.TrimSpace(child.StrongsDef), "{} ")
+				if def != "" && !seenDefs[def] {
+					seenDefs[def] = true
+					defs = append(defs, def)
+				}
+			}
+			sort.Strings(defs)
+			if len(defs) > 0 {
+				translation = strings.Join(defs, " / ")
+			} else {
+				translation = UnknownTranslation
+			}
+		} else {
+			best := -1
+			var winners []string
+			for name, count := range totals {
+				if count > best {
+					best, winners = count, []string{name}
+				} else if count == best {
+					winners = append(winners, name)
+				}
+			}
+			sort.Strings(winners)
+			translation = strings.Join(winners, "|")
 		}
 	}
-
-	if len(totals) == 0 {
-		return UnknownTranslation, true
-	}
-
-	translations := make([]string, 0, len(totals))
-	for translation := range totals {
-		translations = append(translations, translation)
-	}
-	sort.Strings(translations)
-
-	bestCount := -1
-	var winners []string
-
-	for _, translation := range translations {
-		count := totals[translation]
-		if count > bestCount {
-			bestCount = count
-			winners = []string{translation}
-		} else if count == bestCount {
-			winners = append(winners, translation)
+	// Show the adjusted HK identity and the H entries grouped beneath it.
+	if entry.HKID != "" {
+		ids := make([]string, 0, len(entry.Masoretic))
+		for id := range entry.Masoretic {
+			ids = append(ids, id)
+		}
+		sort.Strings(ids)
+		if len(ids) > 0 {
+			translation = entry.HKID + " [" + strings.Join(ids, ",") + "] " + translation
+		} else {
+			translation = entry.HKID + " " + translation
 		}
 	}
-
-	return strings.Join(winners, "|"), true
+	return translation, true
 }
 
 // LoadAffixes reads individual affixes and supported combination formats.
@@ -369,86 +401,137 @@ func LookupWithAffixes(
 	input string,
 ) string {
 	original := strings.TrimSpace(input)
-	normalized := Normalize(original)
-	if normalized == "" {
+	word := Normalize(original)
+	if word == "" {
 		return ""
 	}
 
-	if translation, found := Lookup(phraseIndex, normalized); found {
+	// A whole lexical match always wins over speculative segmentation.
+	if translation, ok := Lookup(phraseIndex, word); ok {
+		return translation
+	}
+	if translation, ok := lookupExactCombination(prefixIndex, word); ok {
+		return translation
+	}
+	if translation, ok := lookupExactCombination(suffixIndex, word); ok {
 		return translation
 	}
 
-	// Standalone compound examples should translate as a whole before
-	// attempting to strip individual affixes.
-	if translation, found := lookupExactCombination(prefixIndex, normalized); found {
-		return translation
+	prefixes := affixCandidates(prefixIndex, word, true)
+	suffixes := affixCandidates(suffixIndex, word, false)
+	// Include the un-affixed option. Only accept a decomposition when its
+	// remaining stem exists in the HK concordance.
+	if len(prefixes) == 0 {
+		prefixes = append(prefixes, affixCandidate{sequence: "", meaning: ""})
 	}
-	if translation, found := lookupExactCombination(suffixIndex, normalized); found {
-		return translation
+	suffixes = append(suffixes, affixCandidate{sequence: "", meaning: ""})
+	// Hebrew masculine plural ending -ים is not a possessive suffix, but it
+	// creates a second valid reading alongside a final Mem pronominal suffix.
+	if strings.HasSuffix(word, Normalize("ים")) {
+		suffixes = append(suffixes, affixCandidate{sequence: Normalize("ים"), meaning: "plural"})
 	}
 
-	// Build one component-name lookup from both files so combinations can
-	// resolve letters defined in either file.
-	componentIndex := make(map[string]indexedAffix)
-	for _, index := range []map[string]indexedAffix{prefixIndex, suffixIndex} {
-		for key, entry := range index {
-			if strings.HasPrefix(key, "combination:") || strings.HasPrefix(key, "exact:") {
+	type result struct {
+		score int
+		text  string
+	}
+	var results []result
+	seen := map[string]bool{}
+	for _, pre := range prefixes {
+		if pre.sequence != "" && utf8.RuneCountInString(word)-utf8.RuneCountInString(pre.sequence) < 2 {
+			continue
+		}
+		withoutPrefix := strings.TrimPrefix(word, pre.sequence)
+		for _, suf := range suffixes {
+			if suf.sequence != "" && utf8.RuneCountInString(withoutPrefix)-utf8.RuneCountInString(suf.sequence) < 2 {
 				continue
 			}
-			if entry.Name != "" {
-				componentIndex[strings.ToLower(strings.TrimSpace(entry.Name))] = entry
+			if suf.sequence != "" && !strings.HasSuffix(withoutPrefix, suf.sequence) {
+				continue
+			}
+			stem := strings.TrimSuffix(withoutPrefix, suf.sequence)
+			if stem == "" {
+				continue
+			}
+			lexical, found := Lookup(phraseIndex, stem)
+			if !found || lexical == UnknownTranslation {
+				continue
+			}
+			parts := make([]string, 0, 3)
+			if pre.meaning != "" {
+				parts = append(parts, pre.meaning)
+			}
+			parts = append(parts, lexical)
+			if suf.meaning != "" {
+				parts = append(parts, suf.meaning)
+			}
+			text := strings.Join(parts, " ")
+			if !seen[text] {
+				seen[text] = true
+				results = append(results, result{score: boolInt(pre.sequence != "") + boolInt(suf.sequence != ""), text: text})
 			}
 		}
 	}
-
-	remaining := normalized
-	var translations []string
-
-	for remaining != "" {
-		if translation, found := Lookup(phraseIndex, remaining); found {
-			if translation != "" && translation != UnknownTranslation {
-				translations = append(translations, translation)
-			} else {
-				translations = append(translations, remaining)
-			}
-			remaining = ""
-			break
-		}
-
-		if sequence, meaning, ok := longestCombinationMatch(prefixIndex, componentIndex, remaining, true); ok {
-			translations = append(translations, meaning)
-			remaining = strings.TrimPrefix(remaining, sequence)
-			continue
-		}
-
-		if sequence, meaning, ok := longestAffixMatch(prefixIndex, remaining, true); ok {
-			translations = append(translations, meaning)
-			remaining = strings.TrimPrefix(remaining, sequence)
-			continue
-		}
-
-		if sequence, meaning, ok := longestCombinationMatch(suffixIndex, componentIndex, remaining, false); ok {
-			translations = append(translations, meaning)
-			remaining = strings.TrimSuffix(remaining, sequence)
-			continue
-		}
-
-		if sequence, meaning, ok := longestAffixMatch(suffixIndex, remaining, false); ok {
-			translations = append(translations, meaning)
-			remaining = strings.TrimSuffix(remaining, sequence)
-			continue
-		}
-
-		// No match remains. Preserve the unmatched part instead of replacing
-		// it with an unknown-character placeholder.
-		translations = append(translations, remaining)
-		break
-	}
-
-	if len(translations) == 0 {
+	if len(results) == 0 {
 		return original
 	}
-	return strings.Join(translations, " ")
+	sort.SliceStable(results, func(i, j int) bool {
+		if results[i].score != results[j].score {
+			return results[i].score > results[j].score
+		}
+		return results[i].text < results[j].text
+	})
+	values := make([]string, 0, len(results))
+	for _, item := range results {
+		values = append(values, item.text)
+	}
+	if len(values) == 1 {
+		return values[0]
+	}
+	return "[" + strings.Join(values, " | ") + "]"
+}
+
+type affixCandidate struct{ sequence, meaning string }
+
+func affixCandidates(index map[string]indexedAffix, word string, prefix bool) []affixCandidate {
+	var found []affixCandidate
+	seen := map[string]bool{}
+	for key, entry := range index {
+		if strings.HasPrefix(key, "exact:") || strings.HasPrefix(key, "combination:") {
+			continue
+		}
+		seq := Normalize(entry.Sequence)
+		if seq == "" {
+			seq = Normalize(key)
+		}
+		if seq == "" || seq == word {
+			continue
+		}
+		matched := strings.HasPrefix(word, seq)
+		if !prefix {
+			matched = strings.HasSuffix(word, seq)
+		}
+		if !matched {
+			continue
+		}
+		id := seq + "\x00" + entry.PreferredMeaning
+		if !seen[id] {
+			seen[id] = true
+			found = append(found, affixCandidate{seq, entry.PreferredMeaning})
+		}
+	}
+	// Longer affixes first, but retain all valid alternatives.
+	sort.Slice(found, func(i, j int) bool {
+		return utf8.RuneCountInString(found[i].sequence) > utf8.RuneCountInString(found[j].sequence)
+	})
+	return found
+}
+
+func boolInt(v bool) int {
+	if v {
+		return 1
+	}
+	return 0
 }
 
 func lookupExactCombination(index map[string]indexedAffix, input string) (string, bool) {

@@ -75,7 +75,7 @@ func main() {
 	}
 
 	phraseData, err := phraseconcordance.Load(
-		filepath.Join(dataDir, "hebrew-phrase-concordance.json"),
+		filepath.Join(dataDir, "hebrew-phrase-concordance-HK-mapped.json"),
 	)
 	if err != nil {
 		log.Fatalf("load phrase concordance: %v", err)
