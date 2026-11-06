@@ -1,4 +1,4 @@
-# Dictionary Translator
+# Adjusted Bible Concordance 
 
 ## Project overview
 
@@ -195,7 +195,7 @@ When running locally with the port mappings described above:
 
 | Component | URL | Purpose |
 |---|---|---|
-| Web application | http://localhost:3000 | Open the Dictionary Translator interface |
+| Web application | http://localhost:3000 | Open the Adjusted Bible Concordance  interface |
 | Backend health | http://localhost:8081/api/v1/health | Check whether the Go API is responding |
 | Letter concordance | http://localhost:8081/api/v1/concordance/ | Access the letter concordance endpoint |
 | Phrase concordance | http://localhost:8081/api/v1/phrase/ | Access the phrase concordance endpoint |
@@ -212,7 +212,7 @@ Open:
 
 http://localhost:3000
 
-Confirm that the Dictionary Translator page loads and that the input, file upload, concordance mode and output options are visible.
+Confirm that the Adjusted Bible Concordance page loads and that the input, file upload, concordance mode and output options are visible.
 
 ### 2. Check the backend health endpoint
 
