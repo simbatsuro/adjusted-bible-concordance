@@ -185,64 +185,95 @@ func Lookup(index map[string]PhraseEntry, input string) (string, bool) {
 	if !found {
 		return UnknownTranslation, false
 	}
+
+	// Only preferred_trans is used as the translation.
 	translation := strings.TrimSpace(entry.PreferredTrans)
 	if translation == "" {
-		totals := make(map[string]int)
-		for _, child := range entry.Masoretic {
-			for _, usage := range child.KJVUsage {
-				name := strings.TrimSpace(usage.Translation)
-				if name != "" {
-					totals[name] += usage.Count
-				}
-			}
-		}
-		if len(totals) == 0 {
-			// HK-mapped groups often have no precomputed KJV usage totals.
-			// Use their grouped Strong's definitions rather than an unknown marker.
-			defs := make([]string, 0, len(entry.Masoretic))
-			seenDefs := map[string]bool{}
-			for _, child := range entry.Masoretic {
-				def := strings.Trim(strings.TrimSpace(child.StrongsDef), "{} ")
-				if def != "" && !seenDefs[def] {
-					seenDefs[def] = true
-					defs = append(defs, def)
-				}
-			}
-			sort.Strings(defs)
-			if len(defs) > 0 {
-				translation = strings.Join(defs, " / ")
-			} else {
-				translation = UnknownTranslation
-			}
-		} else {
-			best := -1
-			var winners []string
-			for name, count := range totals {
-				if count > best {
-					best, winners = count, []string{name}
-				} else if count == best {
-					winners = append(winners, name)
-				}
-			}
-			sort.Strings(winners)
-			translation = strings.Join(winners, "|")
-		}
+		return UnknownTranslation, false
 	}
-	// Show the adjusted HK identity and the H entries grouped beneath it.
-	if entry.HKID != "" {
-		ids := make([]string, 0, len(entry.Masoretic))
-		for id := range entry.Masoretic {
-			ids = append(ids, id)
-		}
-		sort.Strings(ids)
-		if len(ids) > 0 {
-			translation = entry.HKID + " [" + strings.Join(ids, ",") + "] " + translation
-		} else {
-			translation = entry.HKID + " " + translation
-		}
-	}
+
+	// Join the English words belonging to this Hebrew word.
+	translation = translationBlock(translation)
+
+	// Keep the adjusted HK reference, not the individual H references.
+	// if entry.HKID != "" {
+	// 	translation = entry.HKID + ":" + translation
+	// }
+
 	return translation, true
 }
+
+// func Lookup(index map[string]PhraseEntry, input string) (string, bool) {
+// 	entry, found := index[Normalize(input)]
+// 	if !found {
+// 		return UnknownTranslation, false
+// 	}
+// 	translation := strings.TrimSpace(entry.PreferredTrans)
+// 	if translation == "" {
+// 		totals := make(map[string]int)
+// 		for _, child := range entry.Masoretic {
+// 			for _, usage := range child.KJVUsage {
+// 				name := strings.TrimSpace(usage.Translation)
+// 				if name != "" {
+// 					totals[name] += usage.Count
+// 				}
+// 			}
+// 		}
+// 		if len(totals) == 0 {
+// 			// HK-mapped groups often have no precomputed KJV usage totals.
+// 			// Use their grouped Strong's definitions rather than an unknown marker.
+// 			defs := make([]string, 0, len(entry.Masoretic))
+// 			seenDefs := map[string]bool{}
+// 			for _, child := range entry.Masoretic {
+// 				def := strings.Trim(strings.TrimSpace(child.StrongsDef), "{} ")
+// 				if def != "" && !seenDefs[def] {
+// 					seenDefs[def] = true
+// 					defs = append(defs, def)
+// 				}
+// 			}
+// 			sort.Strings(defs)
+// 			if len(defs) > 0 {
+// 				translation = strings.Join(defs, " / ")
+// 			} else {
+// 				translation = UnknownTranslation
+// 			}
+// 		} else {
+// 			best := -1
+// 			var winners []string
+// 			for name, count := range totals {
+// 				if count > best {
+// 					best, winners = count, []string{name}
+// 				} else if count == best {
+// 					winners = append(winners, name)
+// 				}
+// 			}
+// 			sort.Strings(winners)
+// 			translation = strings.Join(winners, "|")
+// 		}
+// 	}
+// 	// Show the adjusted HK identity and the H entries grouped beneath it.
+// 	if entry.HKID != "" {
+// 		ids := make([]string, 0, len(entry.Masoretic))
+// 		for id := range entry.Masoretic {
+// 			ids = append(ids, id)
+// 		}
+// 		sort.Strings(ids)
+// 		// if len(ids) > 0 {
+// 		// 	translation = entry.HKID + " [" + strings.Join(ids, ",") + "] " + translation
+// 		// } else {
+// 		// 	translation = entry.HKID + " " + translation
+// 		// }
+// 	}
+// 	return translation, true
+// }
+
+// translationBlock joins all English words belonging to one Hebrew word.
+// Spaces within a translation become underscores.
+func translationBlock(input string) string {
+	words := strings.Fields(strings.TrimSpace(input))
+	return strings.Join(words, "_")
+}
+
 
 // LoadAffixes reads individual affixes and supported combination formats.
 // listName should be "prefixes" or "suffixes".
@@ -394,6 +425,103 @@ func splitCombinationName(name string) []string {
 // LookupWithAffixes tries an exact phrase first. Otherwise, it repeatedly
 // consumes the longest matching prefix or suffix. It supports modern Hebrew
 // and Paleo-Hebrew characters, plus combination examples from both files.
+// func LookupWithAffixes(
+// 	phraseIndex map[string]PhraseEntry,
+// 	prefixIndex map[string]indexedAffix,
+// 	suffixIndex map[string]indexedAffix,
+// 	input string,
+// ) string {
+// 	original := strings.TrimSpace(input)
+// 	word := Normalize(original)
+// 	if word == "" {
+// 		return ""
+// 	}
+
+// 	// A whole lexical match always wins over speculative segmentation.
+// 	if translation, ok := Lookup(phraseIndex, word); ok {
+// 		return translation
+// 	}
+// 	if translation, ok := lookupExactCombination(prefixIndex, word); ok {
+// 		return translation
+// 	}
+// 	if translation, ok := lookupExactCombination(suffixIndex, word); ok {
+// 		return translation
+// 	}
+
+// 	prefixes := affixCandidates(prefixIndex, word, true)
+// 	suffixes := affixCandidates(suffixIndex, word, false)
+// 	// Include the un-affixed option. Only accept a decomposition when its
+// 	// remaining stem exists in the HK concordance.
+// 	if len(prefixes) == 0 {
+// 		prefixes = append(prefixes, affixCandidate{sequence: "", meaning: ""})
+// 	}
+// 	suffixes = append(suffixes, affixCandidate{sequence: "", meaning: ""})
+// 	// Hebrew masculine plural ending -ים is not a possessive suffix, but it
+// 	// creates a second valid reading alongside a final Mem pronominal suffix.
+// 	if strings.HasSuffix(word, Normalize("ים")) {
+// 		suffixes = append(suffixes, affixCandidate{sequence: Normalize("ים"), meaning: "-es"})
+// 	}
+
+// 	type result struct {
+// 		score int
+// 		text  string
+// 	}
+// 	var results []result
+// 	seen := map[string]bool{}
+// 	for _, pre := range prefixes {
+// 		if pre.sequence != "" && utf8.RuneCountInString(word)-utf8.RuneCountInString(pre.sequence) < 2 {
+// 			continue
+// 		}
+// 		withoutPrefix := strings.TrimPrefix(word, pre.sequence)
+// 		for _, suf := range suffixes {
+// 			if suf.sequence != "" && utf8.RuneCountInString(withoutPrefix)-utf8.RuneCountInString(suf.sequence) < 2 {
+// 				continue
+// 			}
+// 			if suf.sequence != "" && !strings.HasSuffix(withoutPrefix, suf.sequence) {
+// 				continue
+// 			}
+// 			stem := strings.TrimSuffix(withoutPrefix, suf.sequence)
+// 			if stem == "" {
+// 				continue
+// 			}
+// 			lexical, found := Lookup(phraseIndex, stem)
+// 			if !found || lexical == UnknownTranslation {
+// 				continue
+// 			}
+// 			parts := make([]string, 0, 3)
+// 			if pre.meaning != "" {
+// 				parts = append(parts, pre.meaning)
+// 			}
+// 			parts = append(parts, lexical)
+// 			if suf.meaning != "" {
+// 				parts = append(parts, suf.meaning)
+// 			}
+// 			text := strings.Join(parts, " ")
+// 			if !seen[text] {
+// 				seen[text] = true
+// 				results = append(results, result{score: boolInt(pre.sequence != "") + boolInt(suf.sequence != ""), text: text})
+// 			}
+// 		}
+// 	}
+// 	if len(results) == 0 {
+// 		return original
+// 	}
+// 	sort.SliceStable(results, func(i, j int) bool {
+// 		if results[i].score != results[j].score {
+// 			return results[i].score > results[j].score
+// 		}
+// 		return results[i].text < results[j].text
+// 	})
+// 	values := make([]string, 0, len(results))
+// 	for _, item := range results {
+// 		values = append(values, item.text)
+// 	}
+// 	if len(values) == 1 {
+// 		return values[0]
+// 	}
+// 	return "[" + strings.Join(values, " | ") + "]"
+// }
+
 func LookupWithAffixes(
 	phraseIndex map[string]PhraseEntry,
 	prefixIndex map[string]indexedAffix,
@@ -402,94 +530,140 @@ func LookupWithAffixes(
 ) string {
 	original := strings.TrimSpace(input)
 	word := Normalize(original)
+
 	if word == "" {
 		return ""
 	}
 
-	// A whole lexical match always wins over speculative segmentation.
+	// An exact lexical match takes priority over segmentation.
 	if translation, ok := Lookup(phraseIndex, word); ok {
 		return translation
 	}
+
 	if translation, ok := lookupExactCombination(prefixIndex, word); ok {
-		return translation
+		return translationBlock(translation)
 	}
+
 	if translation, ok := lookupExactCombination(suffixIndex, word); ok {
-		return translation
+		return translationBlock(translation)
 	}
 
 	prefixes := affixCandidates(prefixIndex, word, true)
 	suffixes := affixCandidates(suffixIndex, word, false)
-	// Include the un-affixed option. Only accept a decomposition when its
-	// remaining stem exists in the HK concordance.
-	if len(prefixes) == 0 {
-		prefixes = append(prefixes, affixCandidate{sequence: "", meaning: ""})
-	}
-	suffixes = append(suffixes, affixCandidate{sequence: "", meaning: ""})
-	// Hebrew masculine plural ending -ים is not a possessive suffix, but it
-	// creates a second valid reading alongside a final Mem pronominal suffix.
+
+	// Allow words with no prefix or no suffix.
+	prefixes = append(prefixes, affixCandidate{
+		sequence: "",
+		meaning:  "",
+	})
+
+	suffixes = append(suffixes, affixCandidate{
+		sequence: "",
+		meaning:  "",
+	})
+
+	// Consider the plural ending -ים as a possible alternative reading.
 	if strings.HasSuffix(word, Normalize("ים")) {
-		suffixes = append(suffixes, affixCandidate{sequence: Normalize("ים"), meaning: "plural"})
+		suffixes = append(suffixes, affixCandidate{
+			sequence: Normalize("ים"),
+			meaning:  "-es",
+		})
 	}
 
 	type result struct {
 		score int
 		text  string
 	}
+
 	var results []result
-	seen := map[string]bool{}
+	seen := make(map[string]bool)
+
 	for _, pre := range prefixes {
-		if pre.sequence != "" && utf8.RuneCountInString(word)-utf8.RuneCountInString(pre.sequence) < 2 {
+		if pre.sequence != "" &&
+			utf8.RuneCountInString(word)-
+				utf8.RuneCountInString(pre.sequence) < 2 {
 			continue
 		}
+
 		withoutPrefix := strings.TrimPrefix(word, pre.sequence)
+
 		for _, suf := range suffixes {
-			if suf.sequence != "" && utf8.RuneCountInString(withoutPrefix)-utf8.RuneCountInString(suf.sequence) < 2 {
+			if suf.sequence != "" &&
+				utf8.RuneCountInString(withoutPrefix)-
+					utf8.RuneCountInString(suf.sequence) < 2 {
 				continue
 			}
-			if suf.sequence != "" && !strings.HasSuffix(withoutPrefix, suf.sequence) {
+
+			if suf.sequence != "" &&
+				!strings.HasSuffix(withoutPrefix, suf.sequence) {
 				continue
 			}
+
 			stem := strings.TrimSuffix(withoutPrefix, suf.sequence)
 			if stem == "" {
 				continue
 			}
+
 			lexical, found := Lookup(phraseIndex, stem)
 			if !found || lexical == UnknownTranslation {
 				continue
 			}
+
+			// Each component belongs to the same original Hebrew word.
+			// Therefore, join them with underscores, not spaces.
 			parts := make([]string, 0, 3)
+
 			if pre.meaning != "" {
-				parts = append(parts, pre.meaning)
+				parts = append(parts, translationBlock(pre.meaning))
 			}
-			parts = append(parts, lexical)
+
+			parts = append(parts, translationBlock(lexical))
+
 			if suf.meaning != "" {
-				parts = append(parts, suf.meaning)
+				parts = append(parts, translationBlock(suf.meaning))
 			}
-			text := strings.Join(parts, " ")
+
+			text := strings.Join(parts, "_")
+
 			if !seen[text] {
 				seen[text] = true
-				results = append(results, result{score: boolInt(pre.sequence != "") + boolInt(suf.sequence != ""), text: text})
+
+				results = append(results, result{
+					score: boolInt(pre.sequence != "") +
+						boolInt(suf.sequence != ""),
+					text: text,
+				})
 			}
 		}
 	}
+
 	if len(results) == 0 {
 		return original
 	}
+
 	sort.SliceStable(results, func(i, j int) bool {
 		if results[i].score != results[j].score {
 			return results[i].score > results[j].score
 		}
 		return results[i].text < results[j].text
 	})
+
 	values := make([]string, 0, len(results))
 	for _, item := range results {
 		values = append(values, item.text)
 	}
+
 	if len(values) == 1 {
 		return values[0]
 	}
+
+	// Keep alternative interpretations together as one Hebrew word block.
 	return "[" + strings.Join(values, " | ") + "]"
 }
+
+
+
+
 
 type affixCandidate struct{ sequence, meaning string }
 
