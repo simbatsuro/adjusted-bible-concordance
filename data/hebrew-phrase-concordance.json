@@ -3349,17 +3349,17 @@
       "adjust_trans": "Hadad"
     },
     "HK92": {
-      "lemma": "אדו",
+      "lemma": "",
       "xlit": "-",
       "pron": "-",
       "preferred_speech_part": "",
       "derivation": "",
-      "preferred_def": "Iddo, an Israelite",
-      "preferred_trans": "Iddo",
+      "preferred_def": "",
+      "preferred_trans": "",
       "kjv_count": "",
       "masoretic_entries": {
         "H112": {
-          "lemma": "אִדּוֹ",
+          "lemma": "*אִדּוֹ*",
           "xlit": "'Iddôw",
           "pron": "id-do",
           "derivation": "of uncertain derivation;",
@@ -3375,8 +3375,8 @@
           "kjv_usage_source": "Blue Letter Bible"
         }
       },
-      "adjusted_def": "Iddo, an Israelite",
-      "adjust_trans": "Iddo"
+      "adjusted_def": "Inexistant",
+      "adjust_trans": "Inexistant"
     },
     "HK93": {
       "lemma": "אדון",
@@ -4021,7 +4021,7 @@
       "preferred_speech_part": "",
       "derivation": "",
       "preferred_def": "a basis (of a building, a column, etc.)",
-      "preferred_trans": "socket(s)",
+      "preferred_trans": "foundation",
       "kjv_count": "",
       "masoretic_entries": {
         "H134": {
@@ -4065,7 +4065,7 @@
       "adjust_trans": "socket(s)"
     },
     "HK106": {
-      "lemma": "אדני",
+      "lemma": "*אדני",
       "xlit": "-",
       "pron": "-",
       "preferred_speech_part": "",
@@ -4099,8 +4099,8 @@
           "kjv_usage_source": "Blue Letter Bible"
         }
       },
-      "adjusted_def": "the Lord (used as a proper name of God only)",
-      "adjust_trans": "Lord"
+      "adjusted_def": "two words - my basis / my foundation / of basis / of foundation",
+      "adjust_trans": "in-existent"
     },
     "HK107": {
       "lemma": "אדניבזק",
@@ -16683,7 +16683,7 @@
       "preferred_speech_part": "",
       "derivation": "",
       "preferred_def": "to say (used with great latitude)",
-      "preferred_trans": "said",
+      "preferred_trans": "to say",
       "kjv_count": "",
       "masoretic_entries": {
         "H559": {
@@ -25444,7 +25444,7 @@
       "preferred_speech_part": "",
       "derivation": "",
       "preferred_def": "God's covenant",
-      "preferred_trans": "salvation",
+      "preferred_trans": "covenant strength",
       "kjv_count": "",
       "masoretic_entries": {
         "H852": {
@@ -55450,7 +55450,7 @@
       "adjust_trans": "Dinhabah"
     },
     "HK1339": {
-      "lemma": "דני",
+      "lemma": "*דני",
       "xlit": "-",
       "pron": "-",
       "preferred_speech_part": "",
@@ -55480,8 +55480,8 @@
           "kjv_usage_source": "Blue Letter Bible"
         }
       },
-      "adjusted_def": "a Danite (often collectively) or descendants (or inhabitants) of Dan",
-      "adjust_trans": "Danite"
+      "adjusted_def": "two words - my dan / of dan",
+      "adjust_trans": "in-existent"
     },
     "HK1340": {
       "lemma": "דניאל",
@@ -71926,17 +71926,17 @@
       "adjust_trans": "vision"
     },
     "HK1719": {
-      "lemma": "חזון",
+      "lemma": "*חזון",
       "xlit": "-",
       "pron": "-",
       "preferred_speech_part": "",
       "derivation": "",
       "preferred_def": "a sight (mentally), i.e. a dream, revelation, or oracle",
-      "preferred_trans": "a revelation",
+      "preferred_trans": "revelation",
       "kjv_count": "",
       "masoretic_entries": {
         "H2377": {
-          "lemma": "חָזוֹן",
+          "lemma": "*חָזוֹן",
           "xlit": "châzôwn",
           "pron": "khaw-zone'",
           "derivation": "from H2372 (חָזָה);",
@@ -71952,8 +71952,8 @@
           "kjv_usage_source": "Blue Letter Bible"
         }
       },
-      "adjusted_def": "a sight (mentally), i.e. a dream, revelation, or oracle",
-      "adjust_trans": "a revelation"
+      "adjusted_def": "Nun is a suffix their (Third person, plural, feminine possessive.",
+      "adjust_trans": "non-existant"
     },
     "HK1720": {
       "lemma": "חזות",
@@ -109292,7 +109292,7 @@
       "preferred_speech_part": "",
       "derivation": "",
       "preferred_def": "{properly, like this, i.e. by implication, (of manner) thus (or so); also (of place) here (or hither); or (of time) now}",
-      "preferred_trans": "like this",
+      "preferred_trans": "thus",
       "kjv_count": "",
       "masoretic_entries": {
         "H3541": {
@@ -143793,8 +143793,8 @@
       "pron": "-",
       "preferred_speech_part": "",
       "derivation": "",
-      "preferred_def": "",
-      "preferred_trans": "",
+      "preferred_def": "purpose",
+      "preferred_trans": "purpose",
       "kjv_count": "",
       "masoretic_entries": {
         "H4616": {
@@ -143806,8 +143806,8 @@
           "kjv_def": "because of, to the end (intent) that, for (to,... 's sake), [phrase] lest, that, to."
         }
       },
-      "adjusted_def": "",
-      "adjust_trans": ""
+      "adjusted_def": "heed",
+      "adjust_trans": "heed"
     },
     "HK3414": {
       "lemma": "מענה",
@@ -177703,7 +177703,7 @@
       "adjust_trans": "bondage"
     },
     "HK4176": {
-      "lemma": "עבדי",
+      "lemma": "*עבדי",
       "xlit": "-",
       "pron": "-",
       "preferred_speech_part": "",
@@ -177729,8 +177729,8 @@
           "kjv_usage_source": "Blue Letter Bible"
         }
       },
-      "adjusted_def": "Abdi, the name of two Israelites",
-      "adjust_trans": "Abdi"
+      "adjusted_def": "Abdi, servant of / my servant",
+      "adjust_trans": "in-existent"
     },
     "HK4177": {
       "lemma": "עבדיאל",
@@ -177763,13 +177763,13 @@
       "adjust_trans": "Abdiel"
     },
     "HK4178": {
-      "lemma": "עבדיה",
+      "lemma": "*עבדיה",
       "xlit": "-",
       "pron": "-",
       "preferred_speech_part": "",
       "derivation": "",
       "preferred_def": "Obadjah, the name of thirteen Israelites",
-      "preferred_trans": "Obadiah",
+      "preferred_trans": "servant of Jah",
       "kjv_count": "",
       "masoretic_entries": {
         "H5662": {
@@ -177790,7 +177790,7 @@
         }
       },
       "adjusted_def": "Obadjah, the name of thirteen Israelites",
-      "adjust_trans": "Obadiah"
+      "adjust_trans": "in-existant"
     },
     "HK4179": {
       "lemma": "עבדמלך",
@@ -179333,7 +179333,7 @@
       "preferred_speech_part": "",
       "derivation": "",
       "preferred_def": "Iddo (or Iddi), the name of five Israelites",
-      "preferred_trans": "Iddo",
+      "preferred_trans": "timely",
       "kjv_count": "",
       "masoretic_entries": {
         "H5714": {
@@ -179354,7 +179354,7 @@
         }
       },
       "adjusted_def": "Iddo (or Iddi), the name of five Israelites",
-      "adjust_trans": "Iddo"
+      "adjust_trans": "timely"
     },
     "HK4211": {
       "lemma": "עדות",
@@ -211266,7 +211266,7 @@
       "preferred_speech_part": "",
       "derivation": "",
       "preferred_def": "a hinge (as pressed in turning); also a throe (as a phys. or mental pressure); also a herald or erranddoer (as constrained by the principal)",
-      "preferred_trans": "ambassador",
+      "preferred_trans": "herald",
       "kjv_count": "",
       "masoretic_entries": {
         "H6735": {
@@ -252599,7 +252599,7 @@
       "preferred_speech_part": "",
       "derivation": "",
       "preferred_def": "something heard, i.e. an announcement",
-      "preferred_trans": "report",
+      "preferred_trans": "something heard",
       "kjv_count": "",
       "masoretic_entries": {
         "H8052": {

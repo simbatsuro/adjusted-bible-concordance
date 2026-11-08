@@ -32,7 +32,7 @@
         "His (possessive modifier attached to a noun)",
         "Him (objective modifier attached to a preposition or verb)"
       ],
-      "preferred_meaning": "him"
+      "preferred_meaning": "his"
     },
     {
       "name": "Heh (3rd Person Feminine Singular Suffix)",
@@ -88,6 +88,33 @@
         "Their (Third person, plural, feminine possessive.)"
       ],
       "preferred_meaning": "their"
+    },
+    {
+      "name": "Yod-He (Pronominal Suffix)",
+      "part_of_speech": "Pronominal Suffix / Possessive Pronoun",
+      "square_symbol": "יה",
+      "square_unicode": "U+05D9 U+05D4",
+      "paleo_symbol": "𐤉𐤄",
+      "paleo_unicode": "U+10909 U+10904",
+      "transliteration": "-yah / -iyah",
+      "meanings": [
+        "My to be revealed",
+        "Of to be revealed",
+        "My her",
+        "Of her"
+      ],
+      "preferred_meaning": "of her"
+    },
+    {
+      "name": "Yod-Mem (Masculine Plural Suffix)",
+      "part_of_speech": "Plural Suffix",
+      "square_symbol": "ים",
+      "square_unicode": "U+05D9 U+05DD",
+      "paleo_symbol": "",
+      "paleo_unicode": "",
+      "transliteration": "im",
+      "meanings": ["-es"],
+      "preferred_meaning": "-es"
     }
   ],
   "common_combinations": [
