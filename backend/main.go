@@ -32,6 +32,8 @@ func main() {
 	outputDir := getEnv("FILES_OUTPUT_DIR", "../files/output")
 	port := getEnv("PORT", "8080")
 
+	preferencePath := filepath.Join(outputDir, "translations-preferences.json")
+
 	var letterData concordance.Concordance
 	if err := loadJSON(filepath.Join(dataDir, "hebrew-letter-concordance.json"), &letterData); err != nil {
 		log.Fatalf("load letter concordance: %v", err)
@@ -54,6 +56,7 @@ func main() {
 		}
 
 		meanings := make([]string, 0, len(letterNames))
+
 		for _, letterName := range letterNames {
 			if letterName == alphabet.UnknownCharacter {
 				meanings = append(meanings, alphabet.UnknownCharacter)
@@ -65,12 +68,14 @@ func main() {
 				meanings = append(meanings, alphabet.UnknownCharacter)
 				continue
 			}
+
 			meanings = append(meanings, entry.PreferredMeaning)
 		}
 
 		if len(meanings) == 0 {
 			return alphabet.UnknownCharacter, nil
 		}
+
 		return strings.Join(meanings, " "), nil
 	}
 
@@ -83,47 +88,76 @@ func main() {
 	phraseIndex := phraseconcordance.BuildIndex(phraseData)
 
 	prefixes, err := phraseconcordance.LoadAffixes(
-		filepath.Join(dataDir, "prefixes.json"), "prefixes",
+		filepath.Join(dataDir, "prefixes.json"),
+		"prefixes",
 	)
 	if err != nil {
 		log.Fatalf("load prefixes: %v", err)
 	}
+
 	suffixes, err := phraseconcordance.LoadAffixes(
-		filepath.Join(dataDir, "suffixes.json"), "suffixes",
+		filepath.Join(dataDir, "suffixes.json"),
+		"suffixes",
 	)
 	if err != nil {
 		log.Fatalf("load suffixes: %v", err)
 	}
+
 	prefixIndex := phraseconcordance.BuildAffixIndex(prefixes)
 	suffixIndex := phraseconcordance.BuildAffixIndex(suffixes)
 
+	translationsPreferences, err := phraseconcordance.LoadPrefs(
+		filepath.Join(dataDir, "translations-preferences.json"),
+	)
+	if err != nil {
+		log.Fatalf("load preferences: %v", err)
+	}
+
+
 	translatePhrase := func(input string) (string, error) {
-		return phraseconcordance.LookupWithAffixes(
-			phraseIndex, prefixIndex, suffixIndex, input,
-		), nil
+		x, err := phraseconcordance.LookupWithAffixesAndPreferences(
+			phraseIndex,
+			prefixIndex,
+			suffixIndex,
+			input,
+			translationsPreferences,
+		)
+		if err != nil {
+			log.Fatalf("echo error: %v", err)
+		}
+		return x, nil
 	}
 
 	inputPath := filepath.Join(inputDir, "example.txt")
+
 	letterOutput, err := fileprocessor.ProcessLetterFile(
-		inputPath, outputDir, translateLetter,
+		inputPath,
+		outputDir,
+		translateLetter,
 	)
 	if err != nil {
 		log.Fatalf("process letter output: %v", err)
 	}
+
 	phraseOutput, err := fileprocessor.ProcessPhraseFile(
-		inputPath, outputDir, translatePhrase,
+		inputPath,
+		outputDir,
+		translatePhrase,
 	)
 	if err != nil {
 		log.Fatalf("process phrase output: %v", err)
 	}
+
 	log.Printf("Letter output created: %s", letterOutput)
 	log.Printf("Phrase output created: %s", phraseOutput)
+	log.Printf("Translation preferences file: %s", preferencePath)
 
 	http.HandleFunc("/api/v1/health", func(w http.ResponseWriter, r *http.Request) {
 		if r.Method != http.MethodGet {
 			http.Error(w, "method not allowed", http.StatusMethodNotAllowed)
 			return
 		}
+
 		writeJSON(w, http.StatusOK, map[string]string{"status": "ok"})
 	})
 
@@ -146,6 +180,7 @@ func main() {
 			})
 			return
 		}
+
 		writeJSON(w, http.StatusOK, entry)
 	})
 
@@ -161,9 +196,13 @@ func main() {
 			return
 		}
 
-		translation := phraseconcordance.LookupWithAffixes(
-			phraseIndex, prefixIndex, suffixIndex, input,
-		)
+		translation, err := translatePhrase(input)
+		if err != nil {
+			log.Printf("translate phrase: %v", err)
+			http.Error(w, "could not translate phrase", http.StatusInternalServerError)
+			return
+		}
+
 		writeJSON(w, http.StatusOK, map[string]string{
 			"input":       input,
 			"translation": translation,
@@ -182,6 +221,7 @@ func main() {
 
 		var request processRequest
 		decoder := json.NewDecoder(r.Body)
+
 		if err := decoder.Decode(&request); err != nil {
 			http.Error(w, "invalid request JSON or request too large", http.StatusBadRequest)
 			return
@@ -197,12 +237,14 @@ func main() {
 			http.Error(w, "text is required", http.StatusBadRequest)
 			return
 		}
+
 		if request.Mode != "letter" && request.Mode != "phrase" {
 			http.Error(w, "mode must be 'letter' or 'phrase'", http.StatusBadRequest)
 			return
 		}
 
 		var translate func(string) (string, error)
+
 		if request.Mode == "letter" {
 			translate = translateLetter
 		} else {
@@ -219,6 +261,7 @@ func main() {
 		w.Header().Set("Content-Type", "text/plain; charset=utf-8")
 		w.Header().Set("X-Content-Type-Options", "nosniff")
 		w.WriteHeader(http.StatusOK)
+
 		if _, err := io.WriteString(w, result); err != nil {
 			log.Printf("write processing response: %v", err)
 		}
@@ -238,12 +281,12 @@ func processText(
 
 	for i, line := range lines {
 		lineEnding := ""
+
 		if strings.HasSuffix(line, "\r") {
 			line = strings.TrimSuffix(line, "\r")
 			lineEnding = "\r"
 		}
 
-		// Match the existing file-processing convention.
 		if strings.HasPrefix(line, "xxxx") {
 			output.WriteString(line)
 		} else if mode == "letter" {
@@ -263,11 +306,13 @@ func processText(
 				if err != nil {
 					return "", fmt.Errorf("translate line %d: %w", i+1, err)
 				}
+
 				output.WriteString(translated)
 			}
 		}
 
 		output.WriteString(lineEnding)
+
 		if i < len(lines)-1 {
 			output.WriteByte('\n')
 		}
@@ -281,6 +326,7 @@ func loadJSON(path string, target any) error {
 	if err != nil {
 		return err
 	}
+
 	return json.Unmarshal(data, target)
 }
 
@@ -289,12 +335,14 @@ func getEnv(key, fallback string) string {
 	if value == "" {
 		return fallback
 	}
+
 	return value
 }
 
 func writeJSON(w http.ResponseWriter, status int, value any) {
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.WriteHeader(status)
+
 	if err := json.NewEncoder(w).Encode(value); err != nil {
 		log.Printf("write JSON response: %v", err)
 	}

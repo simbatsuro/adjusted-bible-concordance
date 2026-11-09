@@ -13,7 +13,8 @@ services:
       FILES_OUTPUT_DIR: "/files/output"
     volumes:
       - ./backend:/app
-      - ./data:/data:ro
+      # - ./data:/data:ro
+      - ./data:/data
       - ./files:/files
     restart: unless-stopped
 

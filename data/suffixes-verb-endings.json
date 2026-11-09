@@ -1,0 +1,124 @@
+{
+  "verb_endings": [
+    {
+      "name": "Tav-Yod",
+      "square_symbol": "תי",
+      "part_of_speech": "Verb Ending",
+      "conjugation": "Qal Perfect",
+      "person": "First Person Singular",
+      "meanings": ["I did"],
+      "preferred_meaning": "I"
+    },
+    {
+      "name": "Tav",
+      "square_symbol": "ת",
+      "part_of_speech": "Verb Ending",
+      "conjugation": "Qal Perfect",
+      "person": "Second Person Singular",
+      "meanings": [
+        "You did (masculine)",
+        "You did (feminine)"
+      ],
+      "preferred_meaning": "you"
+    },
+    {
+      "name": "He",
+      "square_symbol": "ה",
+      "part_of_speech": "Verb Ending",
+      "conjugation": "Qal Perfect",
+      "person": "Third Person Feminine Singular",
+      "meanings": ["She did"],
+      "preferred_meaning": "she"
+    },
+    {
+      "name": "Nun-Vav",
+      "square_symbol": "נו",
+      "part_of_speech": "Verb Ending",
+      "conjugation": "Qal Perfect",
+      "person": "First Person Plural",
+      "meanings": ["We did"],
+      "preferred_meaning": "we"
+    },
+    {
+      "name": "Tav-Mem",
+      "square_symbol": "תם",
+      "part_of_speech": "Verb Ending",
+      "conjugation": "Qal Perfect",
+      "person": "Second Person Masculine Plural",
+      "meanings": ["You did"],
+      "preferred_meaning": "you"
+    },
+    {
+      "name": "Tav-Nun",
+      "square_symbol": "תן",
+      "part_of_speech": "Verb Ending",
+      "conjugation": "Qal Perfect",
+      "person": "Second Person Feminine Plural",
+      "meanings": ["You did"],
+      "preferred_meaning": "you"
+    },
+    {
+      "name": "Vav",
+      "square_symbol": "ו",
+      "part_of_speech": "Verb Ending",
+      "conjugation": "Qal Perfect",
+      "person": "Third Person Masculine Plural",
+      "meanings": ["They did"],
+      "preferred_meaning": "they"
+    },
+    {
+      "name": "Yod",
+      "square_symbol": "י",
+      "part_of_speech": "Verb Ending",
+      "conjugation": "Imperfect",
+      "person": "Second Person Feminine Singular",
+      "meanings": ["You will do"],
+      "preferred_meaning": "you"
+    },
+    {
+      "name": "Vav",
+      "square_symbol": "ו",
+      "part_of_speech": "Verb Ending",
+      "conjugation": "Imperfect",
+      "person": "Second or Third Person Masculine Plural",
+      "meanings": ["You will do", "They will do"],
+      "preferred_meaning": "they"
+    },
+    {
+      "name": "Nun-He",
+      "square_symbol": "נה",
+      "part_of_speech": "Verb Ending",
+      "conjugation": "Imperfect",
+      "person": "Second or Third Person Feminine Plural",
+      "meanings": ["You will do", "They will do"],
+      "preferred_meaning": "they"
+    },
+    {
+      "name": "Yod",
+      "square_symbol": "י",
+      "part_of_speech": "Verb Ending",
+      "conjugation": "Imperative",
+      "person": "Second Person Feminine Singular",
+      "meanings": ["Do"],
+      "preferred_meaning": "do"
+    },
+    {
+      "name": "Vav",
+      "square_symbol": "ו",
+      "part_of_speech": "Verb Ending",
+      "conjugation": "Imperative",
+      "person": "Second Person Masculine Plural",
+      "meanings": ["Do"],
+      "preferred_meaning": "do"
+    },
+    {
+      "name": "Nun-He",
+      "square_symbol": "נה",
+      "part_of_speech": "Verb Ending",
+      "conjugation": "Imperative",
+      "person": "Second Person Feminine Plural",
+      "meanings": ["Do"],
+      "preferred_meaning": "do"
+    }
+  ]
+}

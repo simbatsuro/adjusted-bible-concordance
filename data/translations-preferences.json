@@ -1,0 +1,16 @@
+{
+  "preferences": [
+    {
+      "hebrew": "ונקומה",
+      "preferred_translation": "and_she_will_her_rise_up",
+      "preferred_match": "explicit",
+      "alternatives": [
+        "and_she_will_her_their_line",
+        "and_she_will_her_rise_up",
+        "and_she_will_height"
+      ],
+      "enabled": true,
+      "notes": "Note noting"
+    }
+  ]
+}

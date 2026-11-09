@@ -5,6 +5,8 @@ import (
 	"encoding/json"
 	"fmt"
 	"os"
+	"log"
+	"path/filepath"
 	"sort"
 	"strings"
 	"unicode"
@@ -118,6 +120,40 @@ type indexedAffix struct {
 	Components       []string
 }
 
+// TranslationPreferenceFile stores user-selected interpretations separately
+// from the lexical concordance and affix data.
+type TranslationPreferenceFile struct {
+	Preferences []TranslationPreference `json:"preferences"`
+}
+
+type TranslationPreference struct {
+	Hebrew               string   `json:"hebrew"`
+	PreferredTranslation string   `json:"preferred_translation"`
+	PreferredMatch       string   `json:"preferred_match"`
+	Alternatives         []string `json:"alternatives"`
+	Enabled              bool     `json:"enabled"`
+	Notes                string   `json:"notes"`
+}
+
+func LoadPrefs(path string) (TranslationPreferenceFile, error) {
+	data, err := os.ReadFile(path)
+	if err != nil {
+		return TranslationPreferenceFile{}, fmt.Errorf("read phrase concordance: %w", err)
+	}
+
+	var translationFile TranslationPreferenceFile
+	decoder := json.NewDecoder(bytes.NewReader(data))
+	if err := decoder.Decode(&translationFile); err != nil {
+		return TranslationPreferenceFile{}, fmt.Errorf("parse phrase concordance JSON: %w", err)
+	}
+	if len(translationFile.Preferences) == 0 {
+		return TranslationPreferenceFile{}, fmt.Errorf("phrase concordance contains no entries")
+	}
+	return translationFile, nil
+}
+
+
+
 func Load(path string) (Concordance, error) {
 	data, err := os.ReadFile(path)
 	if err != nil {
@@ -225,7 +261,6 @@ func translationBlock(input string) string {
 	words := strings.Fields(strings.TrimSpace(input))
 	return strings.Join(words, "_")
 }
-
 
 // LoadAffixes reads individual affixes and supported combination formats.
 // listName should be "prefixes" or "suffixes".
@@ -374,45 +409,75 @@ func splitCombinationName(name string) []string {
 	return result
 }
 
+// LookupWithAffixes keeps the original lookup interface for callers that do
+// not use translation preferences.
 func LookupWithAffixes(
 	phraseIndex map[string]PhraseEntry,
 	prefixIndex map[string]indexedAffix,
 	suffixIndex map[string]indexedAffix,
 	input string,
 ) string {
+	direct, alternatives := findAffixTranslations(
+		phraseIndex, prefixIndex, suffixIndex, input,
+	)
+	return formatLookupResult(direct, alternatives)
+}
+
+// LookupWithAffixesAndPreferences applies user-managed preferences when a
+// word has multiple valid translations and records those alternatives.
+func LookupWithAffixesAndPreferences(
+	phraseIndex map[string]PhraseEntry,
+	prefixIndex map[string]indexedAffix,
+	suffixIndex map[string]indexedAffix,
+	input string,
+	translationFile TranslationPreferenceFile,
+) (string, error) {
+	// if translationFile == "" {
+	// 	return "", fmt.Errorf("translation preferences path is empty")
+	// }
+
+	direct, alternatives := findAffixTranslations(
+		phraseIndex, prefixIndex, suffixIndex, input,
+	)
+
+	if len(alternatives) < 2 {
+		return formatLookupResult(direct, alternatives), nil
+	}
+
+	word := Normalize(input)
+	preferred, err := applyTranslationPreference(word, alternatives, translationFile)
+	if err != nil {
+		return "", err
+	}
+	return formatLookupResult("", preferred), nil
+}
+
+// findAffixTranslations only finds translations. It does not read or write
+// preference files, keeping matching separate from preference management.
+// A direct result is returned for exact matches or when no match is found.
+func findAffixTranslations(
+	phraseIndex map[string]PhraseEntry,
+	prefixIndex map[string]indexedAffix,
+	suffixIndex map[string]indexedAffix,
+	input string,
+) (string, []string) {
 	original := strings.TrimSpace(input)
 	word := Normalize(original)
 
 	if word == "" {
-		return ""
+		return "", nil
 	}
 
-	// An exact lexical match takes priority over segmentation.
+	// Exact lexical and affix-combination matches take priority.
 	if translation, ok := Lookup(phraseIndex, word); ok {
-		return translation
+		return translation, nil
 	}
-
 	if translation, ok := lookupExactCombination(prefixIndex, word); ok {
-		return translationBlock(translation)
+		return translationBlock(translation), nil
 	}
-
 	if translation, ok := lookupExactCombination(suffixIndex, word); ok {
-		return translationBlock(translation)
+		return translationBlock(translation), nil
 	}
-
-	prefixes := affixCandidates(prefixIndex, word, true)
-	suffixes := affixCandidates(suffixIndex, word, false)
-
-	// Allow words with no prefix or no suffix.
-	prefixes = append(prefixes, affixCandidate{
-		sequence: "",
-		meaning:  "",
-	})
-
-	suffixes = append(suffixes, affixCandidate{
-		sequence: "",
-		meaning:  "",
-	})
 
 	type result struct {
 		score int
@@ -422,54 +487,57 @@ func LookupWithAffixes(
 	var results []result
 	seen := make(map[string]bool)
 
-	for _, pre := range prefixes {
-		if pre.sequence != "" &&
-			utf8.RuneCountInString(word)-
-				utf8.RuneCountInString(pre.sequence) < 2 {
-			continue
+	// Explore all valid prefix and suffix combinations. Each remaining stem
+	// is checked against the HK concordance.
+	var explore func(string, []string, []string, int, int)
+	explore = func(
+		remaining string,
+		prefixMeanings []string,
+		suffixMeanings []string,
+		prefixCount int,
+		suffixCount int,
+	) {
+		if remaining == "" {
+			return
 		}
 
-		withoutPrefix := strings.TrimPrefix(word, pre.sequence)
-
-		for _, suf := range suffixes {
-			if suf.sequence != "" &&
-				utf8.RuneCountInString(withoutPrefix)-
-					utf8.RuneCountInString(suf.sequence) < 2 {
-				continue
-			}
-
-			if suf.sequence != "" &&
-				!strings.HasSuffix(withoutPrefix, suf.sequence) {
-				continue
-			}
-
-			stem := strings.TrimSuffix(withoutPrefix, suf.sequence)
-			if stem == "" {
-				continue
-			}
-
-			lexical, found := Lookup(phraseIndex, stem)
-			if !found || lexical == UnknownTranslation {
-				continue
-			}
-
-			text := formatAffixedTranslation(lexical, pre.meaning, suf.meaning)
-
-
-			if !seen[text] {
-				seen[text] = true
-
+		if lexical, found := Lookup(phraseIndex, remaining); found && lexical != UnknownTranslation {
+			translation := formatAffixedTranslation(
+				lexical,
+				strings.Join(prefixMeanings, " "),
+				strings.Join(suffixMeanings, " "),
+			)
+			if !seen[translation] {
+				seen[translation] = true
 				results = append(results, result{
-					score: boolInt(pre.sequence != "") +
-						boolInt(suf.sequence != ""),
-					text: text,
+					score: prefixCount + suffixCount,
+					text:  translation,
 				})
 			}
 		}
+
+		for _, prefix := range affixCandidates(prefixIndex, remaining, true) {
+			next := strings.TrimPrefix(remaining, prefix.sequence)
+			if next == "" || next == remaining {
+				continue
+			}
+			nextMeanings := append(append([]string{}, prefixMeanings...), prefix.meaning)
+			explore(next, nextMeanings, suffixMeanings, prefixCount+1, suffixCount)
+		}
+
+		for _, suffix := range affixCandidates(suffixIndex, remaining, false) {
+			next := strings.TrimSuffix(remaining, suffix.sequence)
+			if next == "" || next == remaining {
+				continue
+			}
+			nextMeanings := append(append([]string{}, suffixMeanings...), suffix.meaning)
+			explore(next, prefixMeanings, nextMeanings, prefixCount, suffixCount+1)
+		}
 	}
 
+	explore(word, nil, nil, 0, 0)
 	if len(results) == 0 {
-		return original
+		return original, nil
 	}
 
 	sort.SliceStable(results, func(i, j int) bool {
@@ -479,49 +547,154 @@ func LookupWithAffixes(
 		return results[i].text < results[j].text
 	})
 
-	values := make([]string, 0, len(results))
+	translations := make([]string, 0, len(results))
 	for _, item := range results {
-		values = append(values, item.text)
+		translations = append(translations, item.text)
+	}
+	if len(translations) == 1 {
+		return translations[0], nil
+	}
+	return "", translations
+}
+
+// formatLookupResult formats either a direct translation or a list of
+// alternative interpretations.
+func formatLookupResult(direct string, alternatives []string) string {
+	if len(alternatives) == 0 {
+		return direct
+	}
+	if len(alternatives) == 1 {
+		return alternatives[0]
+	}
+	return "[" + strings.Join(alternatives, " | ") + "]"
+}
+
+// applyTranslationPreference refreshes the alternatives for this Hebrew word.
+// New records remain disabled until the user selects and enables a preference.
+func applyTranslationPreference(
+	hebrew string,
+	alternatives []string,
+	translationFile TranslationPreferenceFile,	
+) ([]string, error) {
+	// index := make(map[string]TranslationPreference, len(translationFile.Preferences))
+	
+	for hebID, preference := range translationFile.Preferences {
+		if preference.Hebrew == hebrew {
+			key := Normalize(preference.Hebrew)
+			if key == "" {
+				continue
+			}
+
+			//Do something
+			log.Printf("%s",hebID)
+
+			if preference.Enabled && strings.TrimSpace(preference.PreferredTranslation) != "" {
+				ordered := append([]string{}, preference.PreferredTranslation)
+				return ordered, nil
+			}
+		}
 	}
 
-	if len(values) == 1 {
-		return values[0]
+	ordered := append([]string{}, alternatives...)
+
+	// if err := saveTranslationPreferences(path, file); err != nil {
+	// 	return nil, err
+	// }
+	
+	return ordered, nil
+}
+
+func loadTranslationPreferences(path string) (TranslationPreferenceFile, error) {
+	data, err := os.ReadFile(path)
+	if err != nil {
+		if os.IsNotExist(err) {
+			return TranslationPreferenceFile{
+				Preferences: []TranslationPreference{},
+			}, nil
+		}
+		return TranslationPreferenceFile{}, fmt.Errorf("read translation preferences: %w", err)
 	}
 
-	// Keep alternative interpretations together as one Hebrew word block.
-	return "[" + strings.Join(values, " | ") + "]"
+	var file TranslationPreferenceFile
+	if err := json.Unmarshal(data, &file); err != nil {
+		return TranslationPreferenceFile{}, fmt.Errorf("parse translation preferences JSON: %w", err)
+	}
+	if file.Preferences == nil {
+		file.Preferences = []TranslationPreference{}
+	}
+	return file, nil
+}
+
+func saveTranslationPreferences(path string, file TranslationPreferenceFile) error {
+	for i := range file.Preferences {
+		if file.Preferences[i].Alternatives == nil {
+			file.Preferences[i].Alternatives = []string{}
+		}
+	}
+
+	data, err := json.MarshalIndent(file, "", "  ")
+	if err != nil {
+		return fmt.Errorf("encode translation preferences: %w", err)
+	}
+
+	directory := filepath.Dir(path)
+	tempFile, err := os.CreateTemp(directory, ".translation_preferences-*.tmp")
+	if err != nil {
+		return fmt.Errorf("create temporary translation preferences file: %w", err)
+	}
+	tempPath := tempFile.Name()
+
+	if _, err := tempFile.Write(data); err != nil {
+		tempFile.Close()
+		os.Remove(tempPath)
+		return fmt.Errorf("write translation preferences: %w", err)
+	}
+	if err := tempFile.Sync(); err != nil {
+		tempFile.Close()
+		os.Remove(tempPath)
+		return fmt.Errorf("sync translation preferences: %w", err)
+	}
+	if err := tempFile.Close(); err != nil {
+		os.Remove(tempPath)
+		return fmt.Errorf("close translation preferences: %w", err)
+	}
+	if err := os.Rename(tempPath, path); err != nil {
+		os.Remove(tempPath)
+		return fmt.Errorf("replace translation preferences: %w", err)
+	}
+	return nil
 }
 
 // formatAffixedTranslation keeps each Hebrew word's translation together.
 // Prefixes come first, ordinary suffixes precede the lexical translation,
 // and plural -es is appended to the lexical translation.
 func formatAffixedTranslation(
-    lexicalTranslation, prefixTranslation, suffixTranslation string,
+	lexicalTranslation, prefixTranslation, suffixTranslation string,
 ) string {
-    lexicalTranslation = translationBlock(lexicalTranslation)
-    prefixTranslation = translationBlock(prefixTranslation)
-    suffixTranslation = translationBlock(suffixTranslation)
+	lexicalTranslation = translationBlock(lexicalTranslation)
+	prefixTranslation = translationBlock(prefixTranslation)
+	suffixTranslation = translationBlock(suffixTranslation)
 
-    parts := make([]string, 0, 3)
+	parts := make([]string, 0, 3)
 
-    // Prefix translation comes first.
-    if prefixTranslation != "" {
-        parts = append(parts, prefixTranslation)
-    }
+	// Prefix translation comes first.
+	if prefixTranslation != "" {
+		parts = append(parts, prefixTranslation)
+	}
 
-    // Plural ending is appended to the lexical translation.
-    if suffixTranslation == "-es" {
-        lexicalTranslation += "(-es)"
-    } else if suffixTranslation != "" {
-        // Ordinary suffix translation comes before the lexical word.
-        parts = append(parts, suffixTranslation)
-    }
+	// Plural ending is appended to the lexical translation.
+	if suffixTranslation == "-es" {
+		lexicalTranslation += "(-es)"
+	} else if suffixTranslation != "" {
+		// Ordinary suffix translation comes before the lexical word.
+		parts = append(parts, suffixTranslation)
+	}
 
-    if lexicalTranslation != "" {
-        parts = append(parts, lexicalTranslation)
-    }
+	if lexicalTranslation != "" {
+		parts = append(parts, lexicalTranslation)
+	}
 
-    return strings.Join(parts, "_")
+	return strings.Join(parts, "_")
 }
 
 type affixCandidate struct{ sequence, meaning string }

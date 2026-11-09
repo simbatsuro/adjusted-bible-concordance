@@ -6,22 +6,22 @@
   },
   "suffixes": [
     {
-      "name": "Yod (1st Person Singular Suffix)",
-      "part_of_speech": "Pronominal Suffix / Possessive Pronoun",
-      "square_symbol": "י",
-      "square_unicode": "U+05D9",
-      "paleo_symbol": "𐤉",
-      "paleo_unicode": "U+10909",
-      "transliteration": "-i / -ai",
+      "name": "Heh",
+      "part_of_speech": "Noun / Adjective Gender Suffix",
+      "square_symbol": "ה",
+      "square_unicode": "U+05D4",
+      "paleo_symbol": "𐤄",
+      "paleo_unicode": "U+10904",
+      "transliteration": "-ah",
       "meanings": [
-        "My (possessive modifier attached to a singular or plural noun)",
-        "Me (direct object marker when attached to an accusative particle or verb)",
-        "Of (changes a plural masculine noun to the construct form"
+        "Feminine singular marker",
+        "Her (third person feminine singular possessive)",
+        "Changes a singular masculine noun to the feminine form"
       ],
-      "preferred_meaning": "my"
+      "preferred_meaning": "her"
     },
     {
-      "name": "Vav (3rd Person Masculine Singular Suffix)",
+      "name": "Vav",
       "part_of_speech": "Pronominal Suffix / Possessive Pronoun",
       "square_symbol": "ו",
       "square_unicode": "U+05D5",
@@ -29,92 +29,207 @@
       "paleo_unicode": "U+10905",
       "transliteration": "-o / -av",
       "meanings": [
-        "His (possessive modifier attached to a noun)",
+        "His (third person masculine singular possessive)",
         "Him (objective modifier attached to a preposition or verb)"
       ],
       "preferred_meaning": "his"
     },
     {
-      "name": "Heh (3rd Person Feminine Singular Suffix)",
-      "part_of_speech": "Pronominal Suffix / Possessive Pronoun",
-      "square_symbol": "ה",
-      "square_unicode": "U+05D4",
-      "paleo_symbol": "𐤄",
-      "paleo_unicode": "U+10904",
-      "transliteration": "-ah / -eha",
+      "name": "Vav-Tav (Feminine Plural)",
+      "part_of_speech": "Noun / Adjective Number Suffix",
+      "square_symbol": "ות",
+      "square_unicode": "U+05D5 U+05EA",
+      "paleo_symbol": "𐤅𐤕",
+      "paleo_unicode": "U+10905 U+10914",
+      "transliteration": "-ot",
       "meanings": [
-        "Her (possessive modifier attached to a noun)",
-        "It / Her (objective modifier attached to a preposition or verb)",
-        "Revealed"
+        "Feminine plural marker",
+        "Her (third person feminine singular possessive, attached to plural nouns)"
       ],
-      "preferred_meaning": "her"
+      "preferred_meaning": "-es"
     },
     {
-      "name": "Kaf (2nd Person Masculine Singular Suffix)",
-      "part_of_speech": "Pronominal Suffix / Possessive Pronoun",
-      "square_symbol": "ך",
-      "square_unicode": "U+05DA",
-      "paleo_symbol": "𐤊",
-      "paleo_unicode": "U+1090A",
-      "transliteration": "-cha / -ekha",
+      "name": "Yod",
+      "part_of_speech": "Construct State / Pronominal Suffix",
+      "square_symbol": "י",
+      "square_unicode": "U+05D9",
+      "paleo_symbol": "𐤉",
+      "paleo_unicode": "U+10909",
+      "transliteration": "-i / -ei",
       "meanings": [
-        "Your (singular masculine possessive)",
-        "You (singular masculine object)"
+        "My (first person singular possessive)",
+        "Of (changes a plural masculine noun to the construct form)"
       ],
-      "preferred_meaning": "your"
+      "preferred_meaning": "my"
     },
     {
-      "name": "Mem",
-      "part_of_speech": "Possessive Pronoun",
-      "square_symbol": "ם",
-      "square_unicode": "U+05DE",
-      "paleo_symbol": "𐤌",
-      "paleo_unicode": "U+1090C",
-      "transliteration": "-m",
-      "meanings": [
-          "Their (Third person, plural, masculine possessive.)"
-      ],
-      "preferred_meaning": "their"
-    },
-    {
-      "name": "Nun",
-      "part_of_speech": "Possessive Pronoun",
-      "square_symbol": "ן",
-      "square_unicode": "U+05E0",
-      "paleo_symbol": "𐤍",
-      "paleo_unicode": "U+1090D",
-      "transliteration": "-cha / -ekha",
-      "meanings": [
-        "Their (Third person, plural, feminine possessive.)"
-      ],
-      "preferred_meaning": "their"
-    },
-    {
-      "name": "Yod-He (Pronominal Suffix)",
+      "name": "Yod-He",
       "part_of_speech": "Pronominal Suffix / Possessive Pronoun",
       "square_symbol": "יה",
       "square_unicode": "U+05D9 U+05D4",
       "paleo_symbol": "𐤉𐤄",
       "paleo_unicode": "U+10909 U+10904",
-      "transliteration": "-yah / -iyah",
+      "transliteration": "-yah / -iyah / -eha",
       "meanings": [
         "My to be revealed",
         "Of to be revealed",
         "My her",
-        "Of her"
+        "Of her",
+        "Her (third person feminine singular possessive attached to plural nouns)"
       ],
       "preferred_meaning": "of her"
     },
     {
-      "name": "Yod-Mem (Masculine Plural Suffix)",
-      "part_of_speech": "Plural Suffix",
+      "name": "Yod-He-Mem",
+      "part_of_speech": "Pronominal Suffix / Possessive Pronoun",
+      "square_symbol": "יהם",
+      "square_unicode": "U+05D9 U+05D4 U+05DD",
+      "paleo_symbol": "𐤉𐤄𐤌",
+      "paleo_unicode": "U+10909 U+10904 U+1090C",
+      "transliteration": "-ehem",
+      "meanings": [
+        "Their (third person masculine plural possessive attached to plural nouns)"
+      ],
+      "preferred_meaning": "their"
+    },
+    {
+      "name": "Yod-He-Nun",
+      "part_of_speech": "Pronominal Suffix / Possessive Pronoun",
+      "square_symbol": "יהן",
+      "square_unicode": "U+05D9 U+05D4 U+05DF",
+      "paleo_symbol": "𐤉𐤄𐤍",
+      "paleo_unicode": "U+10909 U+10904 U+1090D",
+      "transliteration": "-ehen",
+      "meanings": [
+        "Their (third person feminine plural possessive attached to plural nouns)"
+      ],
+      "preferred_meaning": "their"
+    },
+    {
+      "name": "Yod-Vav",
+      "part_of_speech": "Pronominal Suffix / Possessive Pronoun",
+      "square_symbol": "יו",
+      "square_unicode": "U+05D9 U+05D5",
+      "paleo_symbol": "𐤉𐤅",
+      "paleo_unicode": "U+10909 U+10905",
+      "transliteration": "-av",
+      "meanings": [
+        "His (third person masculine singular possessive attached to plural nouns)"
+      ],
+      "preferred_meaning": "his"
+    },
+     {
+      "name": "Yod-Mem (Masculine Plural / Dual)",
+      "part_of_speech": "Noun / Adjective Number Suffix",
       "square_symbol": "ים",
       "square_unicode": "U+05D9 U+05DD",
-      "paleo_symbol": "",
-      "paleo_unicode": "",
-      "transliteration": "im",
-      "meanings": ["-es"],
+      "paleo_symbol": "𐤉𐤌",
+      "paleo_unicode": "U+10909 U+1090C",
+      "transliteration": "-im / -ayim",
+      "meanings": [
+        "Masculine plural marker",
+        "Dual marker (two entities, masculine or feminine)",
+        "Changes a plural masculine noun to the construct form",
+        "His (third person masculine singular possessive, attached to plural nouns)",
+        "Their (third person masculine plural possessive, attached to plural nouns)"
+      ],
       "preferred_meaning": "-es"
+    },
+    {
+      "name": "Kaf",
+      "part_of_speech": "Pronominal Suffix / Possessive Pronoun",
+      "square_symbol": "ך",
+      "square_unicode": "U+05DA",
+      "paleo_symbol": "𐤊",
+      "paleo_unicode": "U+1090A",
+      "transliteration": "-kha / -ekh",
+      "meanings": [
+        "Your (second person singular masculine possessive)",
+        "Your (second person singular feminine possessive)",
+        "You (second person singular object)"
+      ],
+      "preferred_meaning": "your"
+    },
+    {
+      "name": "Kaf-Mem",
+      "part_of_speech": "Pronominal Suffix / Possessive Pronoun",
+      "square_symbol": "כם",
+      "square_unicode": "U+05DB U+05DD",
+      "paleo_symbol": "𐤊𐤌",
+      "paleo_unicode": "U+1090A U+1090C",
+      "transliteration": "-khem",
+      "meanings": [
+        "Your (second person masculine plural possessive)"
+      ],
+      "preferred_meaning": "your"
+    },
+    {
+      "name": "Kaf-Nun",
+      "part_of_speech": "Pronominal Suffix / Possessive Pronoun",
+      "square_symbol": "כן",
+      "square_unicode": "U+05DB U+05DF",
+      "paleo_symbol": "𐤊𐤍",
+      "paleo_unicode": "U+1090A U+1090D",
+      "transliteration": "-khen",
+      "meanings": [
+        "Your (second person feminine plural possessive)"
+      ],
+      "preferred_meaning": "your"
+    },
+    {
+      "name": "Mem",
+      "part_of_speech": "Pronominal Suffix / Possessive Pronoun",
+      "square_symbol": "ם",
+      "square_unicode": "U+05DD",
+      "paleo_symbol": "𐤌",
+      "paleo_unicode": "U+1090C",
+      "transliteration": "-am / -khem",
+      "meanings": [
+        "Their (third person masculine plural possessive)",
+        "Your (second person masculine plural possessive)"
+      ],
+      "preferred_meaning": "their"
+    },
+    {
+      "name": "Nun",
+      "part_of_speech": "Pronominal Suffix / Possessive Pronoun",
+      "square_symbol": "ן",
+      "square_unicode": "U+05DF",
+      "paleo_symbol": "𐤍",
+      "paleo_unicode": "U+1090D",
+      "transliteration": "-an / -khen",
+      "meanings": [
+        "Their (third person feminine plural possessive)",
+        "Your (second person feminine plural possessive)"
+      ],
+      "preferred_meaning": "their"
+    },
+    {
+      "name": "Nun-Vav",
+      "part_of_speech": "Pronominal Suffix / Possessive Pronoun",
+      "square_symbol": "נו",
+      "square_unicode": "U+05E0 U+05D5",
+      "paleo_symbol": "𐤍𐤅",
+      "paleo_unicode": "U+1090D U+10905",
+      "transliteration": "-enu",
+      "meanings": [
+        "Our (first person plural possessive)"
+      ],
+      "preferred_meaning": "our"
+    },
+    {
+      "name": "Tav",
+      "part_of_speech": "Construct State Suffix",
+      "square_symbol": "ת",
+      "square_unicode": "U+05EA",
+      "paleo_symbol": "𐤕",
+      "paleo_unicode": "U+10914",
+      "transliteration": "-at",
+      "meanings": [
+        "Changes a singular feminine noun to the construct form",
+        "Of"
+      ],
+      "preferred_meaning": "of"
     }
   ],
   "common_combinations": [
