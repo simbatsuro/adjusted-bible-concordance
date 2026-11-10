@@ -25540,7 +25540,7 @@
       "preferred_speech_part": "",
       "derivation": "",
       "preferred_def": "to arrive",
-      "preferred_trans": "come",
+      "preferred_trans": "to arrive",
       "kjv_count": "",
       "masoretic_entries": {
         "H857": {
@@ -44344,7 +44344,7 @@
       "preferred_speech_part": "",
       "derivation": "",
       "preferred_def": "a foreign nation; hence, a Gentile; also (figuratively) a troop of animals, or a flight of locusts",
-      "preferred_trans": "nation",
+      "preferred_trans": "foreign nation",
       "kjv_count": "",
       "masoretic_entries": {
         "H1471": {
@@ -60794,7 +60794,7 @@
       "adjust_trans": "therein|if"
     },
     "HK1463": {
-      "lemma": "הנה",
+      "lemma": "*הנה*",
       "xlit": "-",
       "pron": "-",
       "preferred_speech_part": "",
@@ -60852,8 +60852,8 @@
           "kjv_usage_source": "Blue Letter Bible"
         }
       },
-      "adjusted_def": "lo!",
-      "adjust_trans": "Behold"
+      "adjusted_def": "Two words - behold lamentation",
+      "adjust_trans": "in-existent"
     },
     "HK1464": {
       "lemma": "הנחה",
@@ -63110,7 +63110,7 @@
       "preferred_speech_part": "",
       "derivation": "",
       "preferred_def": "arrogance",
-      "preferred_trans": "pride",
+      "preferred_trans": "arrogance",
       "kjv_count": "",
       "masoretic_entries": {
         "H2087": {
@@ -63139,7 +63139,7 @@
         }
       },
       "adjusted_def": "arrogance",
-      "adjust_trans": "pride"
+      "adjust_trans": "arrogance"
     },
     "HK1527": {
       "lemma": "זה",
@@ -63375,8 +63375,8 @@
       "pron": "-",
       "preferred_speech_part": "",
       "derivation": "",
-      "preferred_def": "this or that",
-      "preferred_trans": "which",
+      "preferred_def": "probably from an unused root meaning to be prominent; properly, brightness (compare H2122 (זִיו)), i.e. (figuratively) the month of flowers;",
+      "preferred_trans": "brightness",
       "kjv_count": "",
       "masoretic_entries": {
         "H2097": {
@@ -112926,7 +112926,7 @@
       "preferred_speech_part": "",
       "derivation": "",
       "preferred_def": "a stand, i.e. pedestal or station",
-      "preferred_trans": "foot",
+      "preferred_trans": "pedestal",
       "kjv_count": "",
       "masoretic_entries": {
         "H3651": {
@@ -122954,7 +122954,7 @@
       "preferred_speech_part": "",
       "derivation": "",
       "preferred_def": "properly, vehemence, i.e. (with or without preposition) vehemently; by implication, wholly, speedily, etc. (often with other words as an intensive or superlative; especially when repeated)",
-      "preferred_trans": "very",
+      "preferred_trans": "vehemently",
       "kjv_count": "",
       "masoretic_entries": {
         "H3966": {
@@ -158911,7 +158911,7 @@
       "pron": "-",
       "preferred_speech_part": "",
       "derivation": "",
-      "preferred_def": "lamentation",
+      "preferred_def": "lamentation, wailing",
       "preferred_trans": "wailing",
       "kjv_count": "",
       "masoretic_entries": {
@@ -158919,7 +158919,7 @@
           "lemma": "נֹהַּ",
           "xlit": "nôahh",
           "pron": "no'-ah",
-          "derivation": "from an unused root meaning to lament;",
+          "derivation": "from an unused root meaning to lament; (from/to H5091)",
           "strongs_def": "lamentation",
           "kjv_def": "wailing.",
           "kjv_count": 1,
@@ -159007,7 +159007,7 @@
           "lemma": "נָהָה",
           "xlit": "nâhâh",
           "pron": "naw-haw'",
-          "derivation": "a primitive root;",
+          "derivation": "a primitive root; from/to H5089",
           "strongs_def": "to groan, i.e. bewail; hence (through the idea of crying aloud), to assemble (as if on proclamation)",
           "kjv_def": "lament, wail.",
           "kjv_count": 3,
@@ -159028,7 +159028,7 @@
       "adjust_trans": "lament"
     },
     "HK3771": {
-      "lemma": "נהי",
+      "lemma": "*נהי*",
       "xlit": "-",
       "pron": "-",
       "preferred_speech_part": "",
@@ -159058,8 +159058,8 @@
           "kjv_usage_source": "Blue Letter Bible"
         }
       },
-      "adjusted_def": "an elegy",
-      "adjust_trans": "wailing"
+      "adjusted_def": "inexistent - my wailing",
+      "adjust_trans": "my wailing"
     },
     "HK3772": {
       "lemma": "נהיה",
@@ -162728,8 +162728,8 @@
       "pron": "-",
       "preferred_speech_part": "",
       "derivation": "",
-      "preferred_def": "lamentation",
-      "preferred_trans": "wailing",
+      "preferred_def": "Not - wailing; my seed | divine presence God's hand | of seed",
+      "preferred_trans": "my seed",
       "kjv_count": "",
       "masoretic_entries": {
         "H5204": {
@@ -162749,8 +162749,8 @@
           "kjv_usage_source": "Blue Letter Bible"
         }
       },
-      "adjusted_def": "lamentation",
-      "adjust_trans": "wailing"
+      "adjusted_def": "Not - wailing; my seed | divine presence God's hand | of seed",
+      "adjust_trans": "my seed"
     },
     "HK3852": {
       "lemma": "ניד",
@@ -170282,6 +170282,36 @@
       },
       "adjusted_def": "to tear away",
       "adjust_trans": "pluck up"
+    },
+    "HK4005.5": {
+      "lemma": "נתתיך",
+      "xlit": "-",
+      "pron": "-",
+      "preferred_speech_part": "",
+      "derivation": "",
+      "preferred_def": "life covenant covenant God's hand cover | we will covenant your covenant | we will covenant, God's hand [she/you/they] will cover",
+      "preferred_trans": "we will covenant, God's hand [she/you/they] will cover",
+      "kjv_count": "",
+      "masoretic_entries": {
+        "H5428": {
+          "lemma": "",
+          "xlit": "",
+          "pron": "",
+          "derivation": "",
+          "strongs_def": "",
+          "kjv_def": "",
+          "kjv_count": 201,
+          "kjv_usage": [
+            [
+              "",
+              0
+            ]   
+          ],
+          "kjv_usage_source": "None"
+        }
+      },
+      "adjusted_def": "life covenant covenant God's hand cover | we will covenant your covenant | we will covenant, God's hand [she/you/they] will cover",
+      "adjust_trans": "we will covenant, God's hand [she/you/they] will cover"
     },
     "HK4006": {
       "lemma": "סאה",
@@ -186219,7 +186249,7 @@
       "preferred_speech_part": "",
       "derivation": "",
       "preferred_def": "something lofty, i.e. a stair-way; also a second-story room (or even one on the roof); figuratively, the sky",
-      "preferred_trans": "chamber",
+      "preferred_trans": "a stair-way",
       "kjv_count": "",
       "masoretic_entries": {
         "H5944": {
@@ -186256,7 +186286,7 @@
         }
       },
       "adjusted_def": "something lofty, i.e. a stair-way; also a second-story room (or even one on the roof); figuratively, the sky",
-      "adjust_trans": "chamber"
+      "adjust_trans": "a stair-way"
     },
     "HK4372": {
       "lemma": "עליון",
@@ -219632,7 +219662,7 @@
       "preferred_speech_part": "",
       "derivation": "",
       "preferred_def": "abbreviated, i.e. diminutive, literally (in quantity, size or number) or figuratively (in age or importance)",
-      "preferred_trans": "small",
+      "preferred_trans": "little",
       "kjv_count": "",
       "masoretic_entries": {
         "H6994": {
@@ -246920,7 +246950,7 @@
       "preferred_speech_part": "",
       "derivation": "",
       "preferred_def": "elevation; Sheja, an Israelite",
-      "preferred_trans": "excellency|Sheva",
+      "preferred_trans": "elevation",
       "kjv_count": "",
       "masoretic_entries": {
         "H7863": {
@@ -246957,7 +246987,7 @@
         }
       },
       "adjusted_def": "elevation; Sheja, an Israelite",
-      "adjust_trans": "excellency|Sheva"
+      "adjust_trans": "elevation"
     },
     "HK5679": {
       "lemma": "שיאן",
@@ -247981,7 +248011,7 @@
       "preferred_speech_part": "",
       "derivation": "",
       "preferred_def": "a brier (as of a hedge); a booth (as interlaced)",
-      "preferred_trans": "prick|tabernacle",
+      "preferred_trans": "booth",
       "kjv_count": "",
       "masoretic_entries": {
         "H7899": {
@@ -248018,7 +248048,7 @@
         }
       },
       "adjusted_def": "a brier (as of a hedge); a booth (as interlaced)",
-      "adjust_trans": "prick|tabernacle"
+      "adjust_trans": "booth"
     },
     "HK5702": {
       "lemma": "שכב",
@@ -249015,7 +249045,7 @@
       "preferred_speech_part": "",
       "derivation": "",
       "preferred_def": "to reside or permanently stay (literally or figuratively)",
-      "preferred_trans": "dwell",
+      "preferred_trans": "to reside ",
       "kjv_count": "",
       "masoretic_entries": {
         "H7931": {

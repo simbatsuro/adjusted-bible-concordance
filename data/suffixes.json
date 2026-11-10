@@ -118,7 +118,21 @@
       ],
       "preferred_meaning": "his"
     },
-     {
+       {
+      "name": "Yod-Kaf",
+      "part_of_speech": "Pronominal Suffix / Possessive Pronoun",
+      "square_symbol": "יך",
+      "square_unicode": "U+05D9 U+05DA",
+      "paleo_symbol": "𐤉𐤊",
+      "paleo_unicode": "U+10909 U+1090A",
+      "transliteration": "-akh",
+      "meanings": [
+        "Your (second person, singular, masculine possessive.)",
+        "Your (second person, singular, feminine possessive.)"
+      ],
+      "preferred_meaning": "your"
+    },
+    {
       "name": "Yod-Mem (Masculine Plural / Dual)",
       "part_of_speech": "Noun / Adjective Number Suffix",
       "square_symbol": "ים",

@@ -38,56 +38,56 @@
     },
     {
       "hebrew": "מאת",
-      "preferred_translation": "",
+      "preferred_translation": "from_covenant_strength",
       "preferred_match": "explicit",
       "alternatives": [
         "from_covenant_strength",
         "of_what"
       ],
-      "enabled": false,
+      "enabled": true,
       "notes": ""
     },
     {
       "hebrew": "בגוים",
-      "preferred_translation": "",
+      "preferred_translation": "within_their_foreign_nation",
       "preferred_match": "explicit",
       "alternatives": [
         "their_my_his_spoil",
         "within_their_my_midst",
         "-es_his_spoil",
         "within_midst(-es)",
-        "within_their_nation",
+        "within_their_foreign_nation",
         "their_Bigvai"
       ],
-      "enabled": false,
+      "enabled": true,
       "notes": ""
     },
     {
       "hebrew": "קומו",
-      "preferred_translation": "",
+      "preferred_translation": "his_rise_up",
       "preferred_match": "explicit",
       "alternatives": [
         "his_their_line",
         "his_rise_up"
       ],
-      "enabled": false,
+      "enabled": true,
       "notes": ""
     },
     {
       "hebrew": "ונקומה",
-      "preferred_translation": "",
+      "preferred_translation": "and_she_will_height",
       "preferred_match": "explicit",
       "alternatives": [
         "and_she_will_her_their_line",
         "and_she_will_her_rise_up",
         "and_she_will_height"
       ],
-      "enabled": false,
+      "enabled": true,
       "notes": ""
     },
     {
       "hebrew": "למלחמה",
-      "preferred_translation": "",
+      "preferred_translation": "onto_war",
       "preferred_match": "explicit",
       "alternatives": [
         "onto_from_her_their_green",
@@ -97,18 +97,18 @@
         "onto_her_their_salt",
         "onto_war"
       ],
-      "enabled": false,
+      "enabled": true,
       "notes": ""
     },
     {
       "hebrew": "בזוי",
-      "preferred_translation": "",
+      "preferred_translation": "within_my_brightness",
       "preferred_match": "explicit",
       "alternatives": [
         "my_his_prey",
-        "within_my_which"
+        "within_my_brightness"
       ],
-      "enabled": false,
+      "enabled": true,
       "notes": ""
     },
     {
@@ -116,10 +116,10 @@
       "preferred_translation": "",
       "preferred_match": "explicit",
       "alternatives": [
-        "my_their_prick|tabernacle",
-        "whom_as_wailing",
-        "whom_my_foot",
-        "my_dwell"
+        "my_their_booth",
+        "whom_as_my_seed",
+        "whom_my_pedestal",
+        "my_to_reside"
       ],
       "enabled": false,
       "notes": ""
@@ -318,7 +318,7 @@
       "preferred_match": "explicit",
       "alternatives": [
         "behold_whom_they_will_your_or",
-        "behold_your_his_excellency|Sheva"
+        "behold_your_his_elevation"
       ],
       "enabled": false,
       "notes": ""
@@ -378,6 +378,7 @@
       "preferred_match": "explicit",
       "alternatives": [
         "your_my_Tahath",
+        "your_Tahath",
         "your_nether_parts"
       ],
       "enabled": false,
@@ -425,7 +426,7 @@
       "preferred_match": "explicit",
       "alternatives": [
         "from_their_his_fog",
-        "their_his_very"
+        "their_his_vehemently"
       ],
       "enabled": false,
       "notes": ""
@@ -448,7 +449,8 @@
       "alternatives": [
         "I_will_your_live",
         "your_my_brethren",
-        "your_Ahi"
+        "your_Ahi",
+        "your_brethren"
       ],
       "enabled": false,
       "notes": ""
@@ -649,7 +651,7 @@
       "alternatives": [
         "behold_their_my_midst",
         "behold_midst(-es)",
-        "behold_their_nation"
+        "behold_their_foreign_nation"
       ],
       "enabled": false,
       "notes": ""
@@ -829,7 +831,7 @@
         "and_their_their_my_son",
         "and_within_she_will_their_sea",
         "and_within_she_will_they_will_of",
-        "and_within_their_their_wailing",
+        "and_within_their_their_my_seed",
         "and_their_-es_son",
         "and_their_their_Bani",
         "and_within_she_will_right_hand",
@@ -898,6 +900,28 @@
         "behold_from_onto_and_thus",
         "behold_her_Malluch",
         "behold_kingdom"
+      ],
+      "enabled": false,
+      "notes": ""
+    },
+    {
+      "hebrew": "הנה",
+      "preferred_translation": "behold_wailing",
+      "preferred_match": "explicit",
+      "alternatives": [
+        "behold_wailing",
+        "her_therein|if"
+      ],
+      "enabled": true,
+      "notes": ""
+    },
+    {
+      "hebrew": "גבוריך",
+      "preferred_translation": "",
+      "preferred_match": "explicit",
+      "alternatives": [
+        "your_my_mighty_man",
+        "your_mighty_man"
       ],
       "enabled": false,
       "notes": ""
