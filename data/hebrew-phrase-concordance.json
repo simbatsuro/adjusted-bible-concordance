@@ -3231,7 +3231,7 @@
       "preferred_speech_part": "",
       "derivation": "",
       "preferred_def": "a fog",
-      "preferred_trans": "mist|vapour",
+      "preferred_trans": "fog",
       "kjv_count": "",
       "masoretic_entries": {
         "H108": {
@@ -3256,7 +3256,7 @@
         }
       },
       "adjusted_def": "a fog",
-      "adjust_trans": "mist|vapour"
+      "adjust_trans": "fog"
     },
     "HK89": {
       "lemma": "אדב",

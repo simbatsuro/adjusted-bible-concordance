@@ -17,7 +17,7 @@
       "preferred_match": "explicit",
       "alternatives": [
         "I_will_my_Dan",
-        "my_their_mist|vapour",
+        "my_their_fog",
         "my_foundation"
       ],
       "enabled": true,
@@ -424,7 +424,7 @@
       "preferred_translation": "",
       "preferred_match": "explicit",
       "alternatives": [
-        "from_their_his_mist|vapour",
+        "from_their_his_fog",
         "their_his_very"
       ],
       "enabled": false,
