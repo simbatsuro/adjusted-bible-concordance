@@ -1,16 +1,906 @@
 {
   "preferences": [
     {
+      "hebrew": "עבדיה",
+      "preferred_translation": "of_her_servant",
+      "preferred_match": "explicit",
+      "alternatives": [
+        "her_my_servant",
+        "of_her_servant"
+      ],
+      "enabled": true,
+      "notes": ""
+    },
+    {
+      "hebrew": "אדני",
+      "preferred_translation": "my_foundation",
+      "preferred_match": "explicit",
+      "alternatives": [
+        "I_will_my_Dan",
+        "my_their_mist|vapour",
+        "my_foundation"
+      ],
+      "enabled": true,
+      "notes": ""
+    },
+    {
+      "hebrew": "שמענו",
+      "preferred_translation": "",
+      "preferred_match": "explicit",
+      "alternatives": [
+        "his_their_hear",
+        "whom_from_meek",
+        "whom_his_purpose",
+        "our_hear"
+      ],
+      "enabled": false,
+      "notes": ""
+    },
+    {
+      "hebrew": "מאת",
+      "preferred_translation": "",
+      "preferred_match": "explicit",
+      "alternatives": [
+        "from_covenant_strength",
+        "of_what"
+      ],
+      "enabled": false,
+      "notes": ""
+    },
+    {
+      "hebrew": "בגוים",
+      "preferred_translation": "",
+      "preferred_match": "explicit",
+      "alternatives": [
+        "their_my_his_spoil",
+        "within_their_my_midst",
+        "-es_his_spoil",
+        "within_midst(-es)",
+        "within_their_nation",
+        "their_Bigvai"
+      ],
+      "enabled": false,
+      "notes": ""
+    },
+    {
+      "hebrew": "קומו",
+      "preferred_translation": "",
+      "preferred_match": "explicit",
+      "alternatives": [
+        "his_their_line",
+        "his_rise_up"
+      ],
+      "enabled": false,
+      "notes": ""
+    },
+    {
       "hebrew": "ונקומה",
-      "preferred_translation": "and_she_will_her_rise_up",
+      "preferred_translation": "",
       "preferred_match": "explicit",
       "alternatives": [
         "and_she_will_her_their_line",
         "and_she_will_her_rise_up",
         "and_she_will_height"
       ],
-      "enabled": true,
-      "notes": "Note noting"
+      "enabled": false,
+      "notes": ""
+    },
+    {
+      "hebrew": "למלחמה",
+      "preferred_translation": "",
+      "preferred_match": "explicit",
+      "alternatives": [
+        "onto_from_her_their_green",
+        "onto_from_onto_her_Ham",
+        "onto_from_her_bread",
+        "onto_from_onto_fury",
+        "onto_her_their_salt",
+        "onto_war"
+      ],
+      "enabled": false,
+      "notes": ""
+    },
+    {
+      "hebrew": "בזוי",
+      "preferred_translation": "",
+      "preferred_match": "explicit",
+      "alternatives": [
+        "my_his_prey",
+        "within_my_which"
+      ],
+      "enabled": false,
+      "notes": ""
+    },
+    {
+      "hebrew": "שכני",
+      "preferred_translation": "",
+      "preferred_match": "explicit",
+      "alternatives": [
+        "my_their_prick|tabernacle",
+        "whom_as_wailing",
+        "whom_my_foot",
+        "my_dwell"
+      ],
+      "enabled": false,
+      "notes": ""
+    },
+    {
+      "hebrew": "בחגוי",
+      "preferred_translation": "",
+      "preferred_match": "explicit",
+      "alternatives": [
+        "within_my_his_feast",
+        "within_my_cleft"
+      ],
+      "enabled": false,
+      "notes": ""
+    },
+    {
+      "hebrew": "שבתו",
+      "preferred_translation": "",
+      "preferred_match": "explicit",
+      "alternatives": [
+        "whom_his_daughter",
+        "whom_within_mark",
+        "his_sabbath"
+      ],
+      "enabled": false,
+      "notes": ""
+    },
+    {
+      "hebrew": "כנשר",
+      "preferred_translation": "",
+      "preferred_match": "explicit",
+      "alternatives": [
+        "as_she_will_prince",
+        "as_eagle"
+      ],
+      "enabled": false,
+      "notes": ""
+    },
+    {
+      "hebrew": "כוכבים",
+      "preferred_translation": "",
+      "preferred_match": "explicit",
+      "alternatives": [
+        "as_and_as_their_O",
+        "as_and_as_within_sea",
+        "their_my_star",
+        "star(-es)"
+      ],
+      "enabled": false,
+      "notes": ""
+    },
+    {
+      "hebrew": "שים",
+      "preferred_translation": "",
+      "preferred_match": "explicit",
+      "alternatives": [
+        "their_present",
+        "whom_sea"
+      ],
+      "enabled": false,
+      "notes": ""
+    },
+    {
+      "hebrew": "משם",
+      "preferred_translation": "",
+      "preferred_match": "explicit",
+      "alternatives": [
+        "from_name",
+        "their_Mash"
+      ],
+      "enabled": false,
+      "notes": ""
+    },
+    {
+      "hebrew": "גנבים",
+      "preferred_translation": "",
+      "preferred_match": "explicit",
+      "alternatives": [
+        "their_my_steal",
+        "steal(-es)"
+      ],
+      "enabled": false,
+      "notes": ""
+    },
+    {
+      "hebrew": "איך",
+      "preferred_translation": "",
+      "preferred_match": "explicit",
+      "alternatives": [
+        "I_will_variant",
+        "your_isle(s)"
+      ],
+      "enabled": false,
+      "notes": ""
+    },
+    {
+      "hebrew": "נדמיתה",
+      "preferred_translation": "",
+      "preferred_match": "explicit",
+      "alternatives": [
+        "her_of_my_their_heap",
+        "she_will_her_of_my_blood",
+        "she_will_her_of_silence"
+      ],
+      "enabled": false,
+      "notes": ""
+    },
+    {
+      "hebrew": "בצרים",
+      "preferred_translation": "",
+      "preferred_match": "explicit",
+      "alternatives": [
+        "within_their_my_enemy",
+        "their_my_fenced",
+        "within_enemy(-es)",
+        "within_their_balm",
+        "fenced(-es)"
+      ],
+      "enabled": false,
+      "notes": ""
+    },
+    {
+      "hebrew": "עללות",
+      "preferred_translation": "",
+      "preferred_match": "explicit",
+      "alternatives": [
+        "of_his_glean",
+        "glean(-es)"
+      ],
+      "enabled": false,
+      "notes": ""
+    },
+    {
+      "hebrew": "נבעו",
+      "preferred_translation": "",
+      "preferred_match": "explicit",
+      "alternatives": [
+        "his_utter",
+        "she_will_petition"
+      ],
+      "enabled": false,
+      "notes": ""
+    },
+    {
+      "hebrew": "מצפניו",
+      "preferred_translation": "",
+      "preferred_match": "explicit",
+      "alternatives": [
+        "from_his_my_hide",
+        "from_his_hide",
+        "his_my_hidden_things",
+        "his_hidden_things"
+      ],
+      "enabled": false,
+      "notes": ""
+    },
+    {
+      "hebrew": "שלחוך",
+      "preferred_translation": "",
+      "preferred_match": "explicit",
+      "alternatives": [
+        "whom_your_his_green",
+        "your_his_to_send_out"
+      ],
+      "enabled": false,
+      "notes": ""
+    },
+    {
+      "hebrew": "אנשי",
+      "preferred_translation": "",
+      "preferred_match": "explicit",
+      "alternatives": [
+        "I_will_she_will_present",
+        "I_will_debt",
+        "my_man"
+      ],
+      "enabled": false,
+      "notes": ""
+    },
+    {
+      "hebrew": "בריתך",
+      "preferred_translation": "",
+      "preferred_match": "explicit",
+      "alternatives": [
+        "within_your_of_watering",
+        "your_of_my_corn",
+        "your_of_fat|Beri|Berites",
+        "your_covenant"
+      ],
+      "enabled": false,
+      "notes": ""
+    },
+    {
+      "hebrew": "השיאוך",
+      "preferred_translation": "",
+      "preferred_match": "explicit",
+      "alternatives": [
+        "behold_whom_they_will_your_or",
+        "behold_your_his_excellency|Sheva"
+      ],
+      "enabled": false,
+      "notes": ""
+    },
+    {
+      "hebrew": "יכלו",
+      "preferred_translation": "",
+      "preferred_match": "explicit",
+      "alternatives": [
+        "they_will_his_all",
+        "his_could"
+      ],
+      "enabled": false,
+      "notes": ""
+    },
+    {
+      "hebrew": "שלמך",
+      "preferred_translation": "",
+      "preferred_match": "explicit",
+      "alternatives": [
+        "your_their_though|for_whose_cause|for_my_sake",
+        "whom_Lamech",
+        "your_pay"
+      ],
+      "enabled": false,
+      "notes": ""
+    },
+    {
+      "hebrew": "לחמך",
+      "preferred_translation": "",
+      "preferred_match": "explicit",
+      "alternatives": [
+        "onto_your_Ham",
+        "your_their_green",
+        "your_bread"
+      ],
+      "enabled": false,
+      "notes": ""
+    },
+    {
+      "hebrew": "ישימו",
+      "preferred_translation": "",
+      "preferred_match": "explicit",
+      "alternatives": [
+        "his_their_my_is",
+        "they_will_his_their_present",
+        "they_will_whom_his_sea",
+        "his_-es_is",
+        "his_their_Jesse"
+      ],
+      "enabled": false,
+      "notes": ""
+    },
+    {
+      "hebrew": "תחתיך",
+      "preferred_translation": "",
+      "preferred_match": "explicit",
+      "alternatives": [
+        "your_my_Tahath",
+        "your_nether_parts"
+      ],
+      "enabled": false,
+      "notes": ""
+    },
+    {
+      "hebrew": "ביום",
+      "preferred_translation": "",
+      "preferred_match": "explicit",
+      "alternatives": [
+        "their_his_O",
+        "within_day"
+      ],
+      "enabled": false,
+      "notes": ""
+    },
+    {
+      "hebrew": "והאבדתי",
+      "preferred_translation": "",
+      "preferred_match": "explicit",
+      "alternatives": [
+        "and_behold_I_will_my_of_stave",
+        "and_behold_I_will_within_my_law|decree",
+        "and_behold_my_of_perish"
+      ],
+      "enabled": false,
+      "notes": ""
+    },
+    {
+      "hebrew": "חכמים",
+      "preferred_translation": "",
+      "preferred_match": "explicit",
+      "alternatives": [
+        "their_my_their_mouth",
+        "-es_their_mouth",
+        "their_my_wise",
+        "wise(-es)"
+      ],
+      "enabled": false,
+      "notes": ""
+    },
+    {
+      "hebrew": "מאדום",
+      "preferred_translation": "",
+      "preferred_match": "explicit",
+      "alternatives": [
+        "from_their_his_mist|vapour",
+        "their_his_very"
+      ],
+      "enabled": false,
+      "notes": ""
+    },
+    {
+      "hebrew": "יכרת",
+      "preferred_translation": "",
+      "preferred_match": "explicit",
+      "alternatives": [
+        "they_will_of_lamb",
+        "they_will_cut_off"
+      ],
+      "enabled": false,
+      "notes": ""
+    },
+    {
+      "hebrew": "אחיך",
+      "preferred_translation": "",
+      "preferred_match": "explicit",
+      "alternatives": [
+        "I_will_your_live",
+        "your_my_brethren",
+        "your_Ahi"
+      ],
+      "enabled": false,
+      "notes": ""
+    },
+    {
+      "hebrew": "ונכרת",
+      "preferred_translation": "",
+      "preferred_match": "explicit",
+      "alternatives": [
+        "and_she_will_of_lamb",
+        "and_of_know",
+        "and_she_will_cut_off"
+      ],
+      "enabled": false,
+      "notes": ""
+    },
+    {
+      "hebrew": "לעולם",
+      "preferred_translation": "",
+      "preferred_match": "explicit",
+      "alternatives": [
+        "onto_their_iniquity",
+        "onto_ever"
+      ],
+      "enabled": false,
+      "notes": ""
+    },
+    {
+      "hebrew": "מנגד",
+      "preferred_translation": "",
+      "preferred_match": "explicit",
+      "alternatives": [
+        "from_she_will_Gad",
+        "from_tell"
+      ],
+      "enabled": false,
+      "notes": ""
+    },
+    {
+      "hebrew": "זרים",
+      "preferred_translation": "",
+      "preferred_match": "explicit",
+      "alternatives": [
+        "their_my_crown",
+        "crown(-es)"
+      ],
+      "enabled": false,
+      "notes": ""
+    },
+    {
+      "hebrew": "ונכרים",
+      "preferred_translation": "",
+      "preferred_match": "explicit",
+      "alternatives": [
+        "and_she_will_as_their_watering",
+        "and_she_will_their_my_lamb",
+        "and_she_will_lamb(-es)",
+        "and_she_will_their_captain",
+        "and_their_my_know",
+        "and_know(-es)",
+        "and_their_stranger"
+      ],
+      "enabled": false,
+      "notes": ""
+    },
+    {
+      "hebrew": "כאחד",
+      "preferred_translation": "",
+      "preferred_match": "explicit",
+      "alternatives": [
+        "as_I_will_one",
+        "as_one"
+      ],
+      "enabled": false,
+      "notes": ""
+    },
+    {
+      "hebrew": "מהם",
+      "preferred_translation": "",
+      "preferred_match": "explicit",
+      "alternatives": [
+        "from_Ham|any",
+        "their_what"
+      ],
+      "enabled": false,
+      "notes": ""
+    },
+    {
+      "hebrew": "נכרו",
+      "preferred_translation": "",
+      "preferred_match": "explicit",
+      "alternatives": [
+        "she_will_as_form",
+        "she_will_his_lamb",
+        "his_know"
+      ],
+      "enabled": false,
+      "notes": ""
+    },
+    {
+      "hebrew": "אבדם",
+      "preferred_translation": "",
+      "preferred_match": "explicit",
+      "alternatives": [
+        "I_will_their_stave",
+        "I_will_within_blood",
+        "their_perish"
+      ],
+      "enabled": false,
+      "notes": ""
+    },
+    {
+      "hebrew": "בשער",
+      "preferred_translation": "",
+      "preferred_match": "explicit",
+      "alternatives": [
+        "within_whom_Er",
+        "within_gate"
+      ],
+      "enabled": false,
+      "notes": ""
+    },
+    {
+      "hebrew": "אידם",
+      "preferred_translation": "",
+      "preferred_match": "explicit",
+      "alternatives": [
+        "I_will_their_hand",
+        "I_will_they_will_blood",
+        "their_calamity"
+      ],
+      "enabled": false,
+      "notes": ""
+    },
+    {
+      "hebrew": "ברעתו",
+      "preferred_translation": "",
+      "preferred_match": "explicit",
+      "alternatives": [
+        "within_his_of_evil",
+        "his_of_Bera"
+      ],
+      "enabled": false,
+      "notes": ""
+    },
+    {
+      "hebrew": "אידו",
+      "preferred_translation": "",
+      "preferred_match": "explicit",
+      "alternatives": [
+        "I_will_his_hand",
+        "I_will_Iddo|Jadau",
+        "his_calamity"
+      ],
+      "enabled": false,
+      "notes": ""
+    },
+    {
+      "hebrew": "להכרית",
+      "preferred_translation": "",
+      "preferred_match": "explicit",
+      "alternatives": [
+        "onto_behold_as_of_watering",
+        "onto_behold_of_my_lamb",
+        "onto_behold_of_captain",
+        "onto_of_my_make_strange",
+        "onto_behold_Cherith"
+      ],
+      "enabled": false,
+      "notes": ""
+    },
+    {
+      "hebrew": "פליטיו",
+      "preferred_translation": "",
+      "preferred_match": "explicit",
+      "alternatives": [
+        "his_my_escape",
+        "his_escape"
+      ],
+      "enabled": false,
+      "notes": ""
+    },
+    {
+      "hebrew": "שרידיו",
+      "preferred_translation": "",
+      "preferred_match": "explicit",
+      "alternatives": [
+        "his_my_remain",
+        "his_remain"
+      ],
+      "enabled": false,
+      "notes": ""
+    },
+    {
+      "hebrew": "הגוים",
+      "preferred_translation": "",
+      "preferred_match": "explicit",
+      "alternatives": [
+        "behold_their_my_midst",
+        "behold_midst(-es)",
+        "behold_their_nation"
+      ],
+      "enabled": false,
+      "notes": ""
+    },
+    {
+      "hebrew": "כאשר",
+      "preferred_translation": "",
+      "preferred_match": "explicit",
+      "alternatives": [
+        "as_I_will_prince",
+        "as_blessed"
+      ],
+      "enabled": false,
+      "notes": ""
+    },
+    {
+      "hebrew": "יעשה",
+      "preferred_translation": "",
+      "preferred_match": "explicit",
+      "alternatives": [
+        "they_will_her_moth",
+        "they_will_do"
+      ],
+      "enabled": false,
+      "notes": ""
+    },
+    {
+      "hebrew": "שתיתם",
+      "preferred_translation": "",
+      "preferred_match": "explicit",
+      "alternatives": [
+        "their_of_my_Seth",
+        "their_of_warp"
+      ],
+      "enabled": false,
+      "notes": ""
+    },
+    {
+      "hebrew": "ישתו",
+      "preferred_translation": "",
+      "preferred_match": "explicit",
+      "alternatives": [
+        "his_of_is",
+        "they_will_his_Seth",
+        "they_will_whom_mark"
+      ],
+      "enabled": false,
+      "notes": ""
+    },
+    {
+      "hebrew": "ושתו",
+      "preferred_translation": "",
+      "preferred_match": "explicit",
+      "alternatives": [
+        "and_his_Seth",
+        "and_whom_mark"
+      ],
+      "enabled": false,
+      "notes": ""
+    },
+    {
+      "hebrew": "והיה",
+      "preferred_translation": "",
+      "preferred_match": "explicit",
+      "alternatives": [
+        "and_behold_LORD",
+        "and_her_woe",
+        "and_calamity"
+      ],
+      "enabled": false,
+      "notes": ""
+    },
+    {
+      "hebrew": "מורשיהם",
+      "preferred_translation": "",
+      "preferred_match": "explicit",
+      "alternatives": [
+        "their_her_my_possession",
+        "their_of_her_possession",
+        "their_possession"
+      ],
+      "enabled": false,
+      "notes": ""
+    },
+    {
+      "hebrew": "ובית",
+      "preferred_translation": "",
+      "preferred_match": "explicit",
+      "alternatives": [
+        "and_of_O",
+        "and_within_whom",
+        "and_house"
+      ],
+      "enabled": false,
+      "notes": ""
+    },
+    {
+      "hebrew": "ואכלום",
+      "preferred_translation": "",
+      "preferred_match": "explicit",
+      "alternatives": [
+        "and_I_will_their_his_all",
+        "and_their_his_eat"
+      ],
+      "enabled": false,
+      "notes": ""
+    },
+    {
+      "hebrew": "יהיה",
+      "preferred_translation": "",
+      "preferred_match": "explicit",
+      "alternatives": [
+        "her_my_LORD",
+        "they_will_behold_LORD",
+        "they_will_her_woe",
+        "of_her_LORD",
+        "they_will_calamity"
+      ],
+      "enabled": false,
+      "notes": ""
+    },
+    {
+      "hebrew": "לבית",
+      "preferred_translation": "",
+      "preferred_match": "explicit",
+      "alternatives": [
+        "of_my_heart",
+        "onto_of_O",
+        "onto_within_whom",
+        "onto_house"
+      ],
+      "enabled": false,
+      "notes": ""
+    },
+    {
+      "hebrew": "הנגב",
+      "preferred_translation": "",
+      "preferred_match": "explicit",
+      "alternatives": [
+        "behold_she_will_eminent_place",
+        "behold_south"
+      ],
+      "enabled": false,
+      "notes": ""
+    },
+    {
+      "hebrew": "והשפלה",
+      "preferred_translation": "",
+      "preferred_match": "explicit",
+      "alternatives": [
+        "and_behold_her_low",
+        "and_behold_whom_sever",
+        "and_behold_valley"
+      ],
+      "enabled": false,
+      "notes": ""
+    },
+    {
+      "hebrew": "פלשתים",
+      "preferred_translation": "",
+      "preferred_match": "explicit",
+      "alternatives": [
+        "their_my_of_wallow",
+        "-es_of_wallow",
+        "their_my_Palestina|Philistia",
+        "Palestina|Philistia(-es)",
+        "their_Philistine"
+      ],
+      "enabled": false,
+      "notes": ""
+    },
+    {
+      "hebrew": "ובנימן",
+      "preferred_translation": "",
+      "preferred_match": "explicit",
+      "alternatives": [
+        "and_their_their_my_son",
+        "and_within_she_will_their_sea",
+        "and_within_she_will_they_will_of",
+        "and_within_their_their_wailing",
+        "and_their_-es_son",
+        "and_their_their_Bani",
+        "and_within_she_will_right_hand",
+        "and_their_champion"
+      ],
+      "enabled": false,
+      "notes": ""
+    },
+    {
+      "hebrew": "כנענים",
+      "preferred_translation": "",
+      "preferred_match": "explicit",
+      "alternatives": [
+        "as_she_will_their_poor",
+        "their_my_their_humble",
+        "-es_their_humble",
+        "as_she_will_Anim",
+        "their_my_Canaan",
+        "Canaan(-es)",
+        "their_Canaanite"
+      ],
+      "enabled": false,
+      "notes": ""
+    },
+    {
+      "hebrew": "מושעים",
+      "preferred_translation": "",
+      "preferred_match": "explicit",
+      "alternatives": [
+        "from_and_whom_their_Ai",
+        "from_and_whom_mighty"
+      ],
+      "enabled": false,
+      "notes": ""
+    },
+    {
+      "hebrew": "והיתה",
+      "preferred_translation": "",
+      "preferred_match": "explicit",
+      "alternatives": [
+        "and_behold_her_whom",
+        "and_her_of_woe"
+      ],
+      "enabled": false,
+      "notes": ""
+    },
+    {
+      "hebrew": "ליהוה",
+      "preferred_translation": "",
+      "preferred_match": "explicit",
+      "alternatives": [
+        "onto_her_his_LORD",
+        "onto_they_will_her_Alas",
+        "her_his_addition",
+        "onto_they_will_calamity",
+        "onto_LORD"
+      ],
+      "enabled": false,
+      "notes": ""
+    },
+    {
+      "hebrew": "המלוכה",
+      "preferred_translation": "",
+      "preferred_match": "explicit",
+      "alternatives": [
+        "behold_from_onto_and_thus",
+        "behold_her_Malluch",
+        "behold_kingdom"
+      ],
+      "enabled": false,
+      "notes": ""
     }
   ]
 }

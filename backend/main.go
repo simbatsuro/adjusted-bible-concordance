@@ -32,7 +32,7 @@ func main() {
 	outputDir := getEnv("FILES_OUTPUT_DIR", "../files/output")
 	port := getEnv("PORT", "8080")
 
-	preferencePath := filepath.Join(outputDir, "translations-preferences.json")
+	preferencePath := filepath.Join(dataDir, "translations-preferences.json")
 
 	var letterData concordance.Concordance
 	if err := loadJSON(filepath.Join(dataDir, "hebrew-letter-concordance.json"), &letterData); err != nil {
@@ -121,6 +121,7 @@ func main() {
 			suffixIndex,
 			input,
 			translationsPreferences,
+			preferencePath,
 		)
 		if err != nil {
 			log.Fatalf("echo error: %v", err)

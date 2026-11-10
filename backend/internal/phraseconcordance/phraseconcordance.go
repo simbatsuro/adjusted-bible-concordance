@@ -5,15 +5,18 @@ import (
 	"encoding/json"
 	"fmt"
 	"os"
-	"log"
-	"path/filepath"
+	// "path/filepath"
 	"sort"
 	"strings"
+	"sync"
 	"unicode"
 	"unicode/utf8"
 )
 
 const UnknownTranslation = "\uFFFD"
+
+// preferenceMu protects preference-file read/modify/write operations in this process.
+var preferenceMu sync.Mutex
 
 type Concordance struct {
 	Language Language               `json:"language"`
@@ -136,23 +139,12 @@ type TranslationPreference struct {
 }
 
 func LoadPrefs(path string) (TranslationPreferenceFile, error) {
-	data, err := os.ReadFile(path)
+	file, err := loadTranslationPreferences(path)
 	if err != nil {
-		return TranslationPreferenceFile{}, fmt.Errorf("read phrase concordance: %w", err)
+		return TranslationPreferenceFile{}, err
 	}
-
-	var translationFile TranslationPreferenceFile
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	if err := decoder.Decode(&translationFile); err != nil {
-		return TranslationPreferenceFile{}, fmt.Errorf("parse phrase concordance JSON: %w", err)
-	}
-	if len(translationFile.Preferences) == 0 {
-		return TranslationPreferenceFile{}, fmt.Errorf("phrase concordance contains no entries")
-	}
-	return translationFile, nil
+	return file, nil
 }
-
-
 
 func Load(path string) (Concordance, error) {
 	data, err := os.ReadFile(path)
@@ -431,11 +423,8 @@ func LookupWithAffixesAndPreferences(
 	suffixIndex map[string]indexedAffix,
 	input string,
 	translationFile TranslationPreferenceFile,
+	preferencePath ...string,
 ) (string, error) {
-	// if translationFile == "" {
-	// 	return "", fmt.Errorf("translation preferences path is empty")
-	// }
-
 	direct, alternatives := findAffixTranslations(
 		phraseIndex, prefixIndex, suffixIndex, input,
 	)
@@ -444,12 +433,30 @@ func LookupWithAffixesAndPreferences(
 		return formatLookupResult(direct, alternatives), nil
 	}
 
-	word := Normalize(input)
-	preferred, err := applyTranslationPreference(word, alternatives, translationFile)
-	if err != nil {
-		return "", err
+	// Supplying a path enables persistent updates and picks up manual edits
+	// to the JSON file without requiring an application restart. The existing
+	// TranslationPreferenceFile argument remains for compatibility with callers
+	// that only want in-memory preference handling.
+	if len(preferencePath) > 0 && strings.TrimSpace(preferencePath[0]) != "" {
+		path := preferencePath[0]
+		preferenceMu.Lock()
+		defer preferenceMu.Unlock()
+
+		currentFile, err := loadTranslationPreferences(path)
+		if err != nil {
+			return "", err
+		}
+		ordered, changed := applyTranslationPreference(input, alternatives, &currentFile)
+		if changed {
+			if err := saveTranslationPreferences(path, currentFile); err != nil {
+				return "", err
+			}
+		}
+		return formatLookupResult("", ordered), nil
 	}
-	return formatLookupResult("", preferred), nil
+
+	ordered, _ := applyTranslationPreference(input, alternatives, &translationFile)
+	return formatLookupResult("", ordered), nil
 }
 
 // findAffixTranslations only finds translations. It does not read or write
@@ -569,39 +576,164 @@ func formatLookupResult(direct string, alternatives []string) string {
 	return "[" + strings.Join(alternatives, " | ") + "]"
 }
 
-// applyTranslationPreference refreshes the alternatives for this Hebrew word.
-// New records remain disabled until the user selects and enables a preference.
+
+
 func applyTranslationPreference(
 	hebrew string,
 	alternatives []string,
-	translationFile TranslationPreferenceFile,	
-) ([]string, error) {
-	// index := make(map[string]TranslationPreference, len(translationFile.Preferences))
-	
-	for hebID, preference := range translationFile.Preferences {
-		if preference.Hebrew == hebrew {
-			key := Normalize(preference.Hebrew)
-			if key == "" {
-				continue
-			}
+	translationFile *TranslationPreferenceFile,
+) ([]string, bool) {
+	if translationFile.Preferences == nil {
+		translationFile.Preferences = []TranslationPreference{}
+	}
 
-			//Do something
-			log.Printf("%s",hebID)
+	hebrewKey := Normalize(hebrew)
+	if hebrewKey == "" {
+		return append([]string{}, alternatives...), false
+	}
 
-			if preference.Enabled && strings.TrimSpace(preference.PreferredTranslation) != "" {
-				ordered := append([]string{}, preference.PreferredTranslation)
-				return ordered, nil
-			}
+	preferenceIndex := -1
+	for i := range translationFile.Preferences {
+		if Normalize(translationFile.Preferences[i].Hebrew) == hebrewKey {
+			preferenceIndex = i
+			break
 		}
 	}
 
-	ordered := append([]string{}, alternatives...)
+	changed := false
 
-	// if err := saveTranslationPreferences(path, file); err != nil {
-	// 	return nil, err
-	// }
-	
-	return ordered, nil
+	if preferenceIndex == -1 {
+		translationFile.Preferences = append(
+			translationFile.Preferences,
+			TranslationPreference{
+				Hebrew:         strings.TrimSpace(hebrew),
+				PreferredMatch: "explicit",
+				Alternatives:   append([]string{}, alternatives...),
+				Enabled:        false,
+			},
+		)
+		preferenceIndex = len(translationFile.Preferences) - 1
+		changed = true
+	}
+
+	preference := &translationFile.Preferences[preferenceIndex]
+
+	if !equalStrings(preference.Alternatives, alternatives) {
+		preference.Alternatives = append([]string{}, alternatives...)
+		changed = true
+	}
+
+	// Disabled preferences always return all alternatives.
+	if !preference.Enabled {
+		return append([]string{}, alternatives...), changed
+	}
+
+	// An enabled preference must have a valid selected translation.
+	preferred := strings.TrimSpace(preference.PreferredTranslation)
+	if preferred == "" {
+		return append([]string{}, alternatives...), changed
+	}
+
+	for _, alternative := range alternatives {
+		if alternative == preferred {
+			return []string{preferred}, changed
+		}
+	}
+
+	// Invalid or outdated selection: retain all valid alternatives.
+	return append([]string{}, alternatives...), changed
+}
+
+// applyTranslationPreference refreshes the alternatives for this Hebrew word.
+// // New records remain disabled until the user selects and enables a preference.
+// func applyTranslationPreference(
+// 	hebrew string,
+// 	alternatives []string,
+// 	translationFile *TranslationPreferenceFile,
+// ) ([]string, bool) {
+// 	if translationFile.Preferences == nil {
+// 		translationFile.Preferences = []TranslationPreference{}
+// 	}
+
+// 	hebrewKey := Normalize(hebrew)
+// 	if hebrewKey == "" {
+// 		return append([]string{}, alternatives...), false
+// 	}
+
+// 	preferenceIndex := -1
+// 	for i := range translationFile.Preferences {
+// 		if Normalize(translationFile.Preferences[i].Hebrew) == hebrewKey {
+// 			preferenceIndex = i
+// 			break
+// 		}
+// 	}
+
+// 	changed := false
+// 	if preferenceIndex == -1 {
+// 		translationFile.Preferences = append(translationFile.Preferences, TranslationPreference{
+// 			Hebrew:         strings.TrimSpace(hebrew),
+// 			PreferredMatch: "explicit",
+// 			Alternatives:   append([]string{}, alternatives...),
+// 			Enabled:        false,
+// 		})
+// 		preferenceIndex = len(translationFile.Preferences) - 1
+// 		changed = true
+// 	} else {
+// 		preference := &translationFile.Preferences[preferenceIndex]
+// 		if !equalStrings(preference.Alternatives, alternatives) {
+// 			preference.Alternatives = append([]string{}, alternatives...)
+// 			changed = true
+// 		}
+// 	}
+
+// 	preference := translationFile.Preferences[preferenceIndex]
+// 	ordered := append([]string{}, alternatives...)
+// 	if !preference.Enabled || strings.TrimSpace(preference.PreferredTranslation) == "" {
+		
+// 		for _, alternative := range alternatives {
+// 			if alternative == preference.PreferredTranslation {
+// 				return []string{preference.PreferredTranslation}, changed
+// 			}
+// 		}
+
+
+// 		// return ordered, changed
+// 	}
+
+// 	preferred := strings.TrimSpace(preference.PreferredTranslation)
+// 	preferredIndex := -1
+// 	for i, candidate := range alternatives {
+// 		if candidate == preferred {
+// 			preferredIndex = i
+// 			break
+// 		}
+// 	}
+// 	if preferredIndex == -1 {
+// 		// A stale or invalid selection must not hide current valid matches.
+// 		return ordered, changed
+// 	}
+// 	return []string{preferred}, changed
+
+// 	// ordered = make([]string, 0, len(alternatives))
+// 	// ordered = append(ordered, preferred)
+// 	// for i, candidate := range alternatives {
+// 	// 	if i != preferredIndex {
+// 	// 		ordered = append(ordered, candidate)
+// 	// 	}
+// 	// }
+// 	// return ordered, changed
+// }
+
+func equalStrings(a, b []string) bool {
+	if len(a) != len(b) {
+		return false
+	}
+	for i := range a {
+		if a[i] != b[i] {
+			return false
+		}
+	}
+	return true
 }
 
 func loadTranslationPreferences(path string) (TranslationPreferenceFile, error) {
@@ -625,45 +757,88 @@ func loadTranslationPreferences(path string) (TranslationPreferenceFile, error) 
 	return file, nil
 }
 
-func saveTranslationPreferences(path string, file TranslationPreferenceFile) error {
-	for i := range file.Preferences {
-		if file.Preferences[i].Alternatives == nil {
-			file.Preferences[i].Alternatives = []string{}
-		}
-	}
 
+func saveTranslationPreferences(path string, file TranslationPreferenceFile) error {
 	data, err := json.MarshalIndent(file, "", "  ")
 	if err != nil {
-		return fmt.Errorf("encode translation preferences: %w", err)
+		return err
 	}
 
-	directory := filepath.Dir(path)
-	tempFile, err := os.CreateTemp(directory, ".translation_preferences-*.tmp")
+	output, err := os.OpenFile(path, os.O_WRONLY|os.O_TRUNC, 0644)
 	if err != nil {
-		return fmt.Errorf("create temporary translation preferences file: %w", err)
+		return fmt.Errorf("open preferences file: %w", err)
 	}
-	tempPath := tempFile.Name()
+	defer output.Close()
 
-	if _, err := tempFile.Write(data); err != nil {
-		tempFile.Close()
-		os.Remove(tempPath)
-		return fmt.Errorf("write translation preferences: %w", err)
+	if _, err := output.Write(data); err != nil {
+		return fmt.Errorf("write preferences file: %w", err)
 	}
-	if err := tempFile.Sync(); err != nil {
-		tempFile.Close()
-		os.Remove(tempPath)
-		return fmt.Errorf("sync translation preferences: %w", err)
-	}
-	if err := tempFile.Close(); err != nil {
-		os.Remove(tempPath)
-		return fmt.Errorf("close translation preferences: %w", err)
-	}
-	if err := os.Rename(tempPath, path); err != nil {
-		os.Remove(tempPath)
-		return fmt.Errorf("replace translation preferences: %w", err)
-	}
+
 	return nil
 }
+// func saveTranslationPreferences(path string, file TranslationPreferenceFile) error {
+// 	for i := range file.Preferences {
+// 		if file.Preferences[i].Alternatives == nil {
+// 			file.Preferences[i].Alternatives = []string{}
+// 		}
+// 	}
+
+// 	data, err := json.MarshalIndent(file, "", "  ")
+// 	if err != nil {
+// 		return fmt.Errorf("encode translation preferences: %w", err)
+// 	}
+
+// 	directory := filepath.Dir(path)
+// 	mode := os.FileMode(0644) // Default for a newly created preferences file.
+// 	if info, err := os.Stat(path); err == nil {
+// 		mode = info.Mode().Perm() // Preserve the existing file's permission bits.
+// 	} else if !os.IsNotExist(err) {
+// 		return fmt.Errorf("inspect translation preferences permissions: %w", err)
+// 	}
+
+// 	if err := os.MkdirAll(directory, 0755); err != nil {
+// 		return fmt.Errorf("create translation preferences directory: %w", err)
+// 	}
+
+// 	tempFile, err := os.CreateTemp(directory, ".translation_preferences-*.tmp")
+// 	if err != nil {
+// 		return fmt.Errorf("create temporary translation preferences file: %w", err)
+// 	}
+// 	tempPath := tempFile.Name()
+// 	defer os.Remove(tempPath) // No effect after a successful rename.
+
+// 	if _, err := tempFile.Write(data); err != nil {
+// 		_ = tempFile.Close()
+// 		return fmt.Errorf("write translation preferences: %w", err)
+// 	}
+// 	if err := tempFile.Chmod(mode); err != nil {
+// 		_ = tempFile.Close()
+// 		return fmt.Errorf("set translation preferences permissions: %w", err)
+// 	}
+// 	if err := tempFile.Sync(); err != nil {
+// 		_ = tempFile.Close()
+// 		return fmt.Errorf("sync translation preferences: %w", err)
+// 	}
+// 	if err := tempFile.Close(); err != nil {
+// 		return fmt.Errorf("close translation preferences: %w", err)
+// 	}
+// 	if err := os.Rename(tempPath, path); err != nil {
+// 		return fmt.Errorf("replace translation preferences: %w", err)
+// 	}
+
+// 	// Sync the directory so the rename is committed as well as the file data.
+// 	dir, err := os.Open(directory)
+// 	if err != nil {
+// 		return fmt.Errorf("open translation preferences directory for sync: %w", err)
+// 	}
+// 	defer dir.Close()
+// 	if err := dir.Sync(); err != nil {
+// 		return fmt.Errorf("sync translation preferences directory: %w", err)
+// 	}
+// 	return nil
+// }
+
+
 
 // formatAffixedTranslation keeps each Hebrew word's translation together.
 // Prefixes come first, ordinary suffixes precede the lexical translation,
