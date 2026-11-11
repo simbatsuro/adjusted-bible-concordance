@@ -69076,7 +69076,7 @@
       "preferred_speech_part": "",
       "derivation": "",
       "preferred_def": "a festival, or a victim therefor",
-      "preferred_trans": "feast",
+      "preferred_trans": "festival",
       "kjv_count": "",
       "masoretic_entries": {
         "H2282": {
@@ -69286,7 +69286,7 @@
       "preferred_speech_part": "",
       "derivation": "",
       "preferred_def": "a rift in rocks",
-      "preferred_trans": "cleft",
+      "preferred_trans": "rift in rocks",
       "kjv_count": "",
       "masoretic_entries": {
         "H2288": {
@@ -95886,6 +95886,36 @@
       },
       "adjusted_def": "Jokim, an Israelite",
       "adjust_trans": "Jokim"
+    },
+     "HK2263.0": {
+      "lemma": "יורדני",
+      "xlit": "-",
+      "pron": "-",
+      "preferred_speech_part": "",
+      "derivation": "",
+      "preferred_def": "(he | they) will (and | connect | secure) person (access | a straight course | judgement | this) my",
+      "preferred_trans": "(he | they) will secure person my access",
+      "kjv_count": "",
+      "masoretic_entries": {
+        "H3138": {
+          "lemma": "",
+          "xlit": "",
+          "pron": "'",
+          "derivation": "",
+          "strongs_def": "",
+          "kjv_def": "",
+          "kjv_count": 1,
+          "kjv_usage": [
+            [
+              "",
+              0
+            ]
+          ],
+          "kjv_usage_source": "User generated"
+        }
+      },
+      "adjusted_def": "(he | they) will (and | connect | secure) person (access | a straight course | judgement | this) my",
+      "adjust_trans": "first rain|former"
     },
     "HK2263": {
       "lemma": "יורה",
@@ -133977,8 +134007,8 @@
       "pron": "-",
       "preferred_speech_part": "",
       "derivation": "",
-      "preferred_def": "",
-      "preferred_trans": "",
+      "preferred_def": "who | my water",
+      "preferred_trans": "who",
       "kjv_count": "",
       "masoretic_entries": {
         "H4310": {
@@ -151710,8 +151740,8 @@
           "kjv_usage_source": "Blue Letter Bible"
         }
       },
-      "adjusted_def": "cessation, i.e. destruction",
-      "adjust_trans": "sabbaths"
+      "adjusted_def": "inexistent, two words from sabbath",
+      "adjust_trans": "from sabbath"
     },
     "HK3606": {
       "lemma": "משגב",
@@ -170300,7 +170330,7 @@
           "derivation": "",
           "strongs_def": "",
           "kjv_def": "",
-          "kjv_count": 201,
+          "kjv_count": 1,
           "kjv_usage": [
             [
               "",
@@ -174188,7 +174218,7 @@
       "preferred_speech_part": "",
       "derivation": "",
       "preferred_def": "a craggy rock, literally or figuratively (a fortress)",
-      "preferred_trans": "rock",
+      "preferred_trans": "craggy rock",
       "kjv_count": "",
       "masoretic_entries": {
         "H5553": {
@@ -174270,11 +174300,11 @@
           "kjv_usage_source": "Blue Letter Bible"
         }
       },
-      "adjusted_def": "Sela-ham-Machlekoth, a place in Palestine",
-      "adjust_trans": "Selahammahlekoth"
+      "adjusted_def": "a combined phrase",
+      "adjust_trans": "non-existent"
     },
     "HK4098": {
-      "lemma": "סלעם",
+      "lemma": "*סלעם*",
       "xlit": "-",
       "pron": "-",
       "preferred_speech_part": "",
@@ -174300,8 +174330,8 @@
           "kjv_usage_source": "Blue Letter Bible"
         }
       },
-      "adjusted_def": "a kind of locust (from its destructiveness)",
-      "adjust_trans": "locust"
+      "adjusted_def": "Two words",
+      "adjust_trans": "non-existent"
     },
     "HK4099": {
       "lemma": "סלף",
@@ -241097,8 +241127,8 @@
       "pron": "-",
       "preferred_speech_part": "",
       "derivation": "",
-      "preferred_def": "intermission, i.e (specifically) the Sabbath",
-      "preferred_trans": "sabbath",
+      "preferred_def": "intermission, rest, repose i.e (specifically) the Sabbath",
+      "preferred_trans": "rest",
       "kjv_count": "",
       "masoretic_entries": {
         "H7673": {
@@ -241266,8 +241296,8 @@
           "kjv_usage_source": "Blue Letter Bible"
         }
       },
-      "adjusted_def": "Shabbethai, the name of three Israelites",
-      "adjust_trans": "Shabbethai"
+      "adjusted_def": "Two words - my sabbath",
+      "adjust_trans": "my sabbath"
     },
     "HK5559": {
       "lemma": "שגא",
