@@ -15477,7 +15477,7 @@
       "preferred_speech_part": "",
       "derivation": "",
       "preferred_def": "a mother (as the bond of the family); in a wide sense (both literally and figuratively (like father))",
-      "preferred_trans": "mother",
+      "preferred_trans": "mighty water",
       "kjv_count": "",
       "masoretic_entries": {
         "H517": {
@@ -23112,7 +23112,7 @@
       "preferred_speech_part": "",
       "derivation": "",
       "preferred_def": "the earth (at large, or partitively a land)",
-      "preferred_trans": "land",
+      "preferred_trans": "earth",
       "kjv_count": "",
       "masoretic_entries": {
         "H776": {
@@ -29830,7 +29830,7 @@
       "preferred_speech_part": "",
       "derivation": "",
       "preferred_def": "oh that!; with leave, or if it please",
-      "preferred_trans": "O",
+      "preferred_trans": "Oh",
       "kjv_count": "",
       "masoretic_entries": {
         "H994": {
@@ -29868,7 +29868,7 @@
       "preferred_speech_part": "",
       "derivation": "",
       "preferred_def": "to separate mentally (or distinguish), i.e.(generally) understand",
-      "preferred_trans": "understand",
+      "preferred_trans": "distinguish",
       "kjv_count": "",
       "masoretic_entries": {
         "H995": {
@@ -40926,7 +40926,7 @@
       "preferred_speech_part": "",
       "derivation": "",
       "preferred_def": "the back (as rounded); by analogy, the top or rim, a boss, a vault, arch of eye, bulwarks, etc.",
-      "preferred_trans": "eminent place",
+      "preferred_trans": "the top",
       "kjv_count": "",
       "masoretic_entries": {
         "H1354": {
@@ -69286,7 +69286,7 @@
       "preferred_speech_part": "",
       "derivation": "",
       "preferred_def": "a rift in rocks",
-      "preferred_trans": "rift in rocks",
+      "preferred_trans": "rift",
       "kjv_count": "",
       "masoretic_entries": {
         "H2288": {
@@ -151204,7 +151204,7 @@
       "adjust_trans": "Merathaim"
     },
     "HK3594": {
-      "lemma": "מש",
+      "lemma": "*מש*",
       "xlit": "-",
       "pron": "-",
       "preferred_speech_part": "",
@@ -151230,7 +151230,7 @@
           "kjv_usage_source": "Blue Letter Bible"
         }
       },
-      "adjusted_def": "Mash, a son of Aram, and the people descended from him",
+      "adjusted_def": "In-existent Mash, a son of Aram, and the people descended from him",
       "adjust_trans": "Mash"
     },
     "HK3595": {
@@ -246950,7 +246950,7 @@
       "preferred_speech_part": "",
       "derivation": "",
       "preferred_def": "a gift (as available)",
-      "preferred_trans": "present",
+      "preferred_trans": "gift",
       "kjv_count": "",
       "masoretic_entries": {
         "H7862": {
@@ -246971,7 +246971,7 @@
         }
       },
       "adjusted_def": "a gift (as available)",
-      "adjust_trans": "present"
+      "adjust_trans": "gift"
     },
     "HK5678": {
       "lemma": "שיא",
@@ -252078,8 +252078,8 @@
       "pron": "-",
       "preferred_speech_part": "",
       "derivation": "",
-      "preferred_def": "an appellation, as amark or memorial of individuality; by implication honor, authority, character",
-      "preferred_trans": "name",
+      "preferred_def": "an appellation, as a mark or memorial of individuality; by implication honor, authority, character",
+      "preferred_trans": "character",
       "kjv_count": "",
       "masoretic_entries": {
         "H8033": {

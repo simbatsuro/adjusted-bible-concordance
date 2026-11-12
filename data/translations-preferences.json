@@ -78,9 +78,9 @@
       "preferred_translation": "and_she_will_height",
       "preferred_match": "explicit",
       "alternatives": [
-        "and_she_will_her_their_line",
-        "and_she_will_her_rise_up",
-        "and_she_will_height"
+        "and_we_will_her_their_line",
+        "and_we_will_her_rise_up",
+        "and_we_will_height"
       ],
       "enabled": true,
       "notes": ""
@@ -113,7 +113,7 @@
     },
     {
       "hebrew": "שכני",
-      "preferred_translation": "",
+      "preferred_translation": "my_their_booth",
       "preferred_match": "explicit",
       "alternatives": [
         "my_their_booth",
@@ -121,65 +121,65 @@
         "whom_my_pedestal",
         "my_to_reside"
       ],
-      "enabled": false,
+      "enabled": true,
       "notes": ""
     },
     {
       "hebrew": "בחגוי",
-      "preferred_translation": "",
+      "preferred_translation": "within_my_rift",
       "preferred_match": "explicit",
       "alternatives": [
         "within_my_his_festival",
-        "within_my_rift_in_rocks"
+        "within_my_rift"
       ],
-      "enabled": false,
+      "enabled": true,
       "notes": ""
     },
     {
       "hebrew": "שבתו",
-      "preferred_translation": "",
+      "preferred_translation": "his_rest",
       "preferred_match": "explicit",
       "alternatives": [
         "whom_his_daughter",
         "whom_within_mark",
         "his_rest"
       ],
-      "enabled": false,
+      "enabled": true,
       "notes": ""
     },
     {
       "hebrew": "כנשר",
-      "preferred_translation": "",
+      "preferred_translation": "as_eagle",
       "preferred_match": "explicit",
       "alternatives": [
-        "as_she_will_prince",
+        "as_we_will_prince",
         "as_eagle"
       ],
-      "enabled": false,
+      "enabled": true,
       "notes": ""
     },
     {
       "hebrew": "כוכבים",
-      "preferred_translation": "",
+      "preferred_translation": "star(-es)",
       "preferred_match": "explicit",
       "alternatives": [
-        "as_and_as_their_O",
+        "as_and_as_their_Oh",
         "as_and_as_within_sea",
         "their_my_star",
         "star(-es)"
       ],
-      "enabled": false,
+      "enabled": true,
       "notes": ""
     },
     {
       "hebrew": "שים",
-      "preferred_translation": "",
+      "preferred_translation": "their_gift",
       "preferred_match": "explicit",
       "alternatives": [
-        "their_present",
+        "their_gift",
         "whom_sea"
       ],
-      "enabled": false,
+      "enabled": true,
       "notes": ""
     },
     {
@@ -187,7 +187,7 @@
       "preferred_translation": "",
       "preferred_match": "explicit",
       "alternatives": [
-        "from_name",
+        "from_character",
         "their_Mash"
       ],
       "enabled": false,
@@ -221,8 +221,8 @@
       "preferred_match": "explicit",
       "alternatives": [
         "her_of_my_their_heap",
-        "she_will_her_of_my_blood",
-        "she_will_her_of_silence"
+        "we_will_her_of_my_blood",
+        "we_will_her_of_silence"
       ],
       "enabled": false,
       "notes": ""
@@ -258,7 +258,7 @@
       "preferred_match": "explicit",
       "alternatives": [
         "his_utter",
-        "she_will_petition"
+        "we_will_petition"
       ],
       "enabled": false,
       "notes": ""
@@ -292,7 +292,7 @@
       "preferred_translation": "",
       "preferred_match": "explicit",
       "alternatives": [
-        "I_will_she_will_present",
+        "I_will_we_will_gift",
         "I_will_debt",
         "my_man"
       ],
@@ -364,7 +364,7 @@
       "preferred_match": "explicit",
       "alternatives": [
         "his_their_my_is",
-        "they_will_his_their_present",
+        "they_will_his_their_gift",
         "they_will_whom_his_sea",
         "his_-es_is",
         "his_their_Jesse"
@@ -377,6 +377,9 @@
       "preferred_translation": "",
       "preferred_match": "explicit",
       "alternatives": [
+        "she_will_your_my_Heth",
+        "she_will_your_Heth",
+        "she_will_your_Hittite",
         "your_my_Tahath",
         "your_Tahath",
         "your_nether_parts"
@@ -389,7 +392,7 @@
       "preferred_translation": "",
       "preferred_match": "explicit",
       "alternatives": [
-        "their_his_O",
+        "their_his_Oh",
         "within_day"
       ],
       "enabled": false,
@@ -460,9 +463,9 @@
       "preferred_translation": "",
       "preferred_match": "explicit",
       "alternatives": [
-        "and_she_will_of_lamb",
+        "and_we_will_of_lamb",
         "and_of_know",
-        "and_she_will_cut_off"
+        "and_we_will_cut_off"
       ],
       "enabled": false,
       "notes": ""
@@ -483,7 +486,7 @@
       "preferred_translation": "",
       "preferred_match": "explicit",
       "alternatives": [
-        "from_she_will_Gad",
+        "from_we_will_Gad",
         "from_tell"
       ],
       "enabled": false,
@@ -505,11 +508,11 @@
       "preferred_translation": "",
       "preferred_match": "explicit",
       "alternatives": [
-        "and_she_will_as_their_watering",
-        "and_she_will_their_my_lamb",
-        "and_she_will_lamb(-es)",
-        "and_she_will_their_captain",
+        "and_we_will_as_their_watering",
+        "and_we_will_their_my_lamb",
         "and_their_my_know",
+        "and_we_will_lamb(-es)",
+        "and_we_will_their_captain",
         "and_know(-es)",
         "and_their_stranger"
       ],
@@ -543,8 +546,8 @@
       "preferred_translation": "",
       "preferred_match": "explicit",
       "alternatives": [
-        "she_will_as_form",
-        "she_will_his_lamb",
+        "we_will_as_form",
+        "we_will_his_lamb",
         "his_know"
       ],
       "enabled": false,
@@ -684,6 +687,8 @@
       "preferred_match": "explicit",
       "alternatives": [
         "their_of_my_Seth",
+        "whom_she_will_their_whom",
+        "whom_she_will_they_will_integrity",
         "their_of_warp"
       ],
       "enabled": false,
@@ -741,7 +746,7 @@
       "preferred_translation": "",
       "preferred_match": "explicit",
       "alternatives": [
-        "and_of_O",
+        "and_of_Oh",
         "and_within_whom",
         "and_house"
       ],
@@ -779,7 +784,7 @@
       "preferred_match": "explicit",
       "alternatives": [
         "of_my_heart",
-        "onto_of_O",
+        "onto_of_Oh",
         "onto_within_whom",
         "onto_house"
       ],
@@ -791,7 +796,7 @@
       "preferred_translation": "",
       "preferred_match": "explicit",
       "alternatives": [
-        "behold_she_will_eminent_place",
+        "behold_we_will_the_top",
         "behold_south"
       ],
       "enabled": false,
@@ -829,12 +834,12 @@
       "preferred_match": "explicit",
       "alternatives": [
         "and_their_their_my_son",
-        "and_within_she_will_their_sea",
-        "and_within_she_will_they_will_of",
         "and_within_their_their_my_seed",
+        "and_within_we_will_their_sea",
+        "and_within_we_will_they_will_of",
         "and_their_-es_son",
         "and_their_their_Bani",
-        "and_within_she_will_right_hand",
+        "and_within_we_will_right_hand",
         "and_their_champion"
       ],
       "enabled": false,
@@ -845,10 +850,10 @@
       "preferred_translation": "",
       "preferred_match": "explicit",
       "alternatives": [
-        "as_she_will_their_poor",
+        "as_we_will_their_poor",
         "their_my_their_humble",
         "-es_their_humble",
-        "as_she_will_Anim",
+        "as_we_will_Anim",
         "their_my_Canaan",
         "Canaan(-es)",
         "their_Canaanite"
@@ -1805,6 +1810,91 @@
         "they_will_from_sea",
         "sea(-es)",
         "they_will_water"
+      ],
+      "enabled": false,
+      "notes": ""
+    },
+    {
+      "hebrew": "תגביה",
+      "preferred_translation": "she_will_of_her_the_top",
+      "preferred_match": "explicit",
+      "alternatives": [
+        "she_will_her_my_the_top",
+        "she_will_her_Gabbai",
+        "she_will_of_her_the_top"
+      ],
+      "enabled": true,
+      "notes": ""
+    },
+    {
+      "hebrew": "תבונה",
+      "preferred_translation": "",
+      "preferred_match": "explicit",
+      "alternatives": [
+        "she_will_within_and_wailing",
+        "her_understanding",
+        "she_will_Bunah"
+      ],
+      "enabled": false,
+      "notes": ""
+    },
+    {
+      "hebrew": "ותבונה",
+      "preferred_translation": "",
+      "preferred_match": "explicit",
+      "alternatives": [
+        "and_she_will_within_and_wailing",
+        "and_her_understanding",
+        "and_she_will_Bunah"
+      ],
+      "enabled": false,
+      "notes": ""
+    },
+    {
+      "hebrew": "תכסך",
+      "preferred_translation": "",
+      "preferred_match": "explicit",
+      "alternatives": [
+        "she_will_as_den|pavilion|tabernacle|covert",
+        "she_will_your_sworn_(with_H3027)"
+      ],
+      "enabled": false,
+      "notes": ""
+    },
+    {
+      "hebrew": "תשמח",
+      "preferred_translation": "",
+      "preferred_match": "explicit",
+      "alternatives": [
+        "she_will_whom_fatling|fat_one",
+        "she_will_rejoice"
+      ],
+      "enabled": false,
+      "notes": ""
+    },
+    {
+      "hebrew": "תשלחנה",
+      "preferred_translation": "",
+      "preferred_match": "explicit",
+      "alternatives": [
+        "she_will_whom_her_their_green",
+        "she_will_whom_onto_her_grace",
+        "she_will_her_their_to_send_out",
+        "she_will_whom_onto_pitch",
+        "she_will_her_table",
+        "she_will_whom_concubine"
+      ],
+      "enabled": false,
+      "notes": ""
+    },
+    {
+      "hebrew": "תהיה",
+      "preferred_translation": "",
+      "preferred_match": "explicit",
+      "alternatives": [
+        "she_will_behold_LORD",
+        "she_will_her_woe",
+        "she_will_calamity"
       ],
       "enabled": false,
       "notes": ""

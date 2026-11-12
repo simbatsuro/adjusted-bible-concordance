@@ -171,18 +171,15 @@
         {
             "name": "Tav",
             "part_of_speech": "Verb",
-            "square_symbol": "נ",
-            "square_unicode": "U+05DF",
-            "paleo_symbol": "𐤍",
-            "paleo_unicode": "U+1090D",
-            "transliteration": "n-",
+            "square_symbol": "ת",
+            "square_unicode": "U+05EA",
+            "paleo_symbol": "𐤕",
+            "paleo_unicode": "U+10915",
+            "transliteration": "t-",
             "meanings": [
-                "Third person, singular, feminine, future tense.",
-                "She will",
-                "Second person, future tense. (Number and gender depend on suffixes.)",
-                "You will",
-                "In biblical Hebrew, third person, plural, feminine, future tense.",
-                "They will"
+                "She will - Third person, singular, feminine, future tense.",
+                "You will - Second person, future tense. (Number and gender depend on suffixes.)",
+                "They will - In biblical Hebrew, third person, plural, feminine, future tense."
             ],
             "preferred_meaning": "she will"
         }
