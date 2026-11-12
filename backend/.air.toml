@@ -5,6 +5,7 @@ tmp_dir = "tmp"
 [build]
 cmd = "go build -o ./tmp/main ."
 bin = "./tmp/main"
+include_dir = ["."]
 include_ext = ["go", "json", "toml"]
 exclude_dir = ["tmp", "vendor", ".git"]
 delay = 500
