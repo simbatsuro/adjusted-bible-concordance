@@ -5235,7 +5235,7 @@
       "preferred_speech_part": "",
       "derivation": "",
       "preferred_def": "desire (and so probably in Proverbs 31:4); hence (by way of alternative) or, also if",
-      "preferred_trans": "or",
+      "preferred_trans": "desire",
       "kjv_count": "",
       "masoretic_entries": {
         "H176": {
@@ -5296,7 +5296,7 @@
         }
       },
       "adjusted_def": "desire (and so probably in Proverbs 31:4); hence (by way of alternative) or, also if",
-      "adjust_trans": "or"
+      "adjust_trans": "desire"
     },
     "HK137": {
       "lemma": "אואל",
@@ -6487,7 +6487,7 @@
       "preferred_speech_part": "",
       "derivation": "",
       "preferred_def": "illumination or (concrete) luminary (in every sense, including lightning, happiness, etc.)",
-      "preferred_trans": "light(s)",
+      "preferred_trans": "illumination",
       "kjv_count": "",
       "masoretic_entries": {
         "H215": {
@@ -6731,6 +6731,37 @@
       },
       "adjusted_def": "Uriel, the name of two Israelites",
       "adjust_trans": "Uriel"
+    },
+
+    "HK167.1": {
+      "lemma": "אורידך",
+      "xlit": "-",
+      "pron": "-",
+      "preferred_speech_part": "",
+      "derivation": "",
+      "preferred_def": "three words - illumination your hand",
+      "preferred_trans": "illumination your open hand",
+      "kjv_count": "",
+      "masoretic_entries": {
+        "H221": {
+          "lemma": "",
+          "xlit": "",
+          "pron": "",
+          "derivation": "",
+          "strongs_def": "",
+          "kjv_def": "",
+          "kjv_count": 1,
+          "kjv_usage": [
+            [
+              "",
+              0
+            ]
+          ],
+          "kjv_usage_source": "User generated"
+        }
+      },
+      "adjusted_def": "three words - illumination your open hand",
+      "adjust_trans": "illumination your open hand"
     },
     "HK168": {
       "lemma": "אוריה",
@@ -47884,7 +47915,7 @@
       "preferred_speech_part": "",
       "derivation": "",
       "preferred_def": "to thieve (literally or figuratively); by implication, to deceive",
-      "preferred_trans": "steal",
+      "preferred_trans": "thieve",
       "kjv_count": "",
       "masoretic_entries": {
         "H1589": {
@@ -51670,7 +51701,7 @@
       "preferred_speech_part": "",
       "derivation": "",
       "preferred_def": "the breast (as the seat of love, or from its shape)",
-      "preferred_trans": "breast|teat",
+      "preferred_trans": "breast",
       "kjv_count": "",
       "masoretic_entries": {
         "H1717": {
@@ -51695,7 +51726,7 @@
         }
       },
       "adjusted_def": "the breast (as the seat of love, or from its shape)",
-      "adjust_trans": "breast|teat"
+      "adjust_trans": "breast"
     },
     "HK1251": {
       "lemma": "דדה",
@@ -92340,7 +92371,7 @@
       "preferred_speech_part": "",
       "derivation": "",
       "preferred_def": "a hand (the open one (indicating power, means, direction, etc.),",
-      "preferred_trans": "hand",
+      "preferred_trans": "open hand",
       "kjv_count": "",
       "masoretic_entries": {
         "H3027": {

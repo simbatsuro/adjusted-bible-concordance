@@ -195,13 +195,13 @@
     },
     {
       "hebrew": "גנבים",
-      "preferred_translation": "",
+      "preferred_translation": "thieve(-es)",
       "preferred_match": "explicit",
       "alternatives": [
-        "their_my_steal",
-        "steal(-es)"
+        "their_my_thieve",
+        "thieve(-es)"
       ],
-      "enabled": false,
+      "enabled": true,
       "notes": ""
     },
     {
@@ -317,7 +317,7 @@
       "preferred_translation": "",
       "preferred_match": "explicit",
       "alternatives": [
-        "behold_whom_they_will_your_or",
+        "behold_whom_they_will_your_desire",
         "behold_your_his_elevation"
       ],
       "enabled": false,
@@ -581,7 +581,7 @@
       "preferred_translation": "",
       "preferred_match": "explicit",
       "alternatives": [
-        "I_will_their_hand",
+        "I_will_their_open_hand",
         "I_will_they_will_blood",
         "their_calamity"
       ],
@@ -604,7 +604,7 @@
       "preferred_translation": "",
       "preferred_match": "explicit",
       "alternatives": [
-        "I_will_his_hand",
+        "I_will_his_open_hand",
         "I_will_Iddo|Jadau",
         "his_calamity"
       ],
